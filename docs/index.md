@@ -8,7 +8,7 @@
 
 
 -   Free software: MIT license
--   Documentation: https://giswqs.github.io/whiteboxgui
+-   Documentation: <https://giswqs.github.io/whiteboxgui>
     
 
 ## Features

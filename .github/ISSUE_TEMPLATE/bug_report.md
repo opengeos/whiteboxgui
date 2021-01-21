@@ -8,6 +8,7 @@ labels: bug
 
 ### Environment Information
 
+-   whiteboxgui version:
 -   Python version:
 -   Operating System:
 
