@@ -16,31 +16,53 @@ wbt = whitebox.WhiteboxTools()
 
 
 def to_camelcase(name):
-    """
-    Convert snake_case name to CamelCase name
-    """
+    """Convert snake_case name to CamelCase name.
+
+    Args:
+        name (str): The name of the tool.
+
+    Returns:
+        str: The CamelCase name of the tool.
+    """    
+
     return "".join(x.title() for x in name.split("_"))
 
 
 def to_label(name):
-    """
-    Convert snake_case name to Title case label
-    """
+    """Convert snake_case name to Title case label.
+
+    Args:
+        name (str): The name of the tool.
+
+    Returns:
+        str: The Title case name of the tool.
+    """    
     return " ".join(x.title() for x in name.split("_"))
 
 
 def to_snakecase(name):
-    """
-    Convert CamelCase name to snake_case name
-    """
+    """Convert CamelCase name to snake_case name.
+
+    Args:
+        name (str): The name of the tool.
+
+    Returns:
+        str: The snakecase name of the tool.
+    """    
     s1 = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s1).lower()
 
 
 def get_tool_params(tool_name):
-    """
-    Convert tool parameters output string to a dictionary
-    """
+    """Get parameters for a tool.
+
+    Args:
+        tool_name (str): The name of the tool.
+
+    Returns:
+        dict: The tool parameters as a dictionary.
+    """    
+
     out_str = wbt.tool_parameters(tool_name)
     start_index = out_str.index("[") + 1
     end_index = len(out_str.strip()) - 2
@@ -119,19 +141,30 @@ def get_tool_params(tool_name):
 
 
 def get_github_url(tool_name, category):
-    """
-    Generate source code link on Github
-    """
-    # prefix = "https://github.com/jblindsay/whitebox-tools/blob/master/src/tools"
+    """Get the link to the source code of the tool on GitHub.
+
+    Args:
+        tool_name (str): The name of the tool.
+        category (str): The category of the tool.
+
+    Returns:
+        str: The URL to source code.
+    """    
+
     url = wbt.view_code(tool_name).strip()
-    # url = "{}/{}/{}.rs".format(prefix, category, tool_name)
     return url
 
 
 def get_book_url(tool_name, category):
-    """
-    Get link to WhiteboxTools User Mannual
-    """
+    """Get the link to the help documentation of the tool.
+
+    Args:
+        tool_name (str): The name of the tool.
+        category (str): The category of the tool.
+
+    Returns:
+        str: The URL to help documentation.
+    """   
     prefix = "https://jblindsay.github.io/wbt_book/available_tools"
     url = "{}/{}.html#{}".format(prefix, category, tool_name)
     return url
@@ -161,7 +194,14 @@ def search_api_tree(keywords, api_tree):
 
 
 def get_wbt_dict(reset=False):
+    """Generate a dictionary containing information for all tools.
 
+    Args:
+        reset (bool, optional): Whether to recreate the json file containing the dictionary. Defaults to False.
+
+    Returns:
+        dict: The dictionary containing information for all tools.
+    """
     wbt_dir = os.path.dirname(
         pkg_resources.resource_filename("whitebox", "whitebox_tools.py")
     )
@@ -258,7 +298,14 @@ def get_wbt_dict(reset=False):
 
 
 def tool_gui(tool_dict):
+    """Create a GUI for a tool based on the tool dictionary.
 
+    Args:
+        tool_dict (dict): The dictionary containing the tool info.
+
+    Returns:
+        object: An ipywidget object representing the tool interface.
+    """
     tool_widget = widgets.VBox()
     children = []
     args = {}
@@ -395,7 +442,16 @@ def tool_gui(tool_dict):
 
 
 def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
+    """Build the toolbox for WhiteboxTools.
 
+    Args:
+        tools_dict (dict): A dictionary containing information for all tools. 
+        folder_icon (str, optional): The font-awesome icon for tool categories. Defaults to "folder".
+        tool_icon (str, optional): The font-awesome icon for tools. Defaults to "wrench".
+
+    Returns:
+        object: An ipywidget representing the toolbox.
+    """
     left_widget = widgets.VBox()
     right_widget = widgets.VBox()
     full_widget = widgets.HBox([left_widget, right_widget])
@@ -469,8 +525,16 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     return full_widget
 
 
-def show(reset=False, verbose=True):
+def show(verbose=True, reset=False):
+    """Show the toolbox GUI.
 
+    Args:
+        verbose (bool, optional): Whether to show progress info when the tool is running. Defaults to True.
+        reset (bool, optional): Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.
+
+    Returns:
+        object: A toolbox GUI.
+    """
     tools_dict = get_wbt_dict(reset=reset)
 
     if verbose:
@@ -481,5 +545,5 @@ def show(reset=False, verbose=True):
     return build_toolbox(tools_dict)
 
 
-if __name__ == "__main__":
-    show(reset=False)
+# if __name__ == "__main__":
+#     show(reset=False)
