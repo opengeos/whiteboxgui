@@ -14,6 +14,7 @@ from IPython.display import display
 
 wbt = whitebox.WhiteboxTools()
 
+
 def to_camelcase(name):
     """
     Convert snake_case name to CamelCase name
@@ -114,161 +115,7 @@ def get_tool_params(tool_name):
 
         params_dict[flags] = param_dict
 
-        # if tool_name == 'Divide':
-        #     print("start debugging")
-
     return params_dict
-
-
-def get_param_widget(param):
-
-    data_type = widgets.Text()  # default data type
-    data_filter = "[]"  # https://goo.gl/EaVNzg
-    filter_type = '""'
-    multi_value = False
-    dependency_field = ""
-
-    data_types = {
-        "Boolean": widgets.Checkbox(),
-        "Integer": widgets.IntText(),
-        "Float": widgets.FloatText(),
-        "String": widgets.Text(),
-        "StringOrNumber": widgets.Text(),
-        "Directory": FileChooser(),
-        "Raster": FileChooser(),
-        "Csv": FileChooser(),
-        "Text": FileChooser(),
-        "Html": FileChooser(),
-        "Lidar": FileChooser(),
-        "Vector": FileChooser(),
-        "RasterAndVector": FileChooser(),
-        "ExistingFileOrFloat": FileChooser(),
-    }
-
-    vector_filters = {
-        "Point": '["Point"]',
-        "Line": '["Polyline"]',
-        "Polygon": '["Polygon"]',
-        "LineOrPolygon": '["Polyline", "Polygon"]',
-        "Any": "[]",
-    }
-
-    if type(param) is str and param in data_types.keys():
-        data_type = data_types[param]
-    else:
-        for item in param:
-            if item == "FileList":
-                multi_value = True
-            elif item == "OptionList":
-                filter_type = '"ValueList"'
-                data_filter = param[item]
-
-            if param[item] == "Csv":
-                data_filter = '["csv"]'
-            elif param[item] == "Lidar":
-                data_filter = '["las", "zip"]'
-            elif param[item] == "Html":
-                data_filter = '["html"]'
-
-            if type(param[item]) is str:
-                data_type = data_types[param[item]]
-            elif type(param[item]) is dict:
-                sub_item = param[item]
-                for sub_sub_item in sub_item:
-                    data_type = data_types[sub_sub_item]
-                    if data_type == '"DEShapefile"':
-                        data_filter = vector_filters[sub_item[sub_sub_item]]
-            elif item == "VectorAttributeField":
-                data_type = widgets.Text()
-                dependency_field = param[item][1].replace("--", "")
-            else:
-                data_type = widgets.Text()
-
-            if param == {"ExistingFileOrFloat": "Raster"}:
-                data_type = FileChooser()
-
-    return data_type
-
-
-def get_data_type(param):
-    """
-    Convert WhiteboxTools data types to ArcGIS data types
-    """
-    data_type = '"GPString"'  # default data type
-    data_filter = "[]"  # https://goo.gl/EaVNzg
-    filter_type = '""'
-    multi_value = False
-    dependency_field = ""
-
-    # ArcGIS data types: https://goo.gl/95JtFu
-    data_types = {
-        "Boolean": '"GPBoolean"',
-        "Integer": '"GPLong"',
-        "Float": '"GPDouble"',
-        "String": '"GPString"',
-        "StringOrNumber": '["GPString", "GPDouble"]',
-        "Directory": '"DEFolder"',
-        "Raster": '"DERasterDataset"',
-        "Csv": '"DEFile"',
-        "Text": '"DEFile"',
-        "Html": '"DEFile"',
-        "Lidar": '"DEFile"',
-        "Vector": '"DEShapefile"',
-        "RasterAndVector": '["DERasterDataset", "DEShapefile"]',
-        "ExistingFileOrFloat": '["DERasterDataset", "GPDouble"]',
-    }
-
-    vector_filters = {
-        "Point": '["Point"]',
-        "Line": '["Polyline"]',
-        "Polygon": '["Polygon"]',
-        "LineOrPolygon": '["Polyline", "Polygon"]',
-        "Any": "[]",
-    }
-
-    if type(param) is str:
-        data_type = data_types[param]
-
-    else:
-        for item in param:
-            if item == "FileList":
-                multi_value = True
-            elif item == "OptionList":
-                filter_type = '"ValueList"'
-                data_filter = param[item]
-
-            if param[item] == "Csv":
-                data_filter = '["csv"]'
-            elif param[item] == "Lidar":
-                data_filter = '["las", "zip"]'
-            elif param[item] == "Html":
-                data_filter = '["html"]'
-
-            if type(param[item]) is str:
-                data_type = data_types[param[item]]
-            elif type(param[item]) is dict:
-                sub_item = param[item]
-                for sub_sub_item in sub_item:
-                    data_type = data_types[sub_sub_item]
-                    if data_type == '"DEShapefile"':
-                        data_filter = vector_filters[sub_item[sub_sub_item]]
-            elif item == "VectorAttributeField":
-                data_type = '"Field"'
-                dependency_field = param[item][1].replace("--", "")
-            else:
-                data_type = '"GPString"'
-
-            if param == {"ExistingFileOrFloat": "Raster"}:
-                data_type = '["DERasterDataset", "GPDouble"]'
-
-    ret = {}
-    ret["data_type"] = data_type
-    ret["data_filter"] = data_filter
-    ret["filter_type"] = filter_type
-    ret["multi_value"] = multi_value
-    ret["dependency_field"] = dependency_field
-
-    return ret
 
 
 def get_github_url(tool_name, category):
@@ -281,17 +128,6 @@ def get_github_url(tool_name, category):
     return url
 
 
-def get_github_tag(tool_name, category):
-    """
-    Get GitHub HTML tag
-    """
-    # prefix = "https://github.com/jblindsay/whitebox-tools/blob/master/src/tools"
-    # url = "{}/{}/{}.rs".format(prefix, category, tool_name)
-    url = wbt.view_code(tool_name).strip()
-    html_tag = "<a href='{}' target='_blank'>GitHub</a>".format(url)
-    return html_tag
-
-
 def get_book_url(tool_name, category):
     """
     Get link to WhiteboxTools User Mannual
@@ -299,16 +135,6 @@ def get_book_url(tool_name, category):
     prefix = "https://jblindsay.github.io/wbt_book/available_tools"
     url = "{}/{}.html#{}".format(prefix, category, tool_name)
     return url
-
-
-def get_book_tag(tool_name, category):
-    """
-    Get User Manual HTML tag
-    """
-    prefix = "https://jblindsay.github.io/wbt_book/available_tools"
-    url = "{}/{}.html#{}".format(prefix, category, tool_name)
-    html_tag = "<a href='{}' target='_blank'>WhiteboxTools User Manual</a>".format(url)
-    return html_tag
 
 
 def search_api_tree(keywords, api_tree):
@@ -332,30 +158,6 @@ def search_api_tree(keywords, api_tree):
             sub_tree.add_node(api_tree[key])
 
     return sub_tree
-
-
-def create_code_cell(code="", where="below"):
-    """Creates a code cell in the IPython Notebook.
-
-    Args:
-        code (str, optional): Code to fill the new code cell with. Defaults to ''.
-        where (str, optional): Where to add the new code cell. It can be one of the following: above, below, at_bottom. Defaults to 'below'.
-    """
-
-    import base64
-    from IPython.display import Javascript, display
-
-    encoded_code = (base64.b64encode(str.encode(code))).decode()
-    display(
-        Javascript(
-            """
-        var code = IPython.notebook.insert_cell_{0}('code');
-        code.set_text(atob("{1}"));
-    """.format(
-                where, encoded_code
-            )
-        )
-    )
 
 
 def get_wbt_dict(reset=False):
@@ -427,18 +229,18 @@ def get_wbt_dict(reset=False):
                         tool_labels.append(func_label)
                         func_desc = lines[index + 1].replace('"""', "").strip()
 
-                        github_tag = get_github_tag(func_title, github_cls[category])
-                        book_tag = get_book_tag(func_name, book_cls[category])
-                        full_desc = "{} View detailed help documentation on {} and source code on {}.".format(
-                            func_desc, book_tag, github_tag
-                        )
-
                         func_dict = {}
                         func_dict["name"] = func_name
                         func_dict["Name"] = to_camelcase(func_name)
                         func_dict["category"] = category
                         func_dict["label"] = func_label
-                        func_dict["description"] = full_desc
+                        func_dict["description"] = func_desc
+
+                        github_url = get_github_url(func_name, github_cls[category])
+                        book_url = get_book_url(func_name, book_cls[category])
+
+                        func_dict["github"] = github_url
+                        func_dict["book"] = book_url
 
                         tool_index = tool_index + 1
                         func_params = get_tool_params(func_name)
@@ -457,173 +259,139 @@ def get_wbt_dict(reset=False):
 
 def tool_gui(tool_dict):
 
-    # tool_widget = widgets.Output()
     tool_widget = widgets.VBox()
     children = []
     args = {}
 
     header = widgets.Label(value=f'Current Tool: {tool_dict["name"]}')
-    children.append(header)
+    spacer = widgets.Label(layout=widgets.Layout(width="50px"))
+    code_btn = widgets.Button(
+        description="View Code", layout=widgets.Layout(width="100px")
+    )
+
+    children.append(widgets.HBox([header, spacer, code_btn]))
+
+    desc = widgets.Label(value=f'Description: {tool_dict["description"]}')
+    children.append(desc)
 
     params = tool_dict["parameters"]
     for param in params:
-        # print(param)
         items = params[param]
-        required = ""   
+        required = ""
         if items["optional"] == "false":
             required = "*"
         label = items["name"] + required
         param_type = items["parameter_type"]
-        # print(param_type)
         default_value = None
-        # if items["default_value"] == "null":
-        #     items["default_value"] = None
+
         if (items["default_value"] != "null") and (len(items["default_value"]) > 0):
             if "false" in items["default_value"]:
                 default_value = False
             elif "true" in items["default_value"]:
                 default_value = True
             else:
-                default_value = items["default_value"].replace('"', '')
-        # print(default_value)
-        style={"description_width": "initial"}
-        layout = layout=widgets.Layout(width='500px')
+                default_value = items["default_value"].replace('"', "")
 
-        # data_types = {
-        #     "Boolean": widgets.Checkbox(description=label, style=style),
-        #     "Integer": widgets.IntText(description=label, style=style),
-        #     "Float": widgets.FloatText(description=label, style=style),
-        #     "String": widgets.Text(description=label, style=style),
-        #     "StringOrNumber": widgets.Text(description=label, style=style),
-        #     "Directory": FileChooser(title=label),
-        #     "Raster": FileChooser(title=label),
-        #     "Csv": FileChooser(title=label),
-        #     "Text": FileChooser(title=label),
-        #     "Html": FileChooser(title=label),
-        #     "Lidar": FileChooser(title=label),
-        #     "Vector": FileChooser(title=label),
-        #     "RasterAndVector": FileChooser(title=label),
-        #     "ExistingFileOrFloat": FileChooser(title=label),
-        #     "ExistingFile": FileChooser(title=label),
+        style = {"description_width": "initial"}
+        layout = layout = widgets.Layout(width="500px")
 
-        # }
-        # print(label)
-        # print(param_type)
         if isinstance(param_type, str):
             # display(data_types[param_type])
-            
+
             if param_type == "Boolean":
-                var_widget = widgets.Checkbox(description=label, style=style, layout=layout, value=default_value)
-            # elif param_type == "Integer":
-            #     var_widget = widgets.IntText(description=label, style=style, value=None)
-            #     if default_value is not None:
-            #         var_widget.value = int(default_value.replace('"', ''))
-            # elif param_type == "Float":
-            #     var_widget = widgets.FloatText(description=label, style=style, value=None)
-            #     if default_value is not None:
-            #         var_widget.value = float(default_value.replace('"', ''))     
-            elif param_type in ["Directory", "Raster", "Csv", "Text", "Html", "Lidar", "Vector", "RasterAndVector", "ExistingFileOrFloat", "ExistingFile"]:
-                var_widget = FileChooser(title=label)          
+                var_widget = widgets.Checkbox(
+                    description=label, style=style, layout=layout, value=default_value
+                )
+            elif param_type in [
+                "Directory",
+                "ExistingFile",
+                "ExistingFileOrFloat",
+                "FileList",
+                "NewFile",
+            ]:
+                var_widget = FileChooser(title=label)
             else:
                 var_widget = widgets.Text(description=label, style=style, layout=layout)
                 if default_value is not None:
-                    var_widget.value = str(default_value)                       
+                    var_widget.value = str(default_value)
 
             args[param] = var_widget
 
             children.append(var_widget)
-        else:
-            var_widget = FileChooser(title=label)    
+        elif isinstance(param_type, dict):
+
+            if "OptionList" in param_type:
+                var_widget = widgets.Dropdown(
+                    options=param_type["OptionList"],
+                    description=label,
+                    style=style,
+                    layout=layout,
+                )
+            elif list(param_type.keys())[0] in [
+                "Directory",
+                "ExistingFile",
+                "ExistingFileOrFloat",
+                "FileList",
+                "NewFile",
+            ]:
+                var_widget = FileChooser(title=label)
+            else:
+                var_widget = FileChooser(title=label)
             args[param] = var_widget
 
-            # if default_value is not None:
-            #     var_widget.value = str(default_value)                
-            # # print(param_type)
-            # for item in param_type:
-            #     if item == "FileList":
-            #         multi_value = True
-            #     # elif item == "OptionList":
-            #     #     filter_type = '"ValueList"'
-            #     #     # data_filter = param_type[item]
-
-            #     # if param_type[item] == "Csv":
-            #     #     data_filter = '["csv"]'
-            #     # elif param_type[item] == "Lidar":
-            #     #     data_filter = '["las", "zip"]'
-            #     # elif param_type[item] == "Html":
-            #     #     data_filter = '["html"]'
-
-            #     if type(param_type[item]) is str:
-            #         data_type = data_types[param_type[item]]
-            #     elif type(param_type[item]) is dict:
-            #         sub_item = param_type[item]
-            #         for sub_sub_item in sub_item:
-            #             data_type = data_types[sub_sub_item]
-            #             # if data_type == '"DEShapefile"':
-            #             #     data_filter = vector_filters[sub_item[sub_sub_item]]
-            #     # elif item == "VectorAttributeField":
-            #     #     data_type = widgets.Text(description=label, style=style)
-            #         # dependency_field = param[item][1].replace("--", "")
-            #     else:
-            #         data_type = widgets.Text(description=label, style=style)
-
-            #     if param_type == {"ExistingFileOrFloat": "Raster"}:
-            #         data_type = FileChooser(title=label)
-            
             children.append(var_widget)
-            # display(FileChooser(title=label))
-            # children.append(FileChooser(title=label))
-            # chooser_types = [
-            #     "Directory",
-            #     "Raster",
-            #     "Csv",
-            #     "Text",
-            #     "Html",
-            #     "Lidar",
-            #     "Vector",
-            #     "RasterAndVector",
-            #     "ExistingFileOrFloat"
-            # ]
-            # if param_type in chooser_types:
-            #     print(label)
-            #     display(FileChooser())  
-            # elif param_type == "Boolean":
-            #     bool_widget = widgets.Checkbox(description=label)
-            # elif param_type = 
-
-        # data_type = get_param_widget(items["parameter_type"])      
-        # display(data_type)  
 
     run_btn = widgets.Button(description="Run", layout=widgets.Layout(width="100px"))
-    cancel_btn = widgets.Button(description="Cancel", layout=widgets.Layout(width="100px"))
+    cancel_btn = widgets.Button(
+        description="Cancel", layout=widgets.Layout(width="100px")
+    )
     help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
-    # display(widgets.HBox([run_btn, cancel_btn, help_btn]))    
+    tool_output = widgets.Output(layout=widgets.Layout(max_height="300px"))
     children.append(widgets.HBox([run_btn, cancel_btn, help_btn]))
+    children.append(tool_output)
     tool_widget.children = children
 
     def run_button_clicked(b):
+        tool_output.clear_output()
+
         args2 = []
         for arg in args:
 
             line = ""
             if isinstance(args[arg], FileChooser):
-                if arg == 'i':
+                if arg == "i":
                     line = f"-{arg}={args[arg].selected}"
                 else:
                     line = f"--{arg}={args[arg].selected}"
             elif isinstance(args[arg], widgets.Text):
-                if args[arg].value is not None and len(args[arg].value)>0:
+                if args[arg].value is not None and len(args[arg].value) > 0:
                     line = f"--{arg}={args[arg].value}"
             elif isinstance(args[arg], widgets.Checkbox):
                 line = f"--{arg}={args[arg].value}"
-            args2.append(line)        
+            args2.append(line)
 
-        wbt.run_tool(tool_dict['name'], args2)
+        with tool_output:
+            wbt.run_tool(tool_dict["name"], args2)
+
+    def help_button_clicked(b):
+        import webbrowser
+
+        webbrowser.open_new_tab(tool_dict["book"])
+
+    def code_button_clicked(b):
+        import webbrowser
+
+        webbrowser.open_new_tab(tool_dict["github"])
+
+    def cancel_btn_clicked(b):
+        tool_output.clear_output()
 
     run_btn.on_click(run_button_clicked)
+    help_btn.on_click(help_button_clicked)
+    code_btn.on_click(code_button_clicked)
+    cancel_btn.on_click(cancel_btn_clicked)
 
     return tool_widget
-
 
 
 def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
@@ -674,41 +442,23 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
             tool_name = cur_node.name
             with output:
                 output.clear_output()
-                # print(tool_name)
-                # print(tools_dict[tool_name])
-                # print("\n")
-
                 tool_ui = tool_gui(tools_dict[tool_name])
                 display(tool_ui)
-                # params = tools_dict[tool_name]["parameters"]
-                # for param in params:
-                #     items = params[param]
-                #     required = ""   
-                #     if items["optional"] == "false":
-                #         required = "*"
-                #     print(items["name"] + required)     
-                #     data_type = get_param_widget(items["parameter_type"])      
-                #     display(data_type)  
-
-                # run_btn = widgets.Button(description="Run", layout=widgets.Layout(width="100px"))
-                # cancel_btn = widgets.Button(description="Cancel", layout=widgets.Layout(width="100px"))
-                # help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
-                # display(widgets.HBox([run_btn, cancel_btn, help_btn]))
 
     for key in tools_dict.keys():
-        category = tools_dict[key]["category"]        
+        category = tools_dict[key]["category"]
         if category not in categories.keys():
             category_node = Node(category, icon=folder_icon, opened=False)
             root_node.add_node(category_node)
-            categories[category] = category_node    
-            tool_node = Node(key, icon=tool_icon)    
-            category_node.add_node(tool_node) 
+            categories[category] = category_node
+            tool_node = Node(key, icon=tool_icon)
+            category_node.add_node(tool_node)
             tree_dict[key] = tool_node
             tool_node.observe(handle_tool_clicked, "selected")
         else:
-            category_node =  categories[category]
-            tool_node = Node(key, icon=tool_icon)    
-            category_node.add_node(tool_node)    
+            category_node = categories[category]
+            tool_node = Node(key, icon=tool_icon)
+            category_node.add_node(tool_node)
             tree_dict[key] = tool_node
             tool_node.observe(handle_tool_clicked, "selected")
 
@@ -718,17 +468,15 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
 
     return full_widget
 
+
 def show(reset=False, verbose=True):
 
     tools_dict = get_wbt_dict(reset=reset)
-    # print(tools_dict.keys())
-    # print(tools_dict["Slope"])
 
     if verbose:
         wbt.verbose = True
     else:
         wbt.verbose = False
-
 
     return build_toolbox(tools_dict)
 
