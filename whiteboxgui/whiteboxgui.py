@@ -692,7 +692,7 @@ def show(verbose=True, tree=False, reset=False):
         wbt.verbose = False
 
     if in_colab_shell():
-        tree = True
+        tree = False
 
     if tree:
         return build_toolbox_tree(tools_dict)
