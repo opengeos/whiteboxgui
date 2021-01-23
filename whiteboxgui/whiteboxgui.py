@@ -297,17 +297,18 @@ def get_wbt_dict(reset=False):
     return tools_dict
 
 
-def tool_gui(tool_dict, max_width="630px"):
+def tool_gui(tool_dict, max_width="630px", max_height="600px"):
     """Create a GUI for a tool based on the tool dictionary.
 
     Args:
         tool_dict (dict): The dictionary containing the tool info.
         max_width (str, optional): The max width of the tool dialog.
+        max_height (str, optional): The max height of the tool dialog.
 
     Returns:
         object: An ipywidget object representing the tool interface.
     """
-    tool_widget = widgets.VBox()
+    tool_widget = widgets.VBox(layout=widgets.Layout(max_width=max_width, max_height=max_height))
     children = []
     args = {}
 
@@ -394,9 +395,11 @@ def tool_gui(tool_dict, max_width="630px"):
         description="Cancel", layout=widgets.Layout(width="100px")
     )
     help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
-    tool_output = widgets.Output(layout=widgets.Layout(max_height="300px"))
+    # tool_output = widgets.Output()
+    tool_output = widgets.Output(layout=widgets.Layout(max_height="200px"))
     children.append(widgets.HBox([run_btn, cancel_btn, help_btn]))
     children.append(tool_output)
+    # children.append(widgets.VBox([tool_output], layout=widgets.Layout(max_height="350px")))
     tool_widget.children = children
 
     def run_button_clicked(b):
@@ -442,7 +445,7 @@ def tool_gui(tool_dict, max_width="630px"):
     return tool_widget
 
 
-def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
+def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
     """Build the toolbox for WhiteboxTools.
 
     Args:
@@ -458,15 +461,23 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     full_widget = widgets.HBox([left_widget, right_widget])
 
     search_description = (
-        f"{len(tools_dict)} tools available. Enter a keyword to search ..."
+        f"{len(tools_dict)} tools available. Search tools ..."
     )
     search_box = widgets.Text(placeholder=search_description)
-    search_box.layout.width = "310px"
+    search_box.layout.width = "270px"
+
+    close_btn = widgets.Button(icon="close", layout=widgets.Layout(width="32px"))
+    
+    def close_btn_clicked(b):
+        full_widget.close()
+
+    close_btn.on_click(close_btn_clicked)
+
     tree_widget = widgets.Output()
     tree_widget.layout.max_width = "310px"
     tree_widget.overflow = "auto"
 
-    left_widget.children = [search_box, tree_widget]
+    left_widget.children = [widgets.HBox([search_box, close_btn]), tree_widget]
     output = widgets.Output(layout=widgets.Layout(max_width="760px"))
     right_widget.children = [output]
 
@@ -528,12 +539,21 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     return full_widget
 
 
-def build_toolbox_lite(tools_dict):
+def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
+    """Build the toolbox for WhiteboxTools.
 
-    left_widget = widgets.VBox()
-    center_widget = widgets.VBox()
-    right_widget = widgets.Output(layout=widgets.Layout(width="630px"))
-    full_widget = widgets.HBox([left_widget, center_widget, right_widget])
+    Args:
+        tools_dict (dict): A dictionary containing information for all tools.
+        max_width (str, optional): The maximum width of the widget.
+        max_height (str, optional): The maximum height of the widget.
+
+    Returns:
+        object: An ipywidget representing the toolbox.
+    """
+    left_widget = widgets.VBox(layout=widgets.Layout(min_width="175px"))
+    center_widget = widgets.VBox(layout=widgets.Layout(min_width="200px"))
+    right_widget = widgets.Output(layout=widgets.Layout(width="630px", max_height=max_height))
+    full_widget = widgets.HBox([left_widget, center_widget, right_widget], layout=widgets.Layout(max_width=max_width, max_height=max_height))
 
     search_widget = widgets.Text(
         placeholder="Search tools ...", layout=widgets.Layout(width="170px")
@@ -541,6 +561,7 @@ def build_toolbox_lite(tools_dict):
     label_widget = widgets.Label(layout=widgets.Layout(width="170px"))
     # search_widget.tooltip = "Search tools ..."
     label_widget.value = f"{len(tools_dict)} Available Tools"
+    close_btn = widgets.Button(description="Close Toolbox", icon="close", layout=widgets.Layout(width="170px"))
 
     categories = {}
     categories["All Tools"] = []
@@ -555,7 +576,7 @@ def build_toolbox_lite(tools_dict):
     all_tools = categories["All Tools"]
     all_tools.sort()
     category_widget = widgets.Select(
-        options=options, layout=widgets.Layout(width="170px", height="155px")
+        options=options, layout=widgets.Layout(width="170px", height="165px")
     )
     tools_widget = widgets.Select(
         options=[], layout=widgets.Layout(width="270px", height="400px")
@@ -577,7 +598,7 @@ def build_toolbox_lite(tools_dict):
             tool_dict = tools_dict[selected]
             with right_widget:
                 right_widget.clear_output()
-                display(tool_gui(tool_dict))
+                display(tool_gui(tool_dict, max_height=max_height))
 
     tools_widget.observe(tool_selected, "value")
 
@@ -598,9 +619,14 @@ def build_toolbox_lite(tools_dict):
 
     search_widget.observe(search_changed, "value")
 
+    def close_btn_clicked(b):
+        full_widget.close()
+
+    close_btn.on_click(close_btn_clicked)
+
     category_widget.value = list(categories.keys())[0]
     tools_widget.options = all_tools
-    left_widget.children = [category_widget, search_widget, label_widget]
+    left_widget.children = [category_widget, search_widget, label_widget, close_btn]
     center_widget.children = [tools_widget]
 
     return full_widget
@@ -616,13 +642,13 @@ def in_colab_shell():
         return False
 
 
-def show(verbose=True, reset=False, lite=False):
+def show(verbose=True, tree=False, reset=False):
     """Show the toolbox GUI.
 
     Args:
         verbose (bool, optional): Whether to show progress info when the tool is running. Defaults to True.
+        tree (bool, optional): Whether to use the tree mode toolbox built using ipytree rather than ipywidgets. Defaults to False.
         reset (bool, optional): Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.
-        lite (bool, optional): Whether to use a lite mode toolbox built using ipywidgets rather than ipytree. Defaults to False.
 
     Returns:
         object: A toolbox GUI.
@@ -635,10 +661,10 @@ def show(verbose=True, reset=False, lite=False):
         wbt.verbose = False
 
     if in_colab_shell():
-        lite = True
+        tree = True
 
-    if lite:
-        return build_toolbox_lite(tools_dict)
+    if tree:
+        return build_toolbox_tree(tools_dict)
     else:
         return build_toolbox(tools_dict)
 
