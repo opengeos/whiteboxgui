@@ -426,7 +426,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                     with tool_output:
                         print(f"Please provide inputs for required parameters.")
                         break
-                else:
+                elif arg in required_params:
                     required_params.remove(arg)
                 if arg == "i":
                     line = f"-{arg}={args[arg].selected}"
@@ -437,7 +437,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                     with tool_output:
                         print(f"Please provide inputs for required parameters.")
                         break
-                else:
+                elif arg in required_params:
                     required_params.remove(arg)
                 if args[arg].value is not None and len(args[arg].value) > 0:
                     line = f"--{arg}={args[arg].value}"
