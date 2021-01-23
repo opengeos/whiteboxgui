@@ -23,7 +23,7 @@ def to_camelcase(name):
 
     Returns:
         str: The CamelCase name of the tool.
-    """    
+    """
 
     return "".join(x.title() for x in name.split("_"))
 
@@ -36,7 +36,7 @@ def to_label(name):
 
     Returns:
         str: The Title case name of the tool.
-    """    
+    """
     return " ".join(x.title() for x in name.split("_"))
 
 
@@ -48,7 +48,7 @@ def to_snakecase(name):
 
     Returns:
         str: The snakecase name of the tool.
-    """    
+    """
     s1 = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s1).lower()
 
@@ -61,7 +61,7 @@ def get_tool_params(tool_name):
 
     Returns:
         dict: The tool parameters as a dictionary.
-    """    
+    """
 
     out_str = wbt.tool_parameters(tool_name)
     start_index = out_str.index("[") + 1
@@ -149,7 +149,7 @@ def get_github_url(tool_name, category):
 
     Returns:
         str: The URL to source code.
-    """    
+    """
 
     url = wbt.view_code(tool_name).strip()
     return url
@@ -164,7 +164,7 @@ def get_book_url(tool_name, category):
 
     Returns:
         str: The URL to help documentation.
-    """   
+    """
     prefix = "https://jblindsay.github.io/wbt_book/available_tools"
     url = "{}/{}.html#{}".format(prefix, category, tool_name)
     return url
@@ -297,11 +297,12 @@ def get_wbt_dict(reset=False):
     return tools_dict
 
 
-def tool_gui(tool_dict):
+def tool_gui(tool_dict, max_width="630px"):
     """Create a GUI for a tool based on the tool dictionary.
 
     Args:
         tool_dict (dict): The dictionary containing the tool info.
+        max_width (str, optional): The max width of the tool dialog.
 
     Returns:
         object: An ipywidget object representing the tool interface.
@@ -340,7 +341,7 @@ def tool_gui(tool_dict):
                 default_value = items["default_value"].replace('"', "")
 
         style = {"description_width": "initial"}
-        layout = layout = widgets.Layout(width="500px")
+        layout = widgets.Layout(width="500px", max_width=max_width)
 
         if isinstance(param_type, str):
             # display(data_types[param_type])
@@ -445,7 +446,7 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     """Build the toolbox for WhiteboxTools.
 
     Args:
-        tools_dict (dict): A dictionary containing information for all tools. 
+        tools_dict (dict): A dictionary containing information for all tools.
         folder_icon (str, optional): The font-awesome icon for tool categories. Defaults to "folder".
         tool_icon (str, optional): The font-awesome icon for tools. Defaults to "wrench".
 
@@ -456,7 +457,9 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     right_widget = widgets.VBox()
     full_widget = widgets.HBox([left_widget, right_widget])
 
-    search_description = "Search tools ..."
+    search_description = (
+        f"{len(tools_dict)} tools available. Enter a keyword to search ..."
+    )
     search_box = widgets.Text(placeholder=search_description)
     search_box.layout.width = "310px"
     tree_widget = widgets.Output()
@@ -525,12 +528,101 @@ def build_toolbox(tools_dict, folder_icon="folder", tool_icon="wrench"):
     return full_widget
 
 
-def show(verbose=True, reset=False):
+def build_toolbox_lite(tools_dict):
+
+    left_widget = widgets.VBox()
+    center_widget = widgets.VBox()
+    right_widget = widgets.Output(layout=widgets.Layout(width="630px"))
+    full_widget = widgets.HBox([left_widget, center_widget, right_widget])
+
+    search_widget = widgets.Text(
+        placeholder="Search tools ...", layout=widgets.Layout(width="170px")
+    )
+    label_widget = widgets.Label(layout=widgets.Layout(width="170px"))
+    # search_widget.tooltip = "Search tools ..."
+    label_widget.value = f"{len(tools_dict)} Available Tools"
+
+    categories = {}
+    categories["All Tools"] = []
+    for key in tools_dict.keys():
+        category = tools_dict[key]["category"]
+        if category not in categories.keys():
+            categories[category] = []
+        categories[category].append(tools_dict[key]["name"])
+        categories["All Tools"].append(tools_dict[key]["name"])
+
+    options = list(categories.keys())
+    all_tools = categories["All Tools"]
+    all_tools.sort()
+    category_widget = widgets.Select(
+        options=options, layout=widgets.Layout(width="170px", height="155px")
+    )
+    tools_widget = widgets.Select(
+        options=[], layout=widgets.Layout(width="270px", height="400px")
+    )
+
+    def category_selected(change):
+        if change["new"]:
+            selected = change["owner"].value
+            options = categories[selected]
+            options.sort()
+            tools_widget.options = options
+            label_widget.value = f"{len(options)} Available Tools"
+
+    category_widget.observe(category_selected, "value")
+
+    def tool_selected(change):
+        if change["new"]:
+            selected = change["owner"].value
+            tool_dict = tools_dict[selected]
+            with right_widget:
+                right_widget.clear_output()
+                display(tool_gui(tool_dict))
+
+    tools_widget.observe(tool_selected, "value")
+
+    def search_changed(change):
+        if change["new"]:
+            keyword = change["owner"].value
+            if len(keyword) > 0:
+                selected_tools = []
+                for tool in all_tools:
+                    if keyword.lower() in tool.lower():
+                        selected_tools.append(tool)
+                if len(selected_tools) > 0:
+                    tools_widget.options = selected_tools
+                label_widget.value = f"{len(selected_tools)} Available Tools"
+        else:
+            tools_widget.options = all_tools
+            label_widget.value = f"{len(tools_dict)} Available Tools"
+
+    search_widget.observe(search_changed, "value")
+
+    category_widget.value = list(categories.keys())[0]
+    tools_widget.options = all_tools
+    left_widget.children = [category_widget, search_widget, label_widget]
+    center_widget.children = [tools_widget]
+
+    return full_widget
+
+
+def in_colab_shell():
+    """Tests if the code is being executed within Google Colab."""
+    import sys
+
+    if "google.colab" in sys.modules:
+        return True
+    else:
+        return False
+
+
+def show(verbose=True, reset=False, lite=False):
     """Show the toolbox GUI.
 
     Args:
         verbose (bool, optional): Whether to show progress info when the tool is running. Defaults to True.
         reset (bool, optional): Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.
+        lite (bool, optional): Whether to use a lite mode toolbox built using ipywidgets rather than ipytree. Defaults to False.
 
     Returns:
         object: A toolbox GUI.
@@ -542,7 +634,13 @@ def show(verbose=True, reset=False):
     else:
         wbt.verbose = False
 
-    return build_toolbox(tools_dict)
+    if in_colab_shell():
+        lite = True
+
+    if lite:
+        return build_toolbox_lite(tools_dict)
+    else:
+        return build_toolbox(tools_dict)
 
 
 # if __name__ == "__main__":
