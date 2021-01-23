@@ -297,7 +297,7 @@ def get_wbt_dict(reset=False):
     return tools_dict
 
 
-def tool_gui(tool_dict, max_width="630px", max_height="600px"):
+def tool_gui(tool_dict, max_width="420px", max_height="600px"):
     """Create a GUI for a tool based on the tool dictionary.
 
     Args:
@@ -308,19 +308,32 @@ def tool_gui(tool_dict, max_width="630px", max_height="600px"):
     Returns:
         object: An ipywidget object representing the tool interface.
     """
-    tool_widget = widgets.VBox(layout=widgets.Layout(max_width=max_width, max_height=max_height))
+    tool_widget = widgets.VBox(
+        layout=widgets.Layout(max_width=max_width, max_height=max_height)
+    )
     children = []
     args = {}
+    required_inputs = []
+    style = {"description_width": "initial"}
+    max_width = str(int(max_width.replace("px", "")) - 10) + "px"
 
-    header = widgets.Label(value=f'Current Tool: {tool_dict["name"]}')
-    spacer = widgets.Label(layout=widgets.Layout(width="50px"))
+    header_width = str(int(max_width.replace("px", "")) - 104) + "px"
+    header = widgets.Label(
+        value=f'Current Tool: {tool_dict["name"]}',
+        style=style,
+        layout=widgets.Layout(width=header_width),
+    )
     code_btn = widgets.Button(
         description="View Code", layout=widgets.Layout(width="100px")
     )
 
-    children.append(widgets.HBox([header, spacer, code_btn]))
+    children.append(widgets.HBox([header, code_btn]))
 
-    desc = widgets.Label(value=f'Description: {tool_dict["description"]}')
+    desc = widgets.Textarea(
+        value=f'Description: {tool_dict["description"]}',
+        layout=widgets.Layout(width="410px", max_width=max_width),
+        disabled=True,
+    )
     children.append(desc)
 
     params = tool_dict["parameters"]
@@ -329,6 +342,7 @@ def tool_gui(tool_dict, max_width="630px", max_height="600px"):
         required = ""
         if items["optional"] == "false":
             required = "*"
+            required_inputs.append(param)
         label = items["name"] + required
         param_type = items["parameter_type"]
         default_value = None
@@ -341,7 +355,6 @@ def tool_gui(tool_dict, max_width="630px", max_height="600px"):
             else:
                 default_value = items["default_value"].replace('"', "")
 
-        style = {"description_width": "initial"}
         layout = widgets.Layout(width="500px", max_width=max_width)
 
         if isinstance(param_type, str):
@@ -395,34 +408,46 @@ def tool_gui(tool_dict, max_width="630px", max_height="600px"):
         description="Cancel", layout=widgets.Layout(width="100px")
     )
     help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
-    # tool_output = widgets.Output()
     tool_output = widgets.Output(layout=widgets.Layout(max_height="200px"))
     children.append(widgets.HBox([run_btn, cancel_btn, help_btn]))
     children.append(tool_output)
-    # children.append(widgets.VBox([tool_output], layout=widgets.Layout(max_height="350px")))
     tool_widget.children = children
 
     def run_button_clicked(b):
         tool_output.clear_output()
 
+        required_params = required_inputs.copy()
         args2 = []
         for arg in args:
 
             line = ""
             if isinstance(args[arg], FileChooser):
+                if arg in required_params and args[arg].selected is None:
+                    with tool_output:
+                        print(f"Please provide inputs for required parameters.")
+                        break
+                else:
+                    required_params.remove(arg)
                 if arg == "i":
                     line = f"-{arg}={args[arg].selected}"
                 else:
                     line = f"--{arg}={args[arg].selected}"
             elif isinstance(args[arg], widgets.Text):
+                if arg in required_params and len(args[arg].value) == 0:
+                    with tool_output:
+                        print(f"Please provide inputs for required parameters.")
+                        break
+                else:
+                    required_params.remove(arg)
                 if args[arg].value is not None and len(args[arg].value) > 0:
                     line = f"--{arg}={args[arg].value}"
             elif isinstance(args[arg], widgets.Checkbox):
                 line = f"--{arg}={args[arg].value}"
             args2.append(line)
 
-        with tool_output:
-            wbt.run_tool(tool_dict["name"], args2)
+        if len(required_params) == 0:
+            with tool_output:
+                wbt.run_tool(tool_dict["name"], args2)
 
     def help_button_clicked(b):
         import webbrowser
@@ -460,14 +485,12 @@ def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
     right_widget = widgets.VBox()
     full_widget = widgets.HBox([left_widget, right_widget])
 
-    search_description = (
-        f"{len(tools_dict)} tools available. Search tools ..."
-    )
+    search_description = f"{len(tools_dict)} tools available. Search tools ..."
     search_box = widgets.Text(placeholder=search_description)
     search_box.layout.width = "270px"
 
     close_btn = widgets.Button(icon="close", layout=widgets.Layout(width="32px"))
-    
+
     def close_btn_clicked(b):
         full_widget.close()
 
@@ -551,17 +574,25 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
         object: An ipywidget representing the toolbox.
     """
     left_widget = widgets.VBox(layout=widgets.Layout(min_width="175px"))
-    center_widget = widgets.VBox(layout=widgets.Layout(min_width="200px"))
-    right_widget = widgets.Output(layout=widgets.Layout(width="630px", max_height=max_height))
-    full_widget = widgets.HBox([left_widget, center_widget, right_widget], layout=widgets.Layout(max_width=max_width, max_height=max_height))
+    center_widget = widgets.VBox(
+        layout=widgets.Layout(min_width="200px", max_width="200px")
+    )
+    right_widget = widgets.Output(
+        layout=widgets.Layout(width="630px", max_height=max_height)
+    )
+    full_widget = widgets.HBox(
+        [left_widget, center_widget, right_widget],
+        layout=widgets.Layout(max_width=max_width, max_height=max_height),
+    )
 
     search_widget = widgets.Text(
         placeholder="Search tools ...", layout=widgets.Layout(width="170px")
     )
     label_widget = widgets.Label(layout=widgets.Layout(width="170px"))
-    # search_widget.tooltip = "Search tools ..."
     label_widget.value = f"{len(tools_dict)} Available Tools"
-    close_btn = widgets.Button(description="Close Toolbox", icon="close", layout=widgets.Layout(width="170px"))
+    close_btn = widgets.Button(
+        description="Close Toolbox", icon="close", layout=widgets.Layout(width="170px")
+    )
 
     categories = {}
     categories["All Tools"] = []
@@ -579,7 +610,7 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
         options=options, layout=widgets.Layout(width="170px", height="165px")
     )
     tools_widget = widgets.Select(
-        options=[], layout=widgets.Layout(width="270px", height="400px")
+        options=[], layout=widgets.Layout(width="195px", height="400px")
     )
 
     def category_selected(change):
