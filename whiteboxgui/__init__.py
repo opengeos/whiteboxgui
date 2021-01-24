@@ -4,4 +4,4 @@ __author__ = """Qiusheng Wu"""
 __email__ = 'giswqs@gmail.com'
 __version__ = '0.1.7'
 
-from .whiteboxgui import show
+from .whiteboxgui import show, update_package

@@ -53,6 +53,132 @@ def to_snakecase(name):
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s1).lower()
 
 
+def create_code_cell(code="", where="below"):
+    """Creates a code cell in the IPython Notebook.
+
+    Args:
+        code (str, optional): Code to fill the new code cell with. Defaults to ''.
+        where (str, optional): Where to add the new code cell. It can be one of the following: above, below, at_bottom. Defaults to 'below'.
+    """
+
+    import base64
+    from IPython.display import Javascript, display
+
+    encoded_code = (base64.b64encode(str.encode(code))).decode()
+    display(
+        Javascript(
+            """
+        var code = IPython.notebook.insert_cell_{0}('code');
+        code.set_text(atob("{1}"));
+    """.format(
+                where, encoded_code
+            )
+        )
+    )
+
+
+def download_from_url(url, out_file_name=None, out_dir=".", unzip=True, verbose=False):
+    """Download a file from a URL (e.g., https://github.com/giswqs/whitebox/raw/master/examples/testdata.zip)
+
+    Args:
+        url (str): The HTTP URL to download.
+        out_file_name (str, optional): The output file name to use. Defaults to None.
+        out_dir (str, optional): The output directory to use. Defaults to '.'.
+        unzip (bool, optional): Whether to unzip the downloaded file if it is a zip file. Defaults to True.
+        verbose (bool, optional): Whether to display or not the output of the function. Defaults to False.
+    """
+    import tarfile
+    import urllib.request
+    import zipfile
+
+    in_file_name = os.path.basename(url)
+
+    if out_file_name is None:
+        out_file_name = in_file_name
+    out_file_path = os.path.join(os.path.abspath(out_dir), out_file_name)
+
+    if verbose:
+        print("Downloading {} ...".format(url))
+
+    try:
+        urllib.request.urlretrieve(url, out_file_path)
+    except Exception:
+        raise Exception("The URL is invalid. Please double check the URL.")
+
+    final_path = out_file_path
+
+    if unzip:
+        # if it is a zip file
+        if ".zip" in out_file_name:
+            if verbose:
+                print("Unzipping {} ...".format(out_file_name))
+            with zipfile.ZipFile(out_file_path, "r") as zip_ref:
+                zip_ref.extractall(out_dir)
+            final_path = os.path.join(
+                os.path.abspath(out_dir), out_file_name.replace(".zip", "")
+            )
+
+        # if it is a tar file
+        if ".tar" in out_file_name:
+            if verbose:
+                print("Unzipping {} ...".format(out_file_name))
+            with tarfile.open(out_file_path, "r") as tar_ref:
+                tar_ref.extractall(out_dir)
+            final_path = os.path.join(
+                os.path.abspath(out_dir), out_file_name.replace(".tart", "")
+            )
+
+    if verbose:
+        print("Data downloaded to: {}".format(final_path))
+
+    return
+
+
+def clone_repo(out_dir=".", unzip=True):
+    """Clones the whiteboxgui GitHub repository.
+
+    Args:
+        out_dir (str, optional): Output folder for the repo. Defaults to '.'.
+        unzip (bool, optional): Whether to unzip the repository. Defaults to True.
+    """
+    url = "https://github.com/giswqs/whiteboxgui/archive/master.zip"
+    filename = "whiteboxgui-master.zip"
+    download_from_url(url, out_file_name=filename, out_dir=out_dir, unzip=unzip)
+
+
+def update_package():
+    """Updates the whiteboxgui package from the GitHub repository without the need to use pip or conda.
+    In this way, I don't have to keep updating pypi and conda-forge with every minor update of the package.
+
+    """
+    import shutil
+
+    try:
+        download_dir = os.getcwd()
+        clone_repo(out_dir=download_dir)
+
+        pkg_dir = os.path.join(download_dir, "whiteboxgui-master")
+        work_dir = os.getcwd()
+        os.chdir(pkg_dir)
+
+        if shutil.which("pip") is None:
+            cmd = "pip3 install ."
+        else:
+            cmd = "pip install ."
+
+        os.system(cmd)
+        os.chdir(work_dir)
+        os.remove(pkg_dir + ".zip")
+        shutil.rmtree(pkg_dir)
+
+        print(
+            "\nPlease comment out 'whiteboxgui.update_package()' and restart the kernel to take effect:\nJupyter menu -> Kernel -> Restart & Clear Output"
+        )
+
+    except Exception as e:
+        raise Exception(e)
+
+
 def get_tool_params(tool_name):
     """Get parameters for a tool.
 
@@ -408,8 +534,13 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
         description="Cancel", layout=widgets.Layout(width="100px")
     )
     help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
+    import_btn = widgets.Button(
+        description="Import",
+        tooltip="Import the script to a new cell",
+        layout=widgets.Layout(width="98px"),
+    )
     tool_output = widgets.Output(layout=widgets.Layout(max_height="200px"))
-    children.append(widgets.HBox([run_btn, cancel_btn, help_btn]))
+    children.append(widgets.HBox([run_btn, cancel_btn, help_btn, import_btn]))
     children.append(tool_output)
     tool_widget.children = children
 
@@ -462,6 +593,55 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
     def cancel_btn_clicked(b):
         tool_output.clear_output()
 
+    def import_button_clicked(b):
+        tool_output.clear_output()
+
+        required_params = required_inputs.copy()
+        args2 = []
+        args3 = []
+
+        for arg in args:
+
+            line = ""
+            if isinstance(args[arg], FileChooser):
+                if arg in required_params and args[arg].selected is None:
+                    with tool_output:
+                        print(f"Please provide inputs for required parameters.")
+                        break
+                elif arg in required_params:
+                    required_params.remove(arg)
+                if arg == "i":
+                    line = f"-{arg}={args[arg].selected}"
+                else:
+                    line = f"--{arg}={args[arg].selected}"
+                if args[arg].selected is not None:
+                    args3.append(f"{arg}='{args[arg].selected}'")
+            elif isinstance(args[arg], widgets.Text):
+                if arg in required_params and len(args[arg].value) == 0:
+                    with tool_output:
+                        print(f"Please provide inputs for required parameters.")
+                        break
+                elif arg in required_params:
+                    required_params.remove(arg)
+                if args[arg].value is not None and len(args[arg].value) > 0:
+                    line = f"--{arg}={args[arg].value}"
+                    args3.append(f"{arg}='{args[arg].value}'")
+            elif isinstance(args[arg], widgets.Checkbox):
+                line = f"--{arg}={args[arg].value}"
+                args3.append(f"{arg}={args[arg].value}")
+            args2.append(line)
+
+        if len(required_params) == 0:
+            content = []
+            content.append("import whitebox")
+            content.append("wbt = whitebox.WhiteboxTools()")
+            content.append(f"wbt.{to_snakecase(tool_dict['name'])}({', '.join(args3)})")
+            with tool_output:
+                for line in content:
+                    print(line)
+            create_code_cell("\n".join(content))
+
+    import_btn.on_click(import_button_clicked)
     run_btn.on_click(run_button_clicked)
     help_btn.on_click(help_button_clicked)
     code_btn.on_click(code_button_clicked)
