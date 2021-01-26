@@ -583,11 +583,18 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
     def help_button_clicked(b):
         import webbrowser
 
+        tool_output.clear_output()
+        with tool_output:
+            html = widgets.HTML(value=f'<a href={tool_dict["book"]} target="_blank">{tool_dict["book"]}</a>')
+            display(html)
         webbrowser.open_new_tab(tool_dict["book"])
 
     def code_button_clicked(b):
         import webbrowser
 
+        with tool_output:
+            html = widgets.HTML(value=f'<a href={tool_dict["github"]} target="_blank">{tool_dict["github"]}</a>')
+            display(html)
         webbrowser.open_new_tab(tool_dict["github"])
 
     def cancel_btn_clicked(b):
