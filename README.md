@@ -32,19 +32,27 @@ The WhiteboxTools currently contains **447** tools, which are each grouped based
 
 ## Installation
 
-The whiteboxgui Python package can be installed using the following command:
+**whiteboxgui** is available on [PyPI](https://pypi.org/project/whiteboxgui). To install **whiteboxgui**, run this command in your terminal:
 
 ```
 pip install whiteboxgui
 ```
 
+**whiteboxgui** is also available on [conda-forge](https://anaconda.org/conda-forge/whiteboxgui). If you have
+[Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed on your computer, you can create a conda Python environment to install whiteboxgui:
+
+    conda create -n wbt python
+    conda activate wbt
+    conda install mamba -c conda-forge
+    mamba install whiteboxgui -c conda-forge
+
 ## Usage
 
-The whiteboxgui provides a Graphical User Interface (GUI) for WhiteboxTools in a Jupyter-based environment, which can be invoked using the following Python script:
+The whiteboxgui provides a Graphical User Interface (GUI) for WhiteboxTools in a Jupyter-based environment, which can be invoked using the following Python script. You can also try [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/giswqs/whiteboxgui/blob/master/examples/examples.ipynb)
 
 ```
 import whiteboxgui
-whiteboxgui.show(verbose=True)
+whiteboxgui.show(tree=True)
 ```
 ![Imgur](https://i.imgur.com/z4Pm2Mt.png)
 
