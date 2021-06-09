@@ -2,4 +2,3 @@ ipyfilechooser
 ipywidgets
 ipytree
 whitebox
-livereload
