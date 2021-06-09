@@ -190,18 +190,49 @@ def get_tool_params(tool_name):
     """
 
     out_str = wbt.tool_parameters(tool_name)
-    start_index = out_str.index("[") + 1
-    end_index = len(out_str.strip()) - 2
-    params = out_str[start_index:end_index]
-
-    sub_params = params.split('{"name"')
+    start_index = out_str.index('[') + 1
+    if "EXE_NAME" in out_str:
+        end_index = out_str.rfind("]") 
+    else:
+        end_index = len(out_str.strip()) - 2
+    params = out_str[start_index : end_index]
+    if "EXE_NAME" in out_str:
+        sub_params = params.split('{"default_value"')
+    else:
+        sub_params = params.split('{"name"')
     param_list = []
 
     for param in sub_params:
         param = param.strip()
         if len(param) > 0:
-            item = '"name"' + param
-            item = item[: item.rfind("}")].strip()
+            if "EXE_NAME" in out_str:
+                if not param.endswith('},'):
+                    item = '"default_value"' + param[:-1] + ','
+                else:
+                    item = '"default_value"' + param[:-2] + ','
+                name_start = item.find('"name"')
+                name_end = item.find(",", name_start) + 1
+                name = item[name_start: name_end]
+                flags_start = item.find('"flags"')
+                flags_end = item.find('],', flags_start) + 2
+                flags = item[flags_start: flags_end]
+                desc_start = item.find('"description"')
+                desc_end = item.find('",', desc_start) + 2
+                desc = item[desc_start: desc_end]
+                ptype_start = item.find('"parameter_type"')
+                ptype_end = len(item) + 1
+                ptype = item[ptype_start: ptype_end]
+                default_start = item.find('"default_value"')
+                default_end = item.find(',', default_start) + 1
+                default = item[default_start: default_end]
+                optional_start = item.find('"optional"')
+                optional_end = item.find(',', optional_start) + 1
+                optional = item[optional_start: optional_end]
+                item = name + flags + desc + ptype + default + optional
+            else:
+                item = '"name"' + param
+                item = item[ : item.rfind("}")].strip()
+
             param_list.append(item)
 
     params_dict = {}
@@ -215,51 +246,44 @@ def get_tool_params(tool_name):
         index_default_value = item.find("default_value")
         index_optional = item.find("optional")
 
-        name = item[index_name - 1 : index_flags - 2].replace('"name":', "")
-        name = name.replace('"', "")
-        param_dict["name"] = name
+        name = item[index_name - 1 : index_flags - 2].replace('"name":', '')
+        name = name.replace('"', '')
+        param_dict['name'] = name
 
-        flags = item[index_flags - 1 : index_description - 2].replace('"flags":', "")
-
-        if ('"-i"' in flags) and ("--inputs" in flags):
+        flags = item[index_flags - 1 : index_description -2].replace('"flags":', '')
+        
+        if ("\"-i\"" in flags) and ("--inputs" in flags) :
             flags = "inputs"
-        elif (
-            ('"-i"' in flags)
-            and ("--input" in flags)
-            and ("--dem" in flags)
-            and (tool_name.lower() != "sink")
-        ):
-            flags = "dem"
-        elif ('"-i"' in flags) and ("--input" in flags):
+        elif ("\"-i\"" in flags) and ("--input" in flags) and  ("--dem" in flags) and (tool_name.lower() != 'sink'):
+                flags = "dem"       
+        elif ("\"-i\"" in flags) and ("--input" in flags) :
             flags = "i"
-        elif flags.count("--") == 1:
-            flags = flags.split("--")[1][:-2]
+        elif flags.count("--") == 1 :
+            flags = flags.split('--')[1][: -2]
         elif flags.count("--") == 2:
-            flags = flags.split("--")[2][:-2]
+            flags = flags.split('--')[2][: -2]
         else:
-            flags = flags.split("-")[1][:-2]
+            flags = flags.split('-')[1][: -2]
 
-        param_dict["flags"] = flags
+        param_dict['flags'] = flags
 
-        desc = item[index_description - 1 : index_parameter_type - 2].replace(
-            '"description":', ""
-        )
-        desc = desc.replace('"', "")
-        param_dict["description"] = desc
+        desc = item[index_description - 1 : index_parameter_type - 2].replace('"description":', '')
+        desc = desc.replace('"', '')
+        param_dict['description'] = desc
 
-        param_type = item[index_parameter_type - 1 : index_default_value - 2].replace(
-            '"parameter_type":', ""
-        )
-        param_type = ast.literal_eval(param_type)
-        param_dict["parameter_type"] = param_type
+        param_type = item[index_parameter_type - 1 : index_default_value - 2].replace('"parameter_type":', '')
+        try:
+            param_type = ast.literal_eval(param_type)
+        except:
+            pass
 
-        default_value = item[index_default_value - 1 : index_optional - 2].replace(
-            '"default_value":', ""
-        )
-        param_dict["default_value"] = default_value
+        param_dict['parameter_type'] = param_type
 
-        optional = item[index_optional - 1 :].replace('"optional":', "")
-        param_dict["optional"] = optional
+        default_value = item[index_default_value - 1 : index_optional - 2].replace('"default_value":', '')
+        param_dict['default_value'] = default_value
+
+        optional = item[index_optional - 1 :].replace('"optional":', '')
+        param_dict['optional'] = optional
 
         params_dict[flags] = param_dict
 
@@ -278,6 +302,8 @@ def get_github_url(tool_name, category):
     """
 
     url = wbt.view_code(tool_name).strip()
+    if "RUST_BACKTRACE" in url:
+        url = "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools"
     return url
 
 
@@ -344,6 +370,7 @@ def get_wbt_dict(reset=False):
         "# Image Processing Tools #": "Image Processing Tools",
         "# LiDAR Tools #": "LiDAR Tools",
         "# Math and Stats Tools #": "Math and Stats Tools",
+        "# Precision Agriculture #": "Precision Agriculture",
         "# Stream Network Analysis #": "Stream Network Analysis",
     }
 
@@ -355,6 +382,7 @@ def get_wbt_dict(reset=False):
         "Image Processing Tools": "image_analysis",
         "LiDAR Tools": "lidar_analysis",
         "Math and Stats Tools": "math_stat_analysis",
+        "Precision Agriculture": "precision_agriculture",
         "Stream Network Analysis": "stream_network_analysis",
     }
 
@@ -366,6 +394,7 @@ def get_wbt_dict(reset=False):
         "Image Processing Tools": "image_processing_tools",
         "LiDAR Tools": "lidar_tools",
         "Math and Stats Tools": "mathand_stats_tools",
+        "Precision Agriculture": "precision_agriculture",
         "Stream Network Analysis": "stream_network_analysis",
     }
 
@@ -539,7 +568,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
         tooltip="Import the script to a new cell",
         layout=widgets.Layout(width="98px"),
     )
-    tool_output = widgets.Output(layout=widgets.Layout(max_height="200px"))
+    tool_output = widgets.Output(layout=widgets.Layout(max_height="200px", overflow="scroll"))
     children.append(widgets.HBox([run_btn, cancel_btn, help_btn, import_btn]))
     children.append(tool_output)
     tool_widget.children = children
@@ -593,6 +622,8 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
         import webbrowser
 
         with tool_output:
+            if "RUST_BACKTRACE" in tool_dict["github"]:
+                tool_dict["github"] = "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools"
             html = widgets.HTML(value=f'<a href={tool_dict["github"]} target="_blank">{tool_dict["github"]}</a>')
             display(html)
         webbrowser.open_new_tab(tool_dict["github"])
@@ -889,3 +920,4 @@ def show(verbose=True, tree=False, reset=False):
 
 # if __name__ == "__main__":
 #     show(reset=False)
+

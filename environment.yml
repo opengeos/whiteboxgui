@@ -1,0 +1,11 @@
+name: whitebox
+channels:
+    - conda-forge
+dependencies:
+    - nodejs=14.11
+    - ipyleaflet=0.13.6
+    - jupyterlab=3
+    - leafmap
+    - xarray_leaflet
+    - geopandas
+    - osmnx
