@@ -23,7 +23,8 @@ plugins:
     - git-revision-date
     - mkdocs-jupyter:
           include_source: True
-          # execute: True
+          ignore_h1_titles: True
+          execute: True
           
 markdown_extensions:
     - attr_list
@@ -43,3 +44,5 @@ nav:
     - Report Issues: https://github.com/giswqs/whiteboxgui/issues
     - API Reference:
           - whiteboxgui module: whiteboxgui.md
+    - Notebooks:
+          - examples/examples.ipynb
