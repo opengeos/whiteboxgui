@@ -188,7 +188,6 @@ def get_tool_params(tool_name):
     Returns:
         dict: The tool parameters as a dictionary.
     """
-
     out_str = wbt.tool_parameters(tool_name)
     start_index = out_str.index('[') + 1
     if "EXE_NAME" in out_str:
@@ -286,6 +285,7 @@ def get_tool_params(tool_name):
         param_dict['optional'] = optional
 
         params_dict[flags] = param_dict
+        # print(param_dict)
 
     return params_dict
 
@@ -358,9 +358,13 @@ def get_wbt_dict(reset=False):
         pkg_resources.resource_filename("whitebox", "whitebox_tools.py")
     )
 
+    pkg_dir = os.path.dirname(
+        pkg_resources.resource_filename("whiteboxgui", "whiteboxgui.py")
+    )
+
     wbt_py = os.path.join(wbt_dir, "whitebox_tools.py")
 
-    wbt_dict = os.path.join(wbt_dir, "whitebox_tools.json")
+    wbt_dict = os.path.join(pkg_dir, "data/whitebox_tools.json")
 
     toolboxes = {
         "# Data Tools #": "Data Tools",
@@ -443,7 +447,7 @@ def get_wbt_dict(reset=False):
                         tools_dict[func_name] = func_dict
 
         with open(wbt_dict, "w") as fp:
-            json.dump(tools_dict, fp)
+            json.dump(tools_dict, fp, indent=4)
     else:
 
         with open(wbt_dict) as fp:

@@ -2,5 +2,6 @@ include requirements.txt
 include LICENSE
 include examples/*
 
+recursive-include whiteboxgui/data *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
