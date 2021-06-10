@@ -829,7 +829,7 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
     all_tools = categories["All Tools"]
     all_tools.sort()
     category_widget = widgets.Select(
-        options=options, layout=widgets.Layout(width="170px", height="165px")
+        options=options, layout=widgets.Layout(width="170px", height="175px")
     )
     tools_widget = widgets.Select(
         options=[], layout=widgets.Layout(width="195px", height="400px")
