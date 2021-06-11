@@ -592,10 +592,11 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                         break
                 elif arg in required_params:
                     required_params.remove(arg)
-                if arg == "i":
-                    line = f"-{arg}={args[arg].selected}"
-                else:
-                    line = f"--{arg}={args[arg].selected}"
+                if args[arg].selected is not None:
+                    if arg == "i":
+                        line = f"-{arg}={args[arg].selected}"
+                    else:
+                        line = f"--{arg}={args[arg].selected}"
             elif isinstance(args[arg], widgets.Text):
                 if arg in required_params and len(args[arg].value) == 0:
                     with tool_output:
@@ -607,6 +608,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                     line = f"--{arg}={args[arg].value}"
             elif isinstance(args[arg], widgets.Checkbox):
                 line = f"--{arg}={args[arg].value}"
+            
             args2.append(line)
 
         if len(required_params) == 0:
