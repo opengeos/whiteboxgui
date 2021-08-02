@@ -322,12 +322,13 @@ def get_book_url(tool_name, category):
     return url
 
 
-def search_api_tree(keywords, api_tree):
-    """Search Earth Engine API and return functions containing the specified keywords
+def search_api_tree(keywords, api_tree, tools_dict):
+    """Search the WhiteboxTools API and return functions containing the specified keywords
 
     Args:
         keywords (str): The keywords to search for.
-        api_tree (dict): The dictionary containing the Earth Engine API tree.
+        api_tree (dict): The dictionary containing the WhiteboxTools API tree.
+        tools_dict (dict): The dictionary containing the dict of all tools.
 
     Returns:
         object: An ipytree object/widget.
@@ -337,9 +338,8 @@ def search_api_tree(keywords, api_tree):
     warnings.filterwarnings("ignore")
 
     sub_tree = Tree()
-
     for key in api_tree.keys():
-        if keywords.lower() in key.lower():
+        if (keywords.lower() in key.lower()) or (keywords.lower() in tools_dict[key]["description"].lower()):
             sub_tree.add_node(api_tree[key])
 
     return sub_tree
@@ -742,7 +742,7 @@ def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
                 tree_widget.clear_output()
                 print("Searching...")
                 tree_widget.clear_output(wait=True)
-                sub_tree = search_api_tree(text.value, tree_dict)
+                sub_tree = search_api_tree(text.value, tree_dict, tools_dict)
                 display(sub_tree)
 
     search_box.on_submit(search_box_callback)
@@ -863,7 +863,7 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
             if len(keyword) > 0:
                 selected_tools = []
                 for tool in all_tools:
-                    if keyword.lower() in tool.lower():
+                    if keyword.lower() in tool.lower() or keyword.lower() in tools_dict[tool]["description"]:
                         selected_tools.append(tool)
                 if len(selected_tools) > 0:
                     tools_widget.options = selected_tools
