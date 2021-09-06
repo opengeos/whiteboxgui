@@ -1,8 +1,8 @@
 """Main module."""
 
-import ast
 import json
 import os
+import platform
 import pkg_resources
 import re
 import whitebox
@@ -179,123 +179,11 @@ def update_package():
         raise Exception(e)
 
 
-def get_tool_params(tool_name):
-    """Get parameters for a tool.
-
-    Args:
-        tool_name (str): The name of the tool.
-
-    Returns:
-        dict: The tool parameters as a dictionary.
-    """
-    out_str = wbt.tool_parameters(tool_name)
-    start_index = out_str.index('[') + 1
-    if "EXE_NAME" in out_str:
-        end_index = out_str.rfind("]") 
-    else:
-        end_index = len(out_str.strip()) - 2
-    params = out_str[start_index : end_index]
-    if "EXE_NAME" in out_str:
-        sub_params = params.split('{"default_value"')
-    else:
-        sub_params = params.split('{"name"')
-    param_list = []
-
-    for param in sub_params:
-        param = param.strip()
-        if len(param) > 0:
-            if "EXE_NAME" in out_str:
-                if not param.endswith('},'):
-                    item = '"default_value"' + param[:-1] + ','
-                else:
-                    item = '"default_value"' + param[:-2] + ','
-                name_start = item.find('"name"')
-                name_end = item.find(",", name_start) + 1
-                name = item[name_start: name_end]
-                flags_start = item.find('"flags"')
-                flags_end = item.find('],', flags_start) + 2
-                flags = item[flags_start: flags_end]
-                desc_start = item.find('"description"')
-                desc_end = item.find('",', desc_start) + 2
-                desc = item[desc_start: desc_end]
-                ptype_start = item.find('"parameter_type"')
-                ptype_end = len(item) + 1
-                ptype = item[ptype_start: ptype_end]
-                default_start = item.find('"default_value"')
-                default_end = item.find(',', default_start) + 1
-                default = item[default_start: default_end]
-                optional_start = item.find('"optional"')
-                optional_end = item.find(',', optional_start) + 1
-                optional = item[optional_start: optional_end]
-                item = name + flags + desc + ptype + default + optional
-            else:
-                item = '"name"' + param
-                item = item[ : item.rfind("}")].strip()
-
-            param_list.append(item)
-
-    params_dict = {}
-    for item in param_list:
-        param_dict = {}
-        item = item.replace(" (optional)", "")
-        index_name = item.find("name")
-        index_flags = item.find("flags")
-        index_description = item.find("description")
-        index_parameter_type = item.find("parameter_type")
-        index_default_value = item.find("default_value")
-        index_optional = item.find("optional")
-
-        name = item[index_name - 1 : index_flags - 2].replace('"name":', '')
-        name = name.replace('"', '')
-        param_dict['name'] = name
-
-        flags = item[index_flags - 1 : index_description -2].replace('"flags":', '')
-        
-        if ("\"-i\"" in flags) and ("--inputs" in flags) :
-            flags = "inputs"
-        elif ("\"-i\"" in flags) and ("--input" in flags) and  ("--dem" in flags) and (tool_name.lower() != 'sink'):
-                flags = "dem"       
-        elif ("\"-i\"" in flags) and ("--input" in flags) :
-            flags = "i"
-        elif flags.count("--") == 1 :
-            flags = flags.split('--')[1][: -2]
-        elif flags.count("--") == 2:
-            flags = flags.split('--')[2][: -2]
-        else:
-            flags = flags.split('-')[1][: -2]
-
-        param_dict['flags'] = flags
-
-        desc = item[index_description - 1 : index_parameter_type - 2].replace('"description":', '')
-        desc = desc.replace('"', '')
-        param_dict['description'] = desc
-
-        param_type = item[index_parameter_type - 1 : index_default_value - 2].replace('"parameter_type":', '')
-        try:
-            param_type = ast.literal_eval(param_type)
-        except:
-            pass
-
-        param_dict['parameter_type'] = param_type
-
-        default_value = item[index_default_value - 1 : index_optional - 2].replace('"default_value":', '')
-        param_dict['default_value'] = default_value
-
-        optional = item[index_optional - 1 :].replace('"optional":', '')
-        param_dict['optional'] = optional
-
-        params_dict[flags] = param_dict
-        # print(param_dict)
-
-    return params_dict
-
-
-def get_github_url(tool_name, category):
+def get_github_url(tool_name):
     """Get the link to the source code of the tool on GitHub.
 
     Args:
         tool_name (str): The name of the tool.
-        category (str): The category of the tool.
 
     Returns:
         str: The URL to source code.
@@ -317,8 +205,13 @@ def get_book_url(tool_name, category):
     Returns:
         str: The URL to help documentation.
     """
-    prefix = "https://jblindsay.github.io/wbt_book/available_tools"
-    url = "{}/{}.html#{}".format(prefix, category, tool_name)
+    prefix = "https://www.whiteboxgeo.com/manual/wbt_book/available_tools"
+    if category == "Math and Stats Tools":
+        category = "Mathand Stats Tools"
+    url = "{}/{}.html#{}".format(
+        prefix, category.lower().replace(" ", "_"), to_camelcase(tool_name)
+    )
+
     return url
 
 
@@ -339,10 +232,133 @@ def search_api_tree(keywords, api_tree, tools_dict):
 
     sub_tree = Tree()
     for key in api_tree.keys():
-        if (keywords.lower() in key.lower()) or (keywords.lower() in tools_dict[key]["description"].lower()):
+        if (keywords.lower() in key.lower()) or (
+            keywords.lower() in tools_dict[key]["description"].lower()
+        ):
             sub_tree.add_node(api_tree[key])
 
     return sub_tree
+
+
+def tool_categories():
+    """Generate a dictionary containing the toolbox corresponds to each tool.
+
+    Returns:
+        dict: a dictionary containing the toolbox corresponds to each tool.
+    """
+    category_dict = {}
+    tools = wbt.toolbox().split("\n")
+    for tool in tools[:-1]:
+        name = tool.split(":")[0]
+        category = tool.split(":")[1].strip().split("/")[0]
+        category_dict[to_snakecase(name)] = category
+
+    return category_dict
+
+
+def get_tool_params(tool_name):
+    """Get parameters for a tool.
+
+    Args:
+        tool_name (str): The name of the tool.
+
+    Returns:
+        dict: The tool parameters as a dictionary.
+    """
+    params_dict = {}
+    params = json.loads(wbt.tool_parameters(tool_name).replace("\n", ""))["parameters"]
+    for param in params:
+        flags = param["flags"]
+        if isinstance(flags, list):
+            flag = flags[0].replace("-", "")
+        else:
+            flag = flags.replace("-", "")
+        params_dict[flag] = param
+    return params_dict
+
+
+def get_ext_dict(verbose=True, reset=False):
+    """Generate a dictionary containing information for the general extension tools.
+
+    Args:
+        verbose (bool, optional): Whether to print out description info. Defaults to True.
+        reset (bool, optional): Whether to recreate the json file containing the dictionary. Defaults to False.
+
+    Returns:
+        dict: The dictionary containing information for general extension tools.
+    """
+    import glob
+    import shutil
+    import urllib
+    import zipfile
+
+    os_links = {
+        "Windows": "https://www.whiteboxgeo.com/GTE_Windows/GeneralToolsetExtension_win.zip",
+        "Darwin": "https://www.whiteboxgeo.com/GTE_Darwin/GeneralToolsetExtension_MacOS_Intel.zip",
+        "Linux": "https://www.whiteboxgeo.com/GTE_Linux/GeneralToolsetExtension_linux.zip",
+    }
+
+    pkg_dir = os.path.dirname(
+        pkg_resources.resource_filename("whitebox", "whitebox.py")
+    )
+
+    plugin_dir = os.path.join(pkg_dir, "plugins")
+    ext_dir = os.path.join(pkg_dir, "GeneralToolsetExtension")
+
+    url = os_links[platform.system()]
+    zip_name = os.path.join(pkg_dir, os.path.basename(url))
+
+    if reset:
+        if os.path.exists(zip_name):
+            os.remove(zip_name)
+
+    if not os.path.exists(zip_name):
+        if verbose:
+            print("Downloading General Toolset Extension, please wait ...")
+        request = urllib.request.urlopen(url, timeout=500)
+        with open(zip_name, "wb") as f:
+            f.write(request.read())
+
+        if verbose:
+            print("Decompressing {} ...".format(os.path.basename(url)))
+        with zipfile.ZipFile(zip_name, "r") as zip_ref:
+            zip_ref.extractall(pkg_dir)
+
+        shutil.copytree(ext_dir, plugin_dir, dirs_exist_ok=True)
+        shutil.rmtree(ext_dir)
+
+    files = glob.glob(os.path.join(plugin_dir, "*.json"))
+    files.sort()
+
+    ext_dict = {}
+
+    for file in files:
+        tool_dict = {}
+        with open(file) as f:
+            tool = json.load(f)
+        name = tool["exe"]
+        tool_dict["name"] = tool["tool_name"]
+        tool_dict["tool_name"] = name
+        tool_dict["category"] = tool["toolbox"].split("/")[0]
+        tool_dict["label"] = to_label(name)
+        tool_dict["description"] = tool["short_description"]
+        tool_dict["github"] = get_github_url(name)
+        tool_dict["book"] = get_book_url(name, tool["toolbox"])
+
+        params_dict = {}
+        params = tool["parameters"]
+        for param in params:
+            flags = param["flags"]
+            if isinstance(flags, list):
+                flag = flags[0].replace("-", "")
+            else:
+                flag = flags.replace("-", "")
+            params_dict[flag] = param
+        tool_dict["parameters"] = params_dict
+
+        ext_dict[tool["tool_name"]] = tool_dict
+
+    return ext_dict
 
 
 def get_wbt_dict(reset=False):
@@ -354,106 +370,43 @@ def get_wbt_dict(reset=False):
     Returns:
         dict: The dictionary containing information for all tools.
     """
-    wbt_dir = os.path.dirname(
-        pkg_resources.resource_filename("whitebox", "whitebox_tools.py")
-    )
-
     pkg_dir = os.path.dirname(
         pkg_resources.resource_filename("whiteboxgui", "whiteboxgui.py")
     )
 
-    wbt_py = os.path.join(wbt_dir, "whitebox_tools.py")
+    wbt_dict_json = os.path.join(pkg_dir, "data/whitebox_tools.json")
 
-    wbt_dict = os.path.join(pkg_dir, "data/whitebox_tools.json")
+    if (not os.path.exists(wbt_dict_json)) or reset:
 
-    toolboxes = {
-        "# Data Tools #": "Data Tools",
-        "# GIS Analysis #": "GIS Analysis",
-        "# Geomorphometric Analysis #": "Geomorphometric Analysis",
-        "# Hydrological Analysis #": "Hydrological Analysis",
-        "# Image Processing Tools #": "Image Processing Tools",
-        "# LiDAR Tools #": "LiDAR Tools",
-        "# Math and Stats Tools #": "Math and Stats Tools",
-        "# Precision Agriculture #": "Precision Agriculture",
-        "# Stream Network Analysis #": "Stream Network Analysis",
-    }
+        wbt_dict = {}
+        tools = wbt.list_tools()
 
-    github_cls = {
-        "Data Tools": "data_tools",
-        "GIS Analysis": "gis_analysis",
-        "Geomorphometric Analysis": "terrain_analysis",
-        "Hydrological Analysis": "hydro_analysis",
-        "Image Processing Tools": "image_analysis",
-        "LiDAR Tools": "lidar_analysis",
-        "Math and Stats Tools": "math_stat_analysis",
-        "Precision Agriculture": "precision_agriculture",
-        "Stream Network Analysis": "stream_network_analysis",
-    }
+        category_dict = tool_categories()
 
-    book_cls = {
-        "Data Tools": "data_tools",
-        "GIS Analysis": "gis_analysis",
-        "Geomorphometric Analysis": "geomorphometric_analysis",
-        "Hydrological Analysis": "hydrological_analysis",
-        "Image Processing Tools": "image_processing_tools",
-        "LiDAR Tools": "lidar_tools",
-        "Math and Stats Tools": "mathand_stats_tools",
-        "Precision Agriculture": "precision_agriculture",
-        "Stream Network Analysis": "stream_network_analysis",
-    }
+        for tool in tools.keys():
+            tool_dict = {}
+            name = to_snakecase(tool)
+            tool_dict["name"] = to_camelcase(name)
+            tool_dict["tool_name"] = name
+            tool_dict["category"] = category_dict[name]
+            tool_dict["label"] = to_label(name)
+            tool_dict["description"] = tools[tool]
+            tool_dict["github"] = get_github_url(name)
+            tool_dict["book"] = get_book_url(name, category_dict[name])
+            tool_dict["parameters"] = get_tool_params(name)
 
-    tools_dict = {}
-    if (not os.path.exists(wbt_dict)) or reset:
+            wbt_dict[to_camelcase(name)] = tool_dict
 
-        tool_labels = []
-        category = ""
+        wbt_dict.update(get_ext_dict())
 
-        tool_index = 1
-
-        with open(wbt_py) as f:
-            lines = f.readlines()
-
-            for index, line in enumerate(lines):
-                if index > 500:
-                    line = line.strip()
-
-                    if line in toolboxes:
-                        category = toolboxes[line]
-
-                    if line.startswith("def"):
-                        func_title = line.replace("def", "", 1).strip().split("(")[0]
-                        func_name = to_camelcase(func_title)
-
-                        func_label = to_label(func_title)
-                        tool_labels.append(func_label)
-                        func_desc = lines[index + 1].replace('"""', "").strip()
-
-                        func_dict = {}
-                        func_dict["name"] = func_name
-                        func_dict["Name"] = to_camelcase(func_name)
-                        func_dict["category"] = category
-                        func_dict["label"] = func_label
-                        func_dict["description"] = func_desc
-
-                        github_url = get_github_url(func_name, github_cls[category])
-                        book_url = get_book_url(func_name, book_cls[category])
-
-                        func_dict["github"] = github_url
-                        func_dict["book"] = book_url
-
-                        tool_index = tool_index + 1
-                        func_params = get_tool_params(func_name)
-                        func_dict["parameters"] = func_params
-                        tools_dict[func_name] = func_dict
-
-        with open(wbt_dict, "w") as fp:
-            json.dump(tools_dict, fp, indent=4)
+        with open(wbt_dict_json, "w") as fp:
+            json.dump(wbt_dict, fp, indent=4)
     else:
 
-        with open(wbt_dict) as fp:
-            tools_dict = json.load(fp)
+        with open(wbt_dict_json) as fp:
+            wbt_dict = json.load(fp)
 
-    return tools_dict
+    return wbt_dict
 
 
 def tool_gui(tool_dict, max_width="420px", max_height="600px"):
@@ -499,20 +452,22 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
     for param in params:
         items = params[param]
         required = ""
-        if items["optional"] == "false":
+        if items["optional"] == "false" or (not items["optional"]):
             required = "*"
             required_inputs.append(param)
         label = items["name"] + required
         param_type = items["parameter_type"]
         default_value = None
 
-        if (items["default_value"] != "null") and (len(items["default_value"]) > 0):
-            if "false" in items["default_value"]:
-                default_value = False
-            elif "true" in items["default_value"]:
-                default_value = True
-            else:
-                default_value = items["default_value"].replace('"', "")
+        if items["default_value"] is not None:
+
+            if (items["default_value"] != "null") and (len(items["default_value"]) > 0):
+                if "false" in items["default_value"]:
+                    default_value = False
+                elif "true" in items["default_value"]:
+                    default_value = True
+                else:
+                    default_value = items["default_value"].replace('"', "")
 
         layout = widgets.Layout(width="500px", max_width=max_width)
 
@@ -572,7 +527,9 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
         tooltip="Import the script to a new cell",
         layout=widgets.Layout(width="98px"),
     )
-    tool_output = widgets.Output(layout=widgets.Layout(max_height="200px", overflow="scroll"))
+    tool_output = widgets.Output(
+        layout=widgets.Layout(max_height="200px", overflow="scroll")
+    )
     children.append(widgets.HBox([run_btn, cancel_btn, help_btn, import_btn]))
     children.append(tool_output)
     tool_widget.children = children
@@ -608,7 +565,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                     line = f"--{arg}={args[arg].value}"
             elif isinstance(args[arg], widgets.Checkbox):
                 line = f"--{arg}={args[arg].value}"
-            
+
             args2.append(line)
 
         if len(required_params) == 0:
@@ -620,7 +577,9 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
 
         tool_output.clear_output()
         with tool_output:
-            html = widgets.HTML(value=f'<a href={tool_dict["book"]} target="_blank">{tool_dict["book"]}</a>')
+            html = widgets.HTML(
+                value=f'<a href={tool_dict["book"]} target="_blank">{tool_dict["book"]}</a>'
+            )
             display(html)
         webbrowser.open_new_tab(tool_dict["book"])
 
@@ -629,8 +588,12 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
 
         with tool_output:
             if "RUST_BACKTRACE" in tool_dict["github"]:
-                tool_dict["github"] = "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools"
-            html = widgets.HTML(value=f'<a href={tool_dict["github"]} target="_blank">{tool_dict["github"]}</a>')
+                tool_dict[
+                    "github"
+                ] = "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools"
+            html = widgets.HTML(
+                value=f'<a href={tool_dict["github"]} target="_blank">{tool_dict["github"]}</a>'
+            )
             display(html)
         webbrowser.open_new_tab(tool_dict["github"])
 
@@ -863,7 +826,10 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
             if len(keyword) > 0:
                 selected_tools = []
                 for tool in all_tools:
-                    if keyword.lower() in tool.lower() or keyword.lower() in tools_dict[tool]["description"]:
+                    if (
+                        keyword.lower() in tool.lower()
+                        or keyword.lower() in tools_dict[tool]["description"]
+                    ):
                         selected_tools.append(tool)
                 if len(selected_tools) > 0:
                     tools_widget.options = selected_tools
@@ -924,6 +890,8 @@ def show(verbose=True, tree=False, reset=False):
         return build_toolbox(tools_dict)
 
 
-# if __name__ == "__main__":
-#     show(reset=False)
+if __name__ == "__main__":
 
+    # Run this script (press F5) to regenerate whitebox_tools.json
+    get_ext_dict(reset=True)
+    get_wbt_dict(reset=True)
