@@ -270,7 +270,7 @@ def get_tool_params(tool_name):
     for param in params:
         flags = param["flags"]
         if isinstance(flags, list):
-            flag = flags[0].replace("-", "")
+            flag = flags[-1].replace("-", "")
         else:
             flag = flags.replace("-", "")
         params_dict[flag] = param
