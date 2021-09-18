@@ -409,13 +409,14 @@ def get_wbt_dict(reset=False):
     return wbt_dict
 
 
-def tool_gui(tool_dict, max_width="420px", max_height="600px"):
+def tool_gui(tool_dict, max_width="420px", max_height="600px", sandbox_path=None):
     """Create a GUI for a tool based on the tool dictionary.
 
     Args:
         tool_dict (dict): The dictionary containing the tool info.
         max_width (str, optional): The max width of the tool dialog.
         max_height (str, optional): The max height of the tool dialog.
+        sandbox_path (str, optional): The path to the sandbox directory. Defaults to None.
 
     Returns:
         object: An ipywidget object representing the tool interface.
@@ -485,7 +486,7 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                 "FileList",
                 "NewFile",
             ]:
-                var_widget = FileChooser(title=label)
+                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
             else:
                 var_widget = widgets.Text(description=label, style=style, layout=layout)
                 if default_value is not None:
@@ -510,9 +511,9 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
                 "FileList",
                 "NewFile",
             ]:
-                var_widget = FileChooser(title=label)
+                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
             else:
-                var_widget = FileChooser(title=label)
+                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
             args[param] = var_widget
 
             children.append(var_widget)
@@ -657,13 +658,16 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px"):
     return tool_widget
 
 
-def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
+def build_toolbox_tree(
+    tools_dict, folder_icon="folder", tool_icon="wrench", sandbox_path=None
+):
     """Build the toolbox for WhiteboxTools.
 
     Args:
         tools_dict (dict): A dictionary containing information for all tools.
         folder_icon (str, optional): The font-awesome icon for tool categories. Defaults to "folder".
         tool_icon (str, optional): The font-awesome icon for tools. Defaults to "wrench".
+        sandbox_path (str, optional): The path to the sandbox folder. Defaults to None.
 
     Returns:
         object: An ipywidget representing the toolbox.
@@ -722,7 +726,7 @@ def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
             tool_name = cur_node.name
             with output:
                 output.clear_output()
-                tool_ui = tool_gui(tools_dict[tool_name])
+                tool_ui = tool_gui(tools_dict[tool_name], sandbox_path=sandbox_path)
                 display(tool_ui)
 
     for key in tools_dict.keys():
@@ -749,13 +753,16 @@ def build_toolbox_tree(tools_dict, folder_icon="folder", tool_icon="wrench"):
     return full_widget
 
 
-def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
+def build_toolbox(
+    tools_dict, max_width="1080px", max_height="600px", sandbox_path=None
+):
     """Build the toolbox for WhiteboxTools.
 
     Args:
         tools_dict (dict): A dictionary containing information for all tools.
         max_width (str, optional): The maximum width of the widget.
         max_height (str, optional): The maximum height of the widget.
+        sandbox_path (str, optional): The path to the sandbox folder. Defaults to None.
 
     Returns:
         object: An ipywidget representing the toolbox.
@@ -816,7 +823,11 @@ def build_toolbox(tools_dict, max_width="1080px", max_height="600px"):
             tool_dict = tools_dict[selected]
             with right_widget:
                 right_widget.clear_output()
-                display(tool_gui(tool_dict, max_height=max_height))
+                display(
+                    tool_gui(
+                        tool_dict, max_height=max_height, sandbox_path=sandbox_path
+                    )
+                )
 
     tools_widget.observe(tool_selected, "value")
 
@@ -863,14 +874,14 @@ def in_colab_shell():
         return False
 
 
-def show(verbose=True, tree=False, reset=False):
+def show(verbose=True, tree=False, reset=False, sandbox_path=None):
     """Show the toolbox GUI.
 
     Args:
         verbose (bool, optional): Whether to show progress info when the tool is running. Defaults to True.
         tree (bool, optional): Whether to use the tree mode toolbox built using ipytree rather than ipywidgets. Defaults to False.
         reset (bool, optional): Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.
-
+        sandbox_path (str, optional): The path to the sandbox directory. Defaults to None.
     Returns:
         object: A toolbox GUI.
     """
@@ -885,9 +896,9 @@ def show(verbose=True, tree=False, reset=False):
         tree = False
 
     if tree:
-        return build_toolbox_tree(tools_dict)
+        return build_toolbox_tree(tools_dict, sandbox_path=sandbox_path)
     else:
-        return build_toolbox(tools_dict)
+        return build_toolbox(tools_dict, sandbox_path=sandbox_path)
 
 
 if __name__ == "__main__":
