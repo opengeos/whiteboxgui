@@ -13,6 +13,7 @@ class TestWhiteboxgui(unittest.TestCase):
 
     def setUp(self):
         """Set up test fixtures, if any."""
+        whiteboxgui.show()
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
