@@ -36,6 +36,63 @@
             }
         }
     },
+    "AccumulationCurvature": {
+        "name": "AccumulationCurvature",
+        "tool_name": "accumulation_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Accumulation Curvature",
+        "description": "This tool calculates accumulation curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#AccumulationCurvature",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "AdaptiveFilter": {
         "name": "AdaptiveFilter",
         "tool_name": "adaptive_filter",
@@ -2054,7 +2111,7 @@
         "tool_name": "centroid_vector",
         "category": "GIS Analysis",
         "label": "Centroid Vector",
-        "description": "Identifes the centroid point of a vector polyline or polygon feature or a group of vector points.",
+        "description": "Identifies the centroid point of a vector polyline or polygon feature or a group of vector points.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/gis_analysis/centroid_vector.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#CentroidVector",
         "parameters": {
@@ -4017,6 +4074,63 @@
             }
         }
     },
+    "Curvedness": {
+        "name": "Curvedness",
+        "tool_name": "curvedness",
+        "category": "Geomorphometric Analysis",
+        "label": "Curvedness",
+        "description": "This tool calculates curvedness from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Curvedness",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "D8FlowAccumulation": {
         "name": "D8FlowAccumulation",
         "tool_name": "d8_flow_accumulation",
@@ -4285,7 +4399,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -4428,6 +4542,79 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "Dbscan": {
+        "name": "Dbscan",
+        "tool_name": "dbscan",
+        "category": "Machine Learning",
+        "label": "Dbscan",
+        "description": "Performs a DBSCAN-based unsupervised clustering operation.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#Dbscan",
+        "parameters": {
+            "i": {
+                "name": "Input Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "search_dist": {
+                "name": "Search distance",
+                "flags": [
+                    "--search_dist"
+                ],
+                "description": "Search-distance parameter.",
+                "parameter_type": "Float",
+                "default_value": "0.01",
+                "optional": true
+            },
+            "min_points": {
+                "name": "Minimum Points",
+                "flags": [
+                    "--min_points"
+                ],
+                "description": "Minimum point density needed to define 'core' point in cluster.",
+                "parameter_type": "Integer",
+                "default_value": "5",
+                "optional": true
             }
         }
     },
@@ -4740,6 +4927,63 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "DifferenceCurvature": {
+        "name": "DifferenceCurvature",
+        "tool_name": "difference_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Difference Curvature",
+        "description": "This tool calculates difference curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#DifferenceCurvature",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
             }
         }
     },
@@ -6971,7 +7215,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -8637,6 +8881,63 @@
             }
         }
     },
+    "GaussianCurvature": {
+        "name": "GaussianCurvature",
+        "tool_name": "gaussian_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Gaussian Curvature",
+        "description": "Calculates a mean curvature raster from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/gaussian_curvature.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GaussianCurvature",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z Conversion Factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
+                "parameter_type": "Float",
+                "default_value": null,
+                "optional": true
+            }
+        }
+    },
     "GaussianFilter": {
         "name": "GaussianFilter",
         "tool_name": "gaussian_filter",
@@ -8681,6 +8982,409 @@
                 "parameter_type": "Float",
                 "default_value": "0.75",
                 "optional": false
+            }
+        }
+    },
+    "GaussianScaleSpace": {
+        "name": "GaussianScaleSpace",
+        "tool_name": "gaussian_scale_space",
+        "category": "Geomorphometric Analysis",
+        "label": "Gaussian Scale Space",
+        "description": "This tool uses the fast Gaussian approximation algorithm to produce scaled land-surface parameter measurements from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GaussianScaleSpace",
+        "parameters": {
+            "d": {
+                "name": "Input DEM Raster",
+                "flags": [
+                    "-d",
+                    "--dem"
+                ],
+                "description": "Name of the input DEM raster file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "p": {
+                "name": "Input Vector Points File",
+                "flags": [
+                    "-p",
+                    "--points"
+                ],
+                "description": "Name of the input vector points shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Point"
+                    }
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "o": {
+                "name": "Output Land-surface Parameter Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output land-surface parameter raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output_zscore": {
+                "name": "Output z-Score Raster File",
+                "flags": [
+                    "--output_zscore"
+                ],
+                "description": "Name of the output z-score raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output_scale": {
+                "name": "Output Scale Raster File",
+                "flags": [
+                    "--output_scale"
+                ],
+                "description": "Name of the output scale raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "sigma": {
+                "name": "Starting Scale",
+                "flags": [
+                    "--sigma"
+                ],
+                "description": "Initial sigma value (cells).",
+                "parameter_type": "Float",
+                "default_value": "0.5",
+                "optional": false
+            },
+            "step": {
+                "name": "Step Size",
+                "flags": [
+                    "--step"
+                ],
+                "description": "Step size as any positive non-zero integer.",
+                "parameter_type": "Float",
+                "default_value": "0.5",
+                "optional": true
+            },
+            "num_steps": {
+                "name": "Number of Steps",
+                "flags": [
+                    "--num_steps"
+                ],
+                "description": "Number of steps.",
+                "parameter_type": "Integer",
+                "default_value": "10",
+                "optional": true
+            },
+            "lsp": {
+                "name": "Land-surface Parameter to Calculate",
+                "flags": [
+                    "--lsp"
+                ],
+                "description": "Output land-surface parameter; one of 'AnisotropyLTP', 'Aspect', 'DiffMeanElev', 'Eastness', 'Elevation', 'Hillshade', 'MeanCurvature', 'Northness', 'PlanCurvature', 'ProfileCurvature', 'Ruggedness', 'Slope', 'TanCurvature', 'TotalCurvature'.",
+                "parameter_type": {
+                    "OptionList": [
+                        "AnisotropyLTP",
+                        "Aspect",
+                        "DiffMeanElev",
+                        "Eastness",
+                        "Elevation",
+                        "Hillshade",
+                        "MeanCurvature",
+                        "Northness",
+                        "PlanCurvature",
+                        "ProfileCurvature",
+                        "Ruggedness",
+                        "Slope",
+                        "TanCurvature",
+                        "TotalCurvature"
+                    ]
+                },
+                "default_value": "Slope",
+                "optional": true
+            },
+            "z_factor": {
+                "name": "Z Conversion Factor",
+                "flags": [
+                    "--z_factor"
+                ],
+                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
+                "parameter_type": "Float",
+                "default_value": null,
+                "optional": true
+            }
+        }
+    },
+    "GeneralizeClassifiedRaster": {
+        "name": "GeneralizeClassifiedRaster",
+        "tool_name": "generalize_classified_raster",
+        "category": "Image Processing Tools",
+        "label": "Generalize Classified Raster",
+        "description": "Generalizes a raster containing class or object features by removing small features.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#GeneralizeClassifiedRaster",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "min_size": {
+                "name": "Min. Feature Size (in grid cells)",
+                "flags": [
+                    "--min_size"
+                ],
+                "description": "Minimum feature size, in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "4",
+                "optional": true
+            },
+            "method": {
+                "name": "Method",
+                "flags": [
+                    "--method"
+                ],
+                "description": "Grouping method; one of 'longest' (default), 'largest', and 'nearest'.",
+                "parameter_type": {
+                    "OptionList": [
+                        "longest",
+                        "largest",
+                        "nearest"
+                    ]
+                },
+                "default_value": "longest",
+                "optional": true
+            }
+        }
+    },
+    "GeneralizeWithSimilarity": {
+        "name": "GeneralizeWithSimilarity",
+        "tool_name": "generalize_with_similarity",
+        "category": "Image Processing Tools",
+        "label": "Generalize With Similarity",
+        "description": "Generalizes a raster containing class or object features by removing small features using similarity criteria of neighbouring features.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#GeneralizeWithSimilarity",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "similarity": {
+                "name": "Input Similarity Images",
+                "flags": [
+                    "--similarity"
+                ],
+                "description": "Names of the input similarity images.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "min_size": {
+                "name": "Min. Feature Size (in grid cells)",
+                "flags": [
+                    "--min_size"
+                ],
+                "description": "Minimum feature size, in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "4",
+                "optional": true
+            }
+        }
+    },
+    "GeneratingFunction": {
+        "name": "GeneratingFunction",
+        "tool_name": "generating_function",
+        "category": "Geomorphometric Analysis",
+        "label": "Generating Function",
+        "description": "This tool calculates generating function from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GeneratingFunction",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
+    "Geomorphons": {
+        "name": "Geomorphons",
+        "tool_name": "geomorphons",
+        "category": "Geomorphometric Analysis",
+        "label": "Geomorphons",
+        "description": "Computes geomorphon patterns.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/geomorphons.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Geomorphons",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "search": {
+                "name": "Search distance",
+                "flags": [
+                    "-s",
+                    "--search"
+                ],
+                "description": "Look up distance.",
+                "parameter_type": "Integer",
+                "default_value": "50",
+                "optional": false
+            },
+            "threshold": {
+                "name": "Flatness Threshold",
+                "flags": [
+                    "-t",
+                    "--threshold"
+                ],
+                "description": "Flatness threshold for the classification function (in degrees).",
+                "parameter_type": "Float",
+                "default_value": "0.0",
+                "optional": false
+            },
+            "tdist": {
+                "name": "Flatness Distance",
+                "flags": [
+                    "-d",
+                    "--tdist"
+                ],
+                "description": "Distance (in cells) to begin reducing the flatness threshold to avoid problems with pseudo-flat lines-of-sight.",
+                "parameter_type": "Integer",
+                "default_value": "0",
+                "optional": false
+            },
+            "forms": {
+                "name": " Output Forms",
+                "flags": [
+                    "-f",
+                    "--forms"
+                ],
+                "description": "Classify geomorphons into 10 common land morphologies, else, output ternary code.",
+                "parameter_type": "Boolean",
+                "default_value": "true",
+                "optional": true
             }
         }
     },
@@ -9362,6 +10066,63 @@
             }
         }
     },
+    "HorizontalExcessCurvature": {
+        "name": "HorizontalExcessCurvature",
+        "tool_name": "horizontal_excess_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Horizontal Excess Curvature",
+        "description": "This tool calculates horizontal excess curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#HorizontalExcessCurvature",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "HortonStreamOrder": {
         "name": "HortonStreamOrder",
         "tool_name": "horton_stream_order",
@@ -9491,7 +10252,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -10122,7 +10883,7 @@
                 "flags": [
                     "--out_residuals"
                 ],
-                "description": "Output raster regression resdidual file.",
+                "description": "Output raster regression residual file.",
                 "parameter_type": {
                     "NewFile": "Raster"
                 },
@@ -11202,11 +11963,11 @@
     "KMeansClustering": {
         "name": "KMeansClustering",
         "tool_name": "k_means_clustering",
-        "category": "Image Processing Tools",
+        "category": "Machine Learning",
         "label": "K Means Clustering",
         "description": "Performs a k-means clustering operation on a multi-spectral dataset.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/k_means_clustering.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#KMeansClustering",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KMeansClustering",
         "parameters": {
             "inputs": {
                 "name": "Input Files",
@@ -11416,6 +12177,224 @@
                     "NewFile": "Html"
                 },
                 "default_value": null,
+                "optional": false
+            }
+        }
+    },
+    "KnnClassification": {
+        "name": "KnnClassification",
+        "tool_name": "knn_classification",
+        "category": "Machine Learning",
+        "label": "Knn Classification",
+        "description": "Performs a supervised k-nearest neighbour classification using training site polygons/points and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KnnClassification",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "t": {
+                "name": "Input Training Polygons/Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site polygons/points shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Any"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Class Name Field",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing class name data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "k": {
+                "name": "Number of Nearest Neighbours, k",
+                "flags": [
+                    "-k"
+                ],
+                "description": "k-parameter, which determines the number of nearest neighbours used.",
+                "parameter_type": "Integer",
+                "default_value": "5",
+                "optional": true
+            },
+            "clip": {
+                "name": "Perform training data clipping?",
+                "flags": [
+                    "--clip"
+                ],
+                "description": "Perform training data clipping to remove outlier pixels?",
+                "parameter_type": "Boolean",
+                "default_value": "true",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": false
+            }
+        }
+    },
+    "KnnRegression": {
+        "name": "KnnRegression",
+        "tool_name": "knn_regression",
+        "category": "Machine Learning",
+        "label": "Knn Regression",
+        "description": "Performs a supervised k-nearest neighbour regression using training site points and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KnnRegression",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "t": {
+                "name": "Input Training Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site points Shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Point"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Response Variable Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing response variable name data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "k": {
+                "name": "Number of Nearest Neighbours, k",
+                "flags": [
+                    "-k"
+                ],
+                "description": "k-parameter, which determines the number of nearest neighbours used.",
+                "parameter_type": "Integer",
+                "default_value": "5",
+                "optional": true
+            },
+            "weight": {
+                "name": "Use distance weighting?",
+                "flags": [
+                    "--weight"
+                ],
+                "description": "Use distance weighting?",
+                "parameter_type": "Boolean",
+                "default_value": "true",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
                 "optional": false
             }
         }
@@ -12128,7 +13107,7 @@
         "tool_name": "lidar_classify_subset",
         "category": "LiDAR Tools",
         "label": "Lidar Classify Subset",
-        "description": "Classifies the values in one LiDAR point cloud that correpond with points in a subset cloud.",
+        "description": "Classifies the values in one LiDAR point cloud that correspond with points in a subset cloud.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/lidar_analysis/lidar_classify_subset.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarClassifySubset",
         "parameters": {
@@ -12595,7 +13574,7 @@
                 "flags": [
                     "--min_neighbours"
                 ],
-                "description": "The minimum number of neighbouring points within search areas. If fewer points than this threshold are idenfied during the fixed-radius search, a subsequent kNN search is performed to identify the k number of neighbours.",
+                "description": "The minimum number of neighbouring points within search areas. If fewer points than this threshold are identified during the fixed-radius search, a subsequent kNN search is performed to identify the k number of neighbours.",
                 "parameter_type": "Integer",
                 "default_value": "0",
                 "optional": true
@@ -14273,6 +15252,76 @@
             }
         }
     },
+    "LidarShift": {
+        "name": "LidarShift",
+        "tool_name": "lidar_shift",
+        "category": "LiDAR Tools",
+        "label": "Lidar Shift",
+        "description": "Shifts the x,y,z coordinates of a LiDAR file.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarShift",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "x": {
+                "name": "x-shift",
+                "flags": [
+                    "-x",
+                    "--x_shift"
+                ],
+                "description": "x-shift value, blank for none.",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            },
+            "y": {
+                "name": "y-shift",
+                "flags": [
+                    "-y",
+                    "--y_shift"
+                ],
+                "description": "y-shift value, blank for none.",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            },
+            "z": {
+                "name": "z-shift",
+                "flags": [
+                    "-z",
+                    "--z_shift"
+                ],
+                "description": "z-shift value, blank for none.",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            }
+        }
+    },
     "LidarSibsonInterpolation": {
         "name": "LidarSibsonInterpolation",
         "tool_name": "lidar_sibson_interpolation",
@@ -15185,6 +16234,141 @@
             }
         }
     },
+    "LocalHypsometricAnalysis": {
+        "name": "LocalHypsometricAnalysis",
+        "tool_name": "local_hypsometric_analysis",
+        "category": "Geomorphometric Analysis",
+        "label": "Local Hypsometric Analysis",
+        "description": "This tool calculates a local, neighbourhood-based hypsometric integral raster.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#LocalHypsometricAnalysis",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "out_mag": {
+                "name": "Output Magnitude Raster",
+                "flags": [
+                    "--out_mag"
+                ],
+                "description": "Name of the openness output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "out_scale": {
+                "name": "Output Scale Raster",
+                "flags": [
+                    "--out_scale"
+                ],
+                "description": "Name of the openness output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "min_scale": {
+                "name": "Minimum Search Neighbourhood Radius (grid cells)",
+                "flags": [
+                    "--min_scale"
+                ],
+                "description": "Minimum search neighbourhood radius in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "4",
+                "optional": true
+            },
+            "step": {
+                "name": "Base Step Size",
+                "flags": [
+                    "--step"
+                ],
+                "description": "Step size as any positive non-zero integer.",
+                "parameter_type": "Integer",
+                "default_value": "1",
+                "optional": true
+            },
+            "num_steps": {
+                "name": "Number of Steps",
+                "flags": [
+                    "--num_steps"
+                ],
+                "description": "Number of steps.",
+                "parameter_type": "Integer",
+                "default_value": "10",
+                "optional": true
+            },
+            "step_nonlinearity": {
+                "name": "Step Nonlinearity",
+                "flags": [
+                    "--step_nonlinearity"
+                ],
+                "description": "Step nonlinearity factor (1.0-2.0 is typical)",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
+    "LocalQuadraticRegression": {
+        "name": "LocalQuadraticRegression",
+        "tool_name": "local_quadratic_regression",
+        "category": "Geomorphometric Analysis",
+        "label": "Local Quadratic Regression",
+        "description": "This tool is an implementation of the constrained quadratic regression algorithm using a flexible window size described in Wood (1996).",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#LocalQuadraticRegression",
+        "parameters": {
+            "d": {
+                "name": "Input DEM Raster",
+                "flags": [
+                    "-d",
+                    "--dem"
+                ],
+                "description": "Name of the input DEM raster file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "filter": {
+                "name": "Filter Edge Length",
+                "flags": [
+                    "--filter"
+                ],
+                "description": "Edge length of the filter kernel.",
+                "parameter_type": "Integer",
+                "default_value": "3",
+                "optional": true
+            }
+        }
+    },
     "Log10": {
         "name": "Log10",
         "tool_name": "log10",
@@ -15256,6 +16440,95 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "LogisticRegression": {
+        "name": "LogisticRegression",
+        "tool_name": "logistic_regression",
+        "category": "Machine Learning",
+        "label": "Logistic Regression",
+        "description": "Performs a logistic regression analysis using training site polygons/points and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#LogisticRegression",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "t": {
+                "name": "Input Training Polygons/Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site polygons/points shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Any"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Class Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing class data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
             }
         }
     },
@@ -15606,7 +16879,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -16349,6 +17622,43 @@
             }
         }
     },
+    "MaxUpslopeElevChange": {
+        "name": "MaxUpslopeElevChange",
+        "tool_name": "max_upslope_elev_change",
+        "category": "Geomorphometric Analysis",
+        "label": "Max Upslope Elev Change",
+        "description": "Calculates the maximum upslope change in elevation between a grid cell and its eight downslope neighbors.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/max_upslope_elev_change.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MaxUpslopeElevChange",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            }
+        }
+    },
     "MaxUpslopeFlowpathLength": {
         "name": "MaxUpslopeFlowpathLength",
         "tool_name": "max_upslope_flowpath_length",
@@ -16383,6 +17693,63 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "MaximalCurvature": {
+        "name": "MaximalCurvature",
+        "tool_name": "maximal_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Maximal Curvature",
+        "description": "Calculates a mean curvature raster from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/maximal_curvature.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MaximalCurvature",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z Conversion Factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
+                "parameter_type": "Float",
+                "default_value": null,
+                "optional": true
             }
         }
     },
@@ -16439,6 +17806,63 @@
                 "description": "Size of the filter kernel in the y-direction.",
                 "parameter_type": "Integer",
                 "default_value": "11",
+                "optional": true
+            }
+        }
+    },
+    "MeanCurvature": {
+        "name": "MeanCurvature",
+        "tool_name": "mean_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Mean Curvature",
+        "description": "Calculates a mean curvature raster from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/mean_curvature.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MeanCurvature",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z Conversion Factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
+                "parameter_type": "Float",
+                "default_value": null,
                 "optional": true
             }
         }
@@ -17082,6 +18506,63 @@
             }
         }
     },
+    "MinimalCurvature": {
+        "name": "MinimalCurvature",
+        "tool_name": "minimal_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Minimal Curvature",
+        "description": "Calculates a mean curvature raster from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/minimal_curvature.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MinimalCurvature",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM File",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z Conversion Factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
+                "parameter_type": "Float",
+                "default_value": null,
+                "optional": true
+            }
+        }
+    },
     "MinimumBoundingBox": {
         "name": "MinimumBoundingBox",
         "tool_name": "minimum_bounding_box",
@@ -17363,11 +18844,11 @@
     "ModifiedKMeansClustering": {
         "name": "ModifiedKMeansClustering",
         "tool_name": "modified_k_means_clustering",
-        "category": "Image Processing Tools",
+        "category": "Machine Learning",
         "label": "Modified K Means Clustering",
         "description": "Performs a modified k-means clustering operation on a multi-spectral dataset.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/modified_k_means_clustering.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#ModifiedKMeansClustering",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#ModifiedKMeansClustering",
         "parameters": {
             "inputs": {
                 "name": "Input Files",
@@ -19119,12 +20600,12 @@
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Openness",
         "parameters": {
             "i": {
-                "name": "Input Raster Image",
+                "name": "Input Raster DEM",
                 "flags": [
                     "-i",
                     "--input"
                 ],
-                "description": "Name of the input raster image file.",
+                "description": "Name of the input raster DEM file.",
                 "parameter_type": {
                     "ExistingFile": "Raster"
                 },
@@ -19136,7 +20617,7 @@
                 "flags": [
                     "--pos_output"
                 ],
-                "description": "Name of the positive openenness output raster file.",
+                "description": "Name of the positive openness output raster file.",
                 "parameter_type": {
                     "NewFile": "Raster"
                 },
@@ -19148,7 +20629,7 @@
                 "flags": [
                     "--neg_output"
                 ],
-                "description": "Name of the negative openenness output raster file.",
+                "description": "Name of the negative openness output raster file.",
                 "parameter_type": {
                     "NewFile": "Raster"
                 },
@@ -20041,6 +21522,16 @@
                 "default_value": null,
                 "optional": false
             },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
             "zfactor": {
                 "name": "Z Conversion Factor",
                 "flags": [
@@ -20530,6 +22021,16 @@
                 "default_value": null,
                 "optional": false
             },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
             "zfactor": {
                 "name": "Z Conversion Factor",
                 "flags": [
@@ -20617,7 +22118,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -20756,7 +22257,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -21093,6 +22594,228 @@
             }
         }
     },
+    "RandomForestClassification": {
+        "name": "RandomForestClassification",
+        "tool_name": "random_forest_classification",
+        "category": "Machine Learning",
+        "label": "Random Forest Classification",
+        "description": "Performs a supervised random forest classification using training site polygons/points and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#RandomForestClassification",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "t": {
+                "name": "Input Training Polygons/Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site polygons/points shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Any"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Class Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing class data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "split_criterion": {
+                "name": "Split Criterion",
+                "flags": [
+                    "--split_criterion"
+                ],
+                "description": "Split criterion to use when building a tree. Options include 'Gini', 'Entropy', and 'ClassificationError'",
+                "parameter_type": {
+                    "OptionList": [
+                        "Gini",
+                        "Entropy",
+                        "ClassificationError"
+                    ]
+                },
+                "default_value": "Gini",
+                "optional": true
+            },
+            "n_trees": {
+                "name": "Number of Trees in Forest",
+                "flags": [
+                    "--n_trees"
+                ],
+                "description": "The number of trees in the forest.",
+                "parameter_type": "Integer",
+                "default_value": "500",
+                "optional": true
+            },
+            "min_samples_leaf": {
+                "name": "Min Number of Samples to be a Leaf",
+                "flags": [
+                    "--min_samples_leaf"
+                ],
+                "description": "The minimum number of samples required to be at a leaf node.",
+                "parameter_type": "Integer",
+                "default_value": "1",
+                "optional": true
+            },
+            "min_samples_split": {
+                "name": "Min Number of Samples Needed to Split Node",
+                "flags": [
+                    "--min_samples_split"
+                ],
+                "description": "The minimum number of samples required to split an internal node.",
+                "parameter_type": "Integer",
+                "default_value": "2",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
+            }
+        }
+    },
+    "RandomForestRegression": {
+        "name": "RandomForestRegression",
+        "tool_name": "random_forest_regression",
+        "category": "Machine Learning",
+        "label": "Random Forest Regression",
+        "description": "Performs a random forest regression analysis using training site data and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#RandomForestRegression",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "t": {
+                "name": "Input Training Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site points shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Point"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Response Variable Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing response variable name data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file. This parameter is optional. When unspecified, the tool will only build the model. When specified, the tool will use the built model and predictor rasters to perform a spatial prediction.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "n_trees": {
+                "name": "Number of Trees in Forest",
+                "flags": [
+                    "--n_trees"
+                ],
+                "description": "The number of trees in the forest.",
+                "parameter_type": "Integer",
+                "default_value": "100",
+                "optional": true
+            },
+            "min_samples_leaf": {
+                "name": "Min Number of Samples to be a Leaf",
+                "flags": [
+                    "--min_samples_leaf"
+                ],
+                "description": "The minimum number of samples required to be at a leaf node.",
+                "parameter_type": "Integer",
+                "default_value": "1",
+                "optional": true
+            },
+            "min_samples_split": {
+                "name": "Min Number of Samples Needed to Split Node",
+                "flags": [
+                    "--min_samples_split"
+                ],
+                "description": "The minimum number of samples required to split an internal node.",
+                "parameter_type": "Integer",
+                "default_value": "2",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
+            }
+        }
+    },
     "RandomSample": {
         "name": "RandomSample",
         "tool_name": "random_sample",
@@ -21274,7 +22997,7 @@
         "tool_name": "raster_calculator",
         "category": "Math and Stats Tools",
         "label": "Raster Calculator",
-        "description": "This tool performs a conditional evaluaton (if-then-else) operation on a raster.",
+        "description": "This tool performs a complex mathematical operations on one or more input raster images on a cell-to-cell basis.",
         "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#RasterCalculator",
         "parameters": {
@@ -22524,7 +24247,7 @@
                 "flags": [
                     "--min_length"
                 ],
-                "description": "Minimum tributary length (in map units) used for network prunning.",
+                "description": "Minimum tributary length (in map units) used for network pruning.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": false
@@ -23026,6 +24749,63 @@
             }
         }
     },
+    "RingCurvature": {
+        "name": "RingCurvature",
+        "tool_name": "ring_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Ring Curvature",
+        "description": "This tool calculates ring curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#RingCurvature",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "RobertsCrossFilter": {
         "name": "RobertsCrossFilter",
         "tool_name": "roberts_cross_filter",
@@ -23106,6 +24886,63 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "Rotor": {
+        "name": "Rotor",
+        "tool_name": "rotor",
+        "category": "Geomorphometric Analysis",
+        "label": "Rotor",
+        "description": "This tool calculates rotor from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Rotor",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
             }
         }
     },
@@ -23706,6 +25543,53 @@
             }
         }
     },
+    "ShapeIndex": {
+        "name": "ShapeIndex",
+        "tool_name": "shape_index",
+        "category": "Geomorphometric Analysis",
+        "label": "Shape Index",
+        "description": "This tool calculates the shape index from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ShapeIndex",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "ShreveStreamMagnitude": {
         "name": "ShreveStreamMagnitude",
         "tool_name": "shreve_stream_magnitude",
@@ -24078,6 +25962,73 @@
                     ]
                 },
                 "default_value": "degrees",
+                "optional": true
+            }
+        }
+    },
+    "SlopeVsAspectPlot": {
+        "name": "SlopeVsAspectPlot",
+        "tool_name": "slope_vs_aspect_plot",
+        "category": "Geomorphometric Analysis",
+        "label": "Slope Vs Aspect Plot",
+        "description": "This tool creates a slope-aspect relation plot from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#SlopeVsAspectPlot",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output File (*.html)",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output report file (*.html).",
+                "parameter_type": {
+                    "NewFile": "Html"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "bin_size": {
+                "name": "Aspect Bin Size (degrees)",
+                "flags": [
+                    "--bin_size"
+                ],
+                "description": "Aspect bin size, in degrees.",
+                "parameter_type": "Float",
+                "default_value": "2.0",
+                "optional": true
+            },
+            "min_slope": {
+                "name": "Minimum Slope (degrees)",
+                "flags": [
+                    "--min_slope"
+                ],
+                "description": "Minimum slope, in degrees.",
+                "parameter_type": "Float",
+                "default_value": "0.1",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
                 "optional": true
             }
         }
@@ -25638,6 +27589,244 @@
             }
         }
     },
+    "SvmClassification": {
+        "name": "SvmClassification",
+        "tool_name": "svm_classification",
+        "category": "Machine Learning",
+        "label": "Svm Classification",
+        "description": "Performs an SVM binary classification using training site polygons/points and multiple input images.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#SvmClassification",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "t": {
+                "name": "Input Training Polygons/Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site polygons/points Shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Any"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Class Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing class data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "c": {
+                "name": "c-Value",
+                "flags": [
+                    "-c"
+                ],
+                "description": "c-value, the regularization parameter.",
+                "parameter_type": "Float",
+                "default_value": "200.0",
+                "optional": true
+            },
+            "gamma": {
+                "name": "Kernel Gamma",
+                "flags": [
+                    "--gamma"
+                ],
+                "description": "Gamma parameter used in setting the RBF (Gaussian) kernel function.",
+                "parameter_type": "Float",
+                "default_value": "50.0",
+                "optional": true
+            },
+            "tolerance": {
+                "name": "Tolerance",
+                "flags": [
+                    "--tolerance"
+                ],
+                "description": "The tolerance parameter used in determining the stopping condition.",
+                "parameter_type": "Float",
+                "default_value": "0.1",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
+            }
+        }
+    },
+    "SvmRegression": {
+        "name": "SvmRegression",
+        "tool_name": "svm_regression",
+        "category": "Machine Learning",
+        "label": "Svm Regression",
+        "description": "Performs a supervised SVM regression analysis using training site points and predictor rasters.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#SvmRegression",
+        "parameters": {
+            "i": {
+                "name": "Input Predictor Rasters",
+                "flags": [
+                    "-i",
+                    "--inputs"
+                ],
+                "description": "Names of the input predictor rasters.",
+                "parameter_type": {
+                    "FileList": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
+                "optional": true
+            },
+            "t": {
+                "name": "Input Training Polygons/Points",
+                "flags": [
+                    "-t",
+                    "--training"
+                ],
+                "description": "Name of the input training site points Shapefile.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Point"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "f": {
+                "name": "Class Field Name",
+                "flags": [
+                    "-f",
+                    "--field"
+                ],
+                "description": "Name of the attribute containing class data.",
+                "parameter_type": "String",
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "c": {
+                "name": "c-Value",
+                "flags": [
+                    "-c"
+                ],
+                "description": "c-value, the regularization parameter.",
+                "parameter_type": "Float",
+                "default_value": "50.0",
+                "optional": true
+            },
+            "eps": {
+                "name": "Epsilon Value",
+                "flags": [
+                    "--eps"
+                ],
+                "description": "Epsilon in the epsilon-SVR model.",
+                "parameter_type": "Float",
+                "default_value": "10.0",
+                "optional": true
+            },
+            "gamma": {
+                "name": "Kernel Gamma",
+                "flags": [
+                    "--gamma"
+                ],
+                "description": "Gamma parameter used in setting the RBF (Gaussian) kernel function.",
+                "parameter_type": "Float",
+                "default_value": "0.5",
+                "optional": true
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
+            }
+        }
+    },
     "SymmetricalDifference": {
         "name": "SymmetricalDifference",
         "tool_name": "symmetrical_difference",
@@ -25870,6 +28059,16 @@
                 },
                 "default_value": null,
                 "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
             },
             "zfactor": {
                 "name": "Z Conversion Factor",
@@ -26460,6 +28659,16 @@
                 },
                 "default_value": null,
                 "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
             },
             "zfactor": {
                 "name": "Z Conversion Factor",
@@ -27143,6 +29352,63 @@
             }
         }
     },
+    "Unsphericity": {
+        "name": "Unsphericity",
+        "tool_name": "unsphericity",
+        "category": "Geomorphometric Analysis",
+        "label": "Unsphericity",
+        "description": "This tool calculates the unsphericity curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Unsphericity",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "UpdateNodataCells": {
         "name": "UpdateNodataCells",
         "tool_name": "update_nodata_cells",
@@ -27715,6 +29981,63 @@
                 "description": "Snap distance, in xy units (metres).",
                 "parameter_type": "Float",
                 "default_value": "0.1",
+                "optional": true
+            }
+        }
+    },
+    "VerticalExcessCurvature": {
+        "name": "VerticalExcessCurvature",
+        "tool_name": "vertical_excess_curvature",
+        "category": "Geomorphometric Analysis",
+        "label": "Vertical Excess Curvature",
+        "description": "This tool calculates vertical excess curvature from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#VerticalExcessCurvature",
+        "parameters": {
+            "i": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "o": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "zfactor": {
+                "name": "Z-factor",
+                "flags": [
+                    "--zfactor"
+                ],
+                "description": "Z conversion factor.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
                 "optional": true
             }
         }

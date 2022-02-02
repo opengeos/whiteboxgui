@@ -143,7 +143,8 @@ def clone_repo(out_dir=".", unzip=True):
     """
     url = "https://github.com/giswqs/whiteboxgui/archive/master.zip"
     filename = "whiteboxgui-master.zip"
-    download_from_url(url, out_file_name=filename, out_dir=out_dir, unzip=unzip)
+    download_from_url(url, out_file_name=filename,
+                      out_dir=out_dir, unzip=unzip)
 
 
 def update_package():
@@ -266,7 +267,8 @@ def get_tool_params(tool_name):
         dict: The tool parameters as a dictionary.
     """
     params_dict = {}
-    params = json.loads(wbt.tool_parameters(tool_name).replace("\n", ""))["parameters"]
+    params = json.loads(wbt.tool_parameters(
+        tool_name).replace("\n", ""))["parameters"]
     for param in params:
         flags = param["flags"]
         if isinstance(flags, list):
@@ -486,9 +488,11 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px", sandbox_path=None
                 "FileList",
                 "NewFile",
             ]:
-                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
+                var_widget = FileChooser(
+                    title=label, sandbox_path=sandbox_path)
             else:
-                var_widget = widgets.Text(description=label, style=style, layout=layout)
+                var_widget = widgets.Text(
+                    description=label, style=style, layout=layout)
                 if default_value is not None:
                     var_widget.value = str(default_value)
 
@@ -511,18 +515,22 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px", sandbox_path=None
                 "FileList",
                 "NewFile",
             ]:
-                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
+                var_widget = FileChooser(
+                    title=label, sandbox_path=sandbox_path)
             else:
-                var_widget = FileChooser(title=label, sandbox_path=sandbox_path)
+                var_widget = FileChooser(
+                    title=label, sandbox_path=sandbox_path)
             args[param] = var_widget
 
             children.append(var_widget)
 
-    run_btn = widgets.Button(description="Run", layout=widgets.Layout(width="100px"))
+    run_btn = widgets.Button(
+        description="Run", layout=widgets.Layout(width="100px"))
     cancel_btn = widgets.Button(
         description="Cancel", layout=widgets.Layout(width="100px")
     )
-    help_btn = widgets.Button(description="Help", layout=widgets.Layout(width="100px"))
+    help_btn = widgets.Button(
+        description="Help", layout=widgets.Layout(width="100px"))
     import_btn = widgets.Button(
         description="Import",
         tooltip="Import the script to a new cell",
@@ -643,7 +651,8 @@ def tool_gui(tool_dict, max_width="420px", max_height="600px", sandbox_path=None
             content = []
             content.append("import whitebox")
             content.append("wbt = whitebox.WhiteboxTools()")
-            content.append(f"wbt.{to_snakecase(tool_dict['name'])}({', '.join(args3)})")
+            content.append(
+                f"wbt.{to_snakecase(tool_dict['name'])}({', '.join(args3)})")
             with tool_output:
                 for line in content:
                     print(line)
@@ -680,7 +689,8 @@ def build_toolbox_tree(
     search_box = widgets.Text(placeholder=search_description)
     search_box.layout.width = "270px"
 
-    close_btn = widgets.Button(icon="close", layout=widgets.Layout(width="32px"))
+    close_btn = widgets.Button(
+        icon="close", layout=widgets.Layout(width="32px"))
 
     def close_btn_clicked(b):
         full_widget.close()
@@ -726,7 +736,8 @@ def build_toolbox_tree(
             tool_name = cur_node.name
             with output:
                 output.clear_output()
-                tool_ui = tool_gui(tools_dict[tool_name], sandbox_path=sandbox_path)
+                tool_ui = tool_gui(
+                    tools_dict[tool_name], sandbox_path=sandbox_path)
                 display(tool_ui)
 
     for key in tools_dict.keys():
@@ -858,7 +869,8 @@ def build_toolbox(
 
     category_widget.value = list(categories.keys())[0]
     tools_widget.options = all_tools
-    left_widget.children = [category_widget, search_widget, label_widget, close_btn]
+    left_widget.children = [category_widget,
+                            search_widget, label_widget, close_btn]
     center_widget.children = [tools_widget]
 
     return full_widget
@@ -892,8 +904,8 @@ def show(verbose=True, tree=False, reset=False, sandbox_path=None):
     else:
         wbt.verbose = False
 
-    if in_colab_shell():
-        tree = False
+    # if in_colab_shell():
+    #     tree = False
 
     if tree:
         return build_toolbox_tree(tools_dict, sandbox_path=sandbox_path)
