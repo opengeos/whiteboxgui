@@ -272,7 +272,10 @@ def get_tool_params(tool_name):
     for param in params:
         flags = param["flags"]
         if isinstance(flags, list):
-            flag = flags[-1].replace("-", "")
+            if flags == ["-i", "--input"]:
+                flag = "i"
+            else:
+                flag = flags[-1].replace("-", "")
         else:
             flag = flags.replace("-", "")
         params_dict[flag] = param
@@ -352,7 +355,10 @@ def get_ext_dict(verbose=True, reset=False):
         for param in params:
             flags = param["flags"]
             if isinstance(flags, list):
-                flag = flags[0].replace("-", "")
+                if flags == ["-i", "--input"]:
+                    flag = "i"
+                else:
+                    flag = flags[-1].replace("-", "")
             else:
                 flag = flags.replace("-", "")
             params_dict[flag] = param
