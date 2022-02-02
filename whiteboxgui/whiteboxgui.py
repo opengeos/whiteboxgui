@@ -336,7 +336,7 @@ def get_ext_dict(verbose=True, reset=False):
 
     for file in files:
         tool_dict = {}
-        with open(file) as f:
+        with open(file, encoding='utf-8') as f:
             tool = json.load(f)
         name = tool["exe"]
         tool_dict["name"] = tool["tool_name"]
@@ -401,11 +401,11 @@ def get_wbt_dict(reset=False):
 
         wbt_dict.update(get_ext_dict())
 
-        with open(wbt_dict_json, "w") as fp:
+        with open(wbt_dict_json, "w", encoding='utf-8') as fp:
             json.dump(wbt_dict, fp, indent=4)
     else:
 
-        with open(wbt_dict_json) as fp:
+        with open(wbt_dict_json, encoding='utf-8') as fp:
             wbt_dict = json.load(fp)
 
     return wbt_dict
