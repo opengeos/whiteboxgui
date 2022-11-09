@@ -1810,6 +1810,66 @@
             }
         }
     },
+    "BreaklineMapping": {
+        "name": "BreaklineMapping",
+        "tool_name": "breakline_mapping",
+        "category": "Geomorphometric Analysis",
+        "label": "Breakline Mapping",
+        "description": "This tool maps breaklines from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#BreaklineMapping",
+        "parameters": {
+            "dem": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input",
+                    "--dem"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output Vector Lines File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output vector lines file.",
+                "parameter_type": {
+                    "NewFile": {
+                        "Vector": "Line"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "threshold": {
+                "name": "Threshold Value",
+                "flags": [
+                    "--threshold"
+                ],
+                "description": "Threshold value (0 - infinity but typcially 1 to 5 works well).",
+                "parameter_type": "Float",
+                "default_value": "2.0",
+                "optional": true
+            },
+            "min_length": {
+                "name": "Min. Line Length (In Grid Cells)",
+                "flags": [
+                    "--min_length"
+                ],
+                "description": "Minimum line length, in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "3",
+                "optional": true
+            }
+        }
+    },
     "BufferRaster": {
         "name": "BufferRaster",
         "tool_name": "buffer_raster",
@@ -2111,7 +2171,7 @@
         "tool_name": "centroid_vector",
         "category": "GIS Analysis",
         "label": "Centroid Vector",
-        "description": "Identifies the centroid point of a vector polyline or polygon feature or a group of vector points.",
+        "description": "Identifes the centroid point of a vector polyline or polygon feature or a group of vector points.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/gis_analysis/centroid_vector.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#CentroidVector",
         "parameters": {
@@ -2300,6 +2360,113 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "ClassifyLidar": {
+        "name": "ClassifyLidar",
+        "tool_name": "classify_lidar",
+        "category": "LiDAR Tools",
+        "label": "Classify Lidar",
+        "description": "Classify points within a LiDAR point cloud based on point properties.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ClassifyLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "radius": {
+                "name": "Search Distance:",
+                "flags": [
+                    "--radius"
+                ],
+                "description": "Search distance used in neighbourhood search (metres).",
+                "parameter_type": "Float",
+                "default_value": "1.5",
+                "optional": true
+            },
+            "grd_threshold": {
+                "name": "Ground Threshold:",
+                "flags": [
+                    "--grd_threshold"
+                ],
+                "description": "Ground threshold (metres).",
+                "parameter_type": "Float",
+                "default_value": "0.1",
+                "optional": true
+            },
+            "oto_threshold": {
+                "name": "Off-Terrain Object Threshold:",
+                "flags": [
+                    "--oto_threshold"
+                ],
+                "description": "Off-terrain object threshold (metres).",
+                "parameter_type": "Float",
+                "default_value": "2.0",
+                "optional": true
+            },
+            "planarity_threshold": {
+                "name": "Planarity Threshold:",
+                "flags": [
+                    "--planarity_threshold"
+                ],
+                "description": "Planarity threshold (0-1).",
+                "parameter_type": "Float",
+                "default_value": "0.85",
+                "optional": true
+            },
+            "linearity_threshold": {
+                "name": "Linearity Threshold:",
+                "flags": [
+                    "--linearity_threshold"
+                ],
+                "description": "Linearity threshold (0-1).",
+                "parameter_type": "Float",
+                "default_value": "0.70",
+                "optional": true
+            },
+            "iterations": {
+                "name": "Number of Iterations:",
+                "flags": [
+                    "--iterations"
+                ],
+                "description": "Number of iterations.",
+                "parameter_type": "Integer",
+                "default_value": "30",
+                "optional": true
+            },
+            "facade_threshold": {
+                "name": "Facade Threshold:",
+                "flags": [
+                    "--facade_threshold"
+                ],
+                "description": "Facade threshold (metres).",
+                "parameter_type": "Float",
+                "default_value": "0.5",
+                "optional": true
             }
         }
     },
@@ -2682,6 +2849,170 @@
             }
         }
     },
+    "ColourizeBasedOnClass": {
+        "name": "ColourizeBasedOnClass",
+        "tool_name": "colourize_based_on_class",
+        "category": "LiDAR Tools",
+        "label": "Colourize Based On Class",
+        "description": "Sets the RGB values of a LiDAR point cloud based on the point classification values.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ColourizeBasedOnClass",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "intensity_blending": {
+                "name": "Intensity Blending Amount (0-100%):",
+                "flags": [
+                    "--intensity_blending"
+                ],
+                "description": "Intensity blending amount (0-100%).",
+                "parameter_type": "Float",
+                "default_value": "50.0",
+                "optional": true
+            },
+            "clr_str": {
+                "name": "Colour values:",
+                "flags": [
+                    "--clr_str"
+                ],
+                "description": "Colour values, e.g. 2: (184, 167, 108); 5: #9ab86c",
+                "parameter_type": "String",
+                "default_value": "",
+                "optional": true
+            },
+            "use_unique_clrs_for_buildings": {
+                "name": "Use unique colours for each building?",
+                "flags": [
+                    "--use_unique_clrs_for_buildings"
+                ],
+                "description": "Use unique colours for each building?",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "radius": {
+                "name": "Search Distance:",
+                "flags": [
+                    "--radius"
+                ],
+                "description": "Search distance used in neighbourhood search.",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            }
+        }
+    },
+    "ColourizeBasedOnPointReturns": {
+        "name": "ColourizeBasedOnPointReturns",
+        "tool_name": "colourize_based_on_point_returns",
+        "category": "LiDAR Tools",
+        "label": "Colourize Based On Point Returns",
+        "description": "Sets the RGB values of a LiDAR point cloud based on the point returns.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ColourizeBasedOnPointReturns",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "intensity_blending": {
+                "name": "Intensity Blending Amount (0-100%):",
+                "flags": [
+                    "--intensity_blending"
+                ],
+                "description": "Intensity blending amount (0-100%).",
+                "parameter_type": "Float",
+                "default_value": "50.0",
+                "optional": true
+            },
+            "only": {
+                "name": "Only Return Colour",
+                "flags": [
+                    "--only"
+                ],
+                "description": "Only return colour, e.g. (230,214,170), #e6d6aa, or 0xe6d6aa.",
+                "parameter_type": "String",
+                "default_value": "(230,214,170)",
+                "optional": true
+            },
+            "first": {
+                "name": "First Return Colour",
+                "flags": [
+                    "--first"
+                ],
+                "description": "First return colour, e.g. (230,214,170), #e6d6aa, or 0xe6d6aa.",
+                "parameter_type": "String",
+                "default_value": "(0,140,0)",
+                "optional": true
+            },
+            "intermediate": {
+                "name": "Intermediate Return Colour",
+                "flags": [
+                    "--intermediate"
+                ],
+                "description": "Intermediate return colour, e.g. (230,214,170), #e6d6aa, or 0xe6d6aa.",
+                "parameter_type": "String",
+                "default_value": "(255,0,255)",
+                "optional": true
+            },
+            "last": {
+                "name": "Last Return Colour",
+                "flags": [
+                    "--last"
+                ],
+                "description": "Last return colour, e.g. (230,214,170), #e6d6aa, or 0xe6d6aa.",
+                "parameter_type": "String",
+                "default_value": "(0,0,255)",
+                "optional": true
+            }
+        }
+    },
     "CompactnessRatio": {
         "name": "CompactnessRatio",
         "tool_name": "compactness_ratio",
@@ -2702,76 +3033,6 @@
                     "ExistingFile": {
                         "Vector": "Polygon"
                     }
-                },
-                "default_value": null,
-                "optional": false
-            }
-        }
-    },
-    "ConditionalEvaluation": {
-        "name": "ConditionalEvaluation",
-        "tool_name": "conditional_evaluation",
-        "category": "Math and Stats Tools",
-        "label": "Conditional Evaluation",
-        "description": "This tool performs a conditional evaluaton (if-then-else) operation on a raster.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#ConditionalEvaluation",
-        "parameters": {
-            "i": {
-                "name": "Input Raster",
-                "flags": [
-                    "-i",
-                    "--input"
-                ],
-                "description": "Name of the input raster file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "statement": {
-                "name": "Conditional Statement e.g. value > 35.0:",
-                "flags": [
-                    "--statement"
-                ],
-                "description": "Conditional statement e.g. value > 35.0. This statement must be a valid Rust statement.",
-                "parameter_type": "String",
-                "default_value": "",
-                "optional": false
-            },
-            "true": {
-                "name": "Value Where TRUE (Raster File Or Constant Value)",
-                "flags": [
-                    "--true"
-                ],
-                "description": "Value where condition evaluates TRUE (input raster or constant value).",
-                "parameter_type": {
-                    "ExistingFileOrFloat": "Raster"
-                },
-                "default_value": null,
-                "optional": true
-            },
-            "false": {
-                "name": "Value Where FALSE (Raster File Or Constant Value)",
-                "flags": [
-                    "--false"
-                ],
-                "description": "Value where condition evaluates FALSE (input raster or constant value).",
-                "parameter_type": {
-                    "ExistingFileOrFloat": "Raster"
-                },
-                "default_value": null,
-                "optional": true
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
                 },
                 "default_value": null,
                 "optional": false
@@ -4217,7 +4478,7 @@
                 "flags": [
                     "--esri_pntr"
                 ],
-                "description": "Input D8 pointer uses the ESRI style scheme.",
+                "description": "Input  D8 pointer uses the ESRI style scheme.",
                 "parameter_type": "Boolean",
                 "default_value": "false",
                 "optional": true
@@ -4399,7 +4660,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -4699,6 +4960,70 @@
                 "parameter_type": "Boolean",
                 "default_value": null,
                 "optional": true
+            }
+        }
+    },
+    "DepthToWater": {
+        "name": "DepthToWater",
+        "tool_name": "depth_to_water",
+        "category": "Hydrological Analysis",
+        "label": "Depth To Water",
+        "description": "This tool calculates cartographic depth-to-water (DTW) index.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#DepthToWater",
+        "parameters": {
+            "dem": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "streams": {
+                "name": "Input Streams Vector",
+                "flags": [
+                    "--streams"
+                ],
+                "description": "Name of the input streams vector (optional).",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Line"
+                    }
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "lakes": {
+                "name": "Input Lakes Vector",
+                "flags": [
+                    "--lakes"
+                ],
+                "description": "Name of the input lakes vector (optional).",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Polygon"
+                    }
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
             }
         }
     },
@@ -5392,7 +5717,7 @@
                 "flags": [
                     "--dinf"
                 ],
-                "description": "Use the D-infinity flow algorithm instead of D8?",
+                "description": "Use the D-infinity flow algoirthm instead of D8?",
                 "parameter_type": "Boolean",
                 "default_value": "false",
                 "optional": true
@@ -5529,69 +5854,6 @@
                     ]
                 },
                 "default_value": "tangent",
-                "optional": true
-            }
-        }
-    },
-    "EdgeContamination": {
-        "name": "EdgeContamination",
-        "tool_name": "edge_contamination",
-        "category": "Hydrological Analysis",
-        "label": "Edge Contamination",
-        "description": "This tool identifies grid cells within an input DEM that may be impacted by edge contamination for hydrological applications.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#EdgeContamination",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file; must be depressionless.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "flow_type": {
-                "name": "Flow Type",
-                "flags": [
-                    "--flow_type"
-                ],
-                "description": "Flow algorithm type, one of 'd8', 'mfd', or 'dinf'",
-                "parameter_type": {
-                    "OptionList": [
-                        "d8",
-                        "mfd",
-                        "dinf"
-                    ]
-                },
-                "default_value": "mfd",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": "",
                 "optional": true
             }
         }
@@ -6778,7 +7040,7 @@
                     "-o",
                     "--output"
                 ],
-                "description": "Output csv file.",
+                "description": "Output raster file.",
                 "parameter_type": {
                     "NewFile": "Csv"
                 },
@@ -6793,73 +7055,6 @@
                 "description": "Export field names as file header?",
                 "parameter_type": "Boolean",
                 "default_value": "true",
-                "optional": true
-            }
-        }
-    },
-    "ExposureTowardsWindFlux": {
-        "name": "ExposureTowardsWindFlux",
-        "tool_name": "exposure_towards_wind_flux",
-        "category": "Geomorphometric Analysis",
-        "label": "Exposure Towards Wind Flux",
-        "description": "This tool evaluates hydrologic connectivity within a DEM",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ExposureTowardsWindFlux",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "azimuth": {
-                "name": "Wind Azimuth (in degrees)",
-                "flags": [
-                    "--azimuth"
-                ],
-                "description": "Wind azimuth, in degrees.",
-                "parameter_type": "Float",
-                "default_value": "",
-                "optional": false
-            },
-            "max_dist": {
-                "name": "Maximum Search Distance",
-                "flags": [
-                    "--max_dist"
-                ],
-                "description": "Optional maximum search distance. Minimum value is 5 x cell size.",
-                "parameter_type": "Integer",
-                "default_value": "",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": "",
                 "optional": true
             }
         }
@@ -7215,7 +7410,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -7869,6 +8064,54 @@
                     "NewFile": "Raster"
                 },
                 "default_value": null,
+                "optional": false
+            }
+        }
+    },
+    "FilterLidar": {
+        "name": "FilterLidar",
+        "tool_name": "filter_lidar",
+        "category": "LiDAR Tools",
+        "label": "Filter Lidar",
+        "description": "Filters points within a LiDAR point cloud based on point properties.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#FilterLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "statement": {
+                "name": "Statement:",
+                "flags": [
+                    "-s",
+                    "--statement"
+                ],
+                "description": "Filter statement e.g. x < 5000.0 && y > 100.0 && is_late && !is_noise. This statement must be a valid Rust statement.",
+                "parameter_type": "String",
+                "default_value": "",
                 "optional": false
             }
         }
@@ -8881,63 +9124,6 @@
             }
         }
     },
-    "GaussianCurvature": {
-        "name": "GaussianCurvature",
-        "tool_name": "gaussian_curvature",
-        "category": "Geomorphometric Analysis",
-        "label": "Gaussian Curvature",
-        "description": "Calculates a mean curvature raster from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/gaussian_curvature.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GaussianCurvature",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
-            }
-        }
-    },
     "GaussianFilter": {
         "name": "GaussianFilter",
         "tool_name": "gaussian_filter",
@@ -8982,149 +9168,6 @@
                 "parameter_type": "Float",
                 "default_value": "0.75",
                 "optional": false
-            }
-        }
-    },
-    "GaussianScaleSpace": {
-        "name": "GaussianScaleSpace",
-        "tool_name": "gaussian_scale_space",
-        "category": "Geomorphometric Analysis",
-        "label": "Gaussian Scale Space",
-        "description": "This tool uses the fast Gaussian approximation algorithm to produce scaled land-surface parameter measurements from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GaussianScaleSpace",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "points": {
-                "name": "Input Vector Points File",
-                "flags": [
-                    "-p",
-                    "--points"
-                ],
-                "description": "Name of the input vector points shapefile.",
-                "parameter_type": {
-                    "ExistingFile": {
-                        "Vector": "Point"
-                    }
-                },
-                "default_value": null,
-                "optional": true
-            },
-            "output": {
-                "name": "Output Land-surface Parameter Raster File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output land-surface parameter raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output_zscore": {
-                "name": "Output z-Score Raster File",
-                "flags": [
-                    "--output_zscore"
-                ],
-                "description": "Name of the output z-score raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output_scale": {
-                "name": "Output Scale Raster File",
-                "flags": [
-                    "--output_scale"
-                ],
-                "description": "Name of the output scale raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "sigma": {
-                "name": "Starting Scale",
-                "flags": [
-                    "--sigma"
-                ],
-                "description": "Initial sigma value (cells).",
-                "parameter_type": "Float",
-                "default_value": "0.5",
-                "optional": false
-            },
-            "step": {
-                "name": "Step Size",
-                "flags": [
-                    "--step"
-                ],
-                "description": "Step size as any positive non-zero integer.",
-                "parameter_type": "Float",
-                "default_value": "0.5",
-                "optional": true
-            },
-            "num_steps": {
-                "name": "Number of Steps",
-                "flags": [
-                    "--num_steps"
-                ],
-                "description": "Number of steps.",
-                "parameter_type": "Integer",
-                "default_value": "10",
-                "optional": true
-            },
-            "lsp": {
-                "name": "Land-surface Parameter to Calculate",
-                "flags": [
-                    "--lsp"
-                ],
-                "description": "Output land-surface parameter; one of 'AnisotropyLTP', 'Aspect', 'DiffMeanElev', 'Eastness', 'Elevation', 'Hillshade', 'MeanCurvature', 'Northness', 'PlanCurvature', 'ProfileCurvature', 'Ruggedness', 'Slope', 'TanCurvature', 'TotalCurvature'.",
-                "parameter_type": {
-                    "OptionList": [
-                        "AnisotropyLTP",
-                        "Aspect",
-                        "DiffMeanElev",
-                        "Eastness",
-                        "Elevation",
-                        "Hillshade",
-                        "MeanCurvature",
-                        "Northness",
-                        "PlanCurvature",
-                        "ProfileCurvature",
-                        "Ruggedness",
-                        "Slope",
-                        "TanCurvature",
-                        "TotalCurvature"
-                    ]
-                },
-                "default_value": "Slope",
-                "optional": true
-            },
-            "z_factor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--z_factor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
             }
         }
     },
@@ -9303,87 +9346,6 @@
                 "description": "Z conversion factor.",
                 "parameter_type": "Float",
                 "default_value": "1.0",
-                "optional": true
-            }
-        }
-    },
-    "Geomorphons": {
-        "name": "Geomorphons",
-        "tool_name": "geomorphons",
-        "category": "Geomorphometric Analysis",
-        "label": "Geomorphons",
-        "description": "Computes geomorphon patterns.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/geomorphons.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Geomorphons",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "search": {
-                "name": "Search distance",
-                "flags": [
-                    "-s",
-                    "--search"
-                ],
-                "description": "Look up distance.",
-                "parameter_type": "Integer",
-                "default_value": "50",
-                "optional": false
-            },
-            "threshold": {
-                "name": "Flatness Threshold",
-                "flags": [
-                    "-t",
-                    "--threshold"
-                ],
-                "description": "Flatness threshold for the classification function (in degrees).",
-                "parameter_type": "Float",
-                "default_value": "0.0",
-                "optional": false
-            },
-            "tdist": {
-                "name": "Flatness Distance",
-                "flags": [
-                    "-d",
-                    "--tdist"
-                ],
-                "description": "Distance (in cells) to begin reducing the flatness threshold to avoid problems with pseudo-flat lines-of-sight.",
-                "parameter_type": "Integer",
-                "default_value": "0",
-                "optional": false
-            },
-            "forms": {
-                "name": " Output Forms",
-                "flags": [
-                    "-f",
-                    "--forms"
-                ],
-                "description": "Classify geomorphons into 10 common land morphologies, else, output ternary code.",
-                "parameter_type": "Boolean",
-                "default_value": "true",
                 "optional": true
             }
         }
@@ -9842,7 +9804,7 @@
         "tool_name": "histogram_equalization",
         "category": "Image Processing Tools",
         "label": "Histogram Equalization",
-        "description": "Performs a histogram equalization contrast enhancement on an image.",
+        "description": "Performs a histogram equalization contrast enhancment on an image.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/histogram_equalization.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#HistogramEqualization",
         "parameters": {
@@ -10883,7 +10845,7 @@
                 "flags": [
                     "--out_residuals"
                 ],
-                "description": "Output raster regression residual file.",
+                "description": "Output raster regression resdidual file.",
                 "parameter_type": {
                     "NewFile": "Raster"
                 },
@@ -11221,64 +11183,34 @@
                 "default_value": null,
                 "optional": false
             },
-            "out_mean": {
-                "name": "Output Mean Depth File",
+            "output": {
+                "name": "Output File",
                 "flags": [
-                    "--out_mean"
+                    "-o",
+                    "--output"
                 ],
-                "description": "Output mean flooded depth file.",
+                "description": "Output file.",
                 "parameter_type": {
                     "NewFile": "Raster"
                 },
                 "default_value": null,
-                "optional": true
+                "optional": false
             },
-            "out_max": {
-                "name": "Output Max. Depth File",
+            "out_type": {
+                "name": "Output Type",
                 "flags": [
-                    "--out_max"
+                    "--out_type"
                 ],
-                "description": "Output maximum flooded depth file.",
+                "description": "Output type; one of 'mean depth' (default), 'volume', 'area', 'max depth'.",
                 "parameter_type": {
-                    "NewFile": "Raster"
+                    "OptionList": [
+                        "mean depth",
+                        "volume",
+                        "area",
+                        "max depth"
+                    ]
                 },
-                "default_value": null,
-                "optional": true
-            },
-            "out_volume": {
-                "name": "Output Volume File",
-                "flags": [
-                    "--out_volume"
-                ],
-                "description": "Output flooded volume file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": true
-            },
-            "out_area": {
-                "name": "Output Area File",
-                "flags": [
-                    "--out_area"
-                ],
-                "description": "Output flooded area file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": true
-            },
-            "out_dam_height": {
-                "name": "Output Dam Height File",
-                "flags": [
-                    "--out_dam_height"
-                ],
-                "description": "Output dam height file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
+                "default_value": "mean depth",
                 "optional": true
             },
             "damlength": {
@@ -11963,11 +11895,11 @@
     "KMeansClustering": {
         "name": "KMeansClustering",
         "tool_name": "k_means_clustering",
-        "category": "Machine Learning",
+        "category": "Image Processing Tools",
         "label": "K Means Clustering",
         "description": "Performs a k-means clustering operation on a multi-spectral dataset.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/k_means_clustering.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KMeansClustering",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#KMeansClustering",
         "parameters": {
             "inputs": {
                 "name": "Input Files",
@@ -12256,7 +12188,7 @@
                     "NewFile": "Raster"
                 },
                 "default_value": null,
-                "optional": false
+                "optional": true
             },
             "k": {
                 "name": "Number of Nearest Neighbours, k",
@@ -12865,7 +12797,7 @@
                 "flags": [
                     "--sigma"
                 ],
-                "description": "Sigma value should be related to the standard deviation of the distribution of image speckle noise.",
+                "description": "Sigma value should be related to the standarad deviation of the distribution of image speckle noise.",
                 "parameter_type": "Float",
                 "default_value": "10.0",
                 "optional": true
@@ -13107,7 +13039,7 @@
         "tool_name": "lidar_classify_subset",
         "category": "LiDAR Tools",
         "label": "Lidar Classify Subset",
-        "description": "Classifies the values in one LiDAR point cloud that correspond with points in a subset cloud.",
+        "description": "Classifies the values in one LiDAR point cloud that correpond with points in a subset cloud.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/lidar_analysis/lidar_classify_subset.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarClassifySubset",
         "parameters": {
@@ -13437,6 +13369,50 @@
             }
         }
     },
+    "LidarEigenvalueFeatures": {
+        "name": "LidarEigenvalueFeatures",
+        "tool_name": "lidar_eigenvalue_features",
+        "category": "LiDAR Tools",
+        "label": "Lidar Eigenvalue Features",
+        "description": "Calculate eigenvalue-based metrics from a LiDAR point cloud.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarEigenvalueFeatures",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "num_neighbours": {
+                "name": "Number of Neighbours:",
+                "flags": [
+                    "--num_neighbours"
+                ],
+                "description": "Number of neighbours used in search.",
+                "parameter_type": "Integer",
+                "default_value": null,
+                "optional": true
+            },
+            "radius": {
+                "name": "Search Distance:",
+                "flags": [
+                    "--radius"
+                ],
+                "description": "Search distance used in neighbourhood search.",
+                "parameter_type": "Float",
+                "default_value": null,
+                "optional": true
+            }
+        }
+    },
     "LidarElevationSlice": {
         "name": "LidarElevationSlice",
         "tool_name": "lidar_elevation_slice",
@@ -13574,7 +13550,7 @@
                 "flags": [
                     "--min_neighbours"
                 ],
-                "description": "The minimum number of neighbouring points within search areas. If fewer points than this threshold are identified during the fixed-radius search, a subsequent kNN search is performed to identify the k number of neighbours.",
+                "description": "The minimum number of neighbouring points within search areas. If fewer points than this threshold are idenfied during the fixed-radius search, a subsequent kNN search is performed to identify the k number of neighbours.",
                 "parameter_type": "Integer",
                 "default_value": "0",
                 "optional": true
@@ -13802,14 +13778,13 @@
                 "flags": [
                     "--parameter"
                 ],
-                "description": "Parameter; options are 'elevation' (default), 'intensity', 'scan angle', 'class', 'time'.",
+                "description": "Parameter; options are 'elevation' (default), 'intensity', 'scan angle', 'class'.",
                 "parameter_type": {
                     "OptionList": [
                         "elevation",
                         "intensity",
                         "scan angle",
-                        "class",
-                        "time"
+                        "class"
                     ]
                 },
                 "default_value": "elevation",
@@ -15252,76 +15227,6 @@
             }
         }
     },
-    "LidarShift": {
-        "name": "LidarShift",
-        "tool_name": "lidar_shift",
-        "category": "LiDAR Tools",
-        "label": "Lidar Shift",
-        "description": "Shifts the x,y,z coordinates of a LiDAR file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarShift",
-        "parameters": {
-            "i": {
-                "name": "Input LiDAR Points",
-                "flags": [
-                    "-i",
-                    "--input"
-                ],
-                "description": "Name of the input LiDAR points.",
-                "parameter_type": {
-                    "ExistingFile": "Lidar"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output LiDAR Points",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output LiDAR points.",
-                "parameter_type": {
-                    "NewFile": "Lidar"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "x_shift": {
-                "name": "x-shift",
-                "flags": [
-                    "-x",
-                    "--x_shift"
-                ],
-                "description": "x-shift value, blank for none.",
-                "parameter_type": "Float",
-                "default_value": "",
-                "optional": true
-            },
-            "y_shift": {
-                "name": "y-shift",
-                "flags": [
-                    "-y",
-                    "--y_shift"
-                ],
-                "description": "y-shift value, blank for none.",
-                "parameter_type": "Float",
-                "default_value": "",
-                "optional": true
-            },
-            "z_shift": {
-                "name": "z-shift",
-                "flags": [
-                    "-z",
-                    "--z_shift"
-                ],
-                "description": "z-shift value, blank for none.",
-                "parameter_type": "Float",
-                "default_value": "",
-                "optional": true
-            }
-        }
-    },
     "LidarSibsonInterpolation": {
         "name": "LidarSibsonInterpolation",
         "tool_name": "lidar_sibson_interpolation",
@@ -15433,43 +15338,6 @@
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
-            }
-        }
-    },
-    "LidarSortByTime": {
-        "name": "LidarSortByTime",
-        "tool_name": "lidar_sort_by_time",
-        "category": "LiDAR Tools",
-        "label": "Lidar Sort By Time",
-        "description": "This sorts the points in a LiDAR file by the GPS time.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarSortByTime",
-        "parameters": {
-            "i": {
-                "name": "Input LiDAR Points",
-                "flags": [
-                    "-i",
-                    "--input"
-                ],
-                "description": "Name of the input LiDAR points.",
-                "parameter_type": {
-                    "ExistingFile": "Lidar"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output LiDAR Points",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output LiDAR points.",
-                "parameter_type": {
-                    "NewFile": "Lidar"
-                },
-                "default_value": null,
-                "optional": false
             }
         }
     },
@@ -15661,11 +15529,11 @@
                 "optional": true
             },
             "save_filtered": {
-                "name": "Save filtered points to separate file?",
+                "name": "Save filtered points to seperate file?",
                 "flags": [
                     "--save_filtered"
                 ],
-                "description": "Save filtered points to separate file?",
+                "description": "Save filtered points to seperate file?",
                 "parameter_type": "Boolean",
                 "default_value": "false",
                 "optional": true
@@ -15728,11 +15596,11 @@
                 "optional": false
             },
             "save_filtered": {
-                "name": "Save filtered points to separate file?",
+                "name": "Save filtered points to seperate file?",
                 "flags": [
                     "--save_filtered"
                 ],
-                "description": "Save filtered points to separate file?",
+                "description": "Save filtered points to seperate file?",
                 "parameter_type": "Boolean",
                 "default_value": "false",
                 "optional": true
@@ -16148,7 +16016,7 @@
         "tool_name": "list_unique_values",
         "category": "Math and Stats Tools",
         "label": "List Unique Values",
-        "description": "Lists the unique values contained in a field within a vector's attribute table.",
+        "description": "Lists the unique values contained in a field witin a vector's attribute table.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/math_stat_analysis/list_unique_values.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#ListUniqueValues",
         "parameters": {
@@ -16318,53 +16186,6 @@
                 "description": "Step nonlinearity factor (1.0-2.0 is typical)",
                 "parameter_type": "Float",
                 "default_value": "1.0",
-                "optional": true
-            }
-        }
-    },
-    "LocalQuadraticRegression": {
-        "name": "LocalQuadraticRegression",
-        "tool_name": "local_quadratic_regression",
-        "category": "Geomorphometric Analysis",
-        "label": "Local Quadratic Regression",
-        "description": "This tool is an implementation of the constrained quadratic regression algorithm using a flexible window size described in Wood (1996).",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#LocalQuadraticRegression",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "filter": {
-                "name": "Filter Edge Length",
-                "flags": [
-                    "--filter"
-                ],
-                "description": "Edge length of the filter kernel.",
-                "parameter_type": "Integer",
-                "default_value": "3",
                 "optional": true
             }
         }
@@ -16879,7 +16700,7 @@
                 "flags": [
                     "--threshold"
                 ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
+                "description": "Optional convergence threshold parameter, in grid cells; default is inifinity.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": true
@@ -17622,43 +17443,6 @@
             }
         }
     },
-    "MaxUpslopeElevChange": {
-        "name": "MaxUpslopeElevChange",
-        "tool_name": "max_upslope_elev_change",
-        "category": "Geomorphometric Analysis",
-        "label": "Max Upslope Elev Change",
-        "description": "Calculates the maximum upslope change in elevation between a grid cell and its eight downslope neighbors.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/max_upslope_elev_change.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MaxUpslopeElevChange",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            }
-        }
-    },
     "MaxUpslopeFlowpathLength": {
         "name": "MaxUpslopeFlowpathLength",
         "tool_name": "max_upslope_flowpath_length",
@@ -17693,63 +17477,6 @@
                 },
                 "default_value": null,
                 "optional": false
-            }
-        }
-    },
-    "MaximalCurvature": {
-        "name": "MaximalCurvature",
-        "tool_name": "maximal_curvature",
-        "category": "Geomorphometric Analysis",
-        "label": "Maximal Curvature",
-        "description": "Calculates a mean curvature raster from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/maximal_curvature.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MaximalCurvature",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
             }
         }
     },
@@ -17806,63 +17533,6 @@
                 "description": "Size of the filter kernel in the y-direction.",
                 "parameter_type": "Integer",
                 "default_value": "11",
-                "optional": true
-            }
-        }
-    },
-    "MeanCurvature": {
-        "name": "MeanCurvature",
-        "tool_name": "mean_curvature",
-        "category": "Geomorphometric Analysis",
-        "label": "Mean Curvature",
-        "description": "Calculates a mean curvature raster from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/mean_curvature.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MeanCurvature",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": null,
                 "optional": true
             }
         }
@@ -18506,63 +18176,6 @@
             }
         }
     },
-    "MinimalCurvature": {
-        "name": "MinimalCurvature",
-        "tool_name": "minimal_curvature",
-        "category": "Geomorphometric Analysis",
-        "label": "Minimal Curvature",
-        "description": "Calculates a mean curvature raster from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/terrain_analysis/minimal_curvature.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MinimalCurvature",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM File",
-                "flags": [
-                    "-i",
-                    "--dem"
-                ],
-                "description": "Input raster DEM file.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "zfactor": {
-                "name": "Z Conversion Factor",
-                "flags": [
-                    "--zfactor"
-                ],
-                "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
-            }
-        }
-    },
     "MinimumBoundingBox": {
         "name": "MinimumBoundingBox",
         "tool_name": "minimum_bounding_box",
@@ -18844,11 +18457,11 @@
     "ModifiedKMeansClustering": {
         "name": "ModifiedKMeansClustering",
         "tool_name": "modified_k_means_clustering",
-        "category": "Machine Learning",
+        "category": "Image Processing Tools",
         "label": "Modified K Means Clustering",
         "description": "Performs a modified k-means clustering operation on a multi-spectral dataset.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/modified_k_means_clustering.rs",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#ModifiedKMeansClustering",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#ModifiedKMeansClustering",
         "parameters": {
             "inputs": {
                 "name": "Input Files",
@@ -18927,6 +18540,54 @@
                 "parameter_type": "Float",
                 "default_value": "2.0",
                 "optional": true
+            }
+        }
+    },
+    "ModifyLidar": {
+        "name": "ModifyLidar",
+        "tool_name": "modify_lidar",
+        "category": "LiDAR Tools",
+        "label": "Modify Lidar",
+        "description": "Modify points within a LiDAR point cloud based on point properties.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ModifyLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "statement": {
+                "name": "Statement:",
+                "flags": [
+                    "-s",
+                    "--statement"
+                ],
+                "description": "Modify statement e.g. x += 5000.0.",
+                "parameter_type": "String",
+                "default_value": "",
+                "optional": false
             }
         }
     },
@@ -20096,9 +19757,7 @@
                 ],
                 "description": "Input base raster file.",
                 "parameter_type": {
-                    "ExistingFile": {
-                        "RasterAndVector": "Any"
-                    }
+                    "ExistingFile": "Raster"
                 },
                 "default_value": null,
                 "optional": false
@@ -20140,16 +19799,6 @@
                     ]
                 },
                 "default_value": "float",
-                "optional": true
-            },
-            "cell_size": {
-                "name": "Cell Size (optional)",
-                "flags": [
-                    "--cell_size"
-                ],
-                "description": "Optionally specified cell size of output raster. Not used when base raster is specified.",
-                "parameter_type": "Float",
-                "default_value": null,
                 "optional": true
             }
         }
@@ -21131,7 +20780,7 @@
         "tool_name": "percent_greater_than",
         "category": "GIS Analysis",
         "label": "Percent Greater Than",
-        "description": "Calculates the percentage of a raster stack that have cell values greater than an input on a cell-by-cell basis.",
+        "description": "Calculates the percentage of a raster stack that have cell values greather than an input on a cell-by-cell basis.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/gis_analysis/percent_greater_than.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#PercentGreaterThan",
         "parameters": {
@@ -21487,6 +21136,65 @@
             }
         }
     },
+    "PiecewiseContrastStretch": {
+        "name": "PiecewiseContrastStretch",
+        "tool_name": "piecewise_contrast_stretch",
+        "category": "Image Processing Tools",
+        "label": "Piecewise Contrast Stretch",
+        "description": "Performs a piecewise contrast stretch on an input image.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/image_enhancement.html#PiecewiseContrastStretch",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output Raster Image",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster image file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "function": {
+                "name": "Piecewise Function Break-points:",
+                "flags": [
+                    "-f",
+                    "--function"
+                ],
+                "description": "Piecewise function break-points e.g. '(50, 0.1); (150, 0.8); (255; 1.0)",
+                "parameter_type": "String",
+                "default_value": "",
+                "optional": false
+            },
+            "greytones": {
+                "name": "Number of Output Greytones:",
+                "flags": [
+                    "-g",
+                    "--greytones"
+                ],
+                "description": "Number of greytones in the output image.",
+                "parameter_type": "Integer",
+                "default_value": "1024",
+                "optional": true
+            }
+        }
+    },
     "PlanCurvature": {
         "name": "PlanCurvature",
         "tool_name": "plan_curvature",
@@ -21521,16 +21229,6 @@
                 },
                 "default_value": null,
                 "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
             },
             "zfactor": {
                 "name": "Z Conversion Factor",
@@ -22021,16 +21719,6 @@
                 "default_value": null,
                 "optional": false
             },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
             "zfactor": {
                 "name": "Z Conversion Factor",
                 "flags": [
@@ -22039,108 +21727,6 @@
                 "description": "Optional multiplier for when the vertical and horizontal units are not the same.",
                 "parameter_type": "Float",
                 "default_value": null,
-                "optional": true
-            }
-        }
-    },
-    "QinFlowAccumulation": {
-        "name": "QinFlowAccumulation",
-        "tool_name": "qin_flow_accumulation",
-        "category": "Hydrological Analysis",
-        "label": "Qin Flow Accumulation",
-        "description": "This tool calculates Qin et al. (2007) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#QinFlowAccumulation",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file; must be depressionless.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "out_type": {
-                "name": "Output Type",
-                "flags": [
-                    "--out_type"
-                ],
-                "description": "Output type; one of 'cells', 'specific contributing area' (default), and 'catchment area'.",
-                "parameter_type": {
-                    "OptionList": [
-                        "cells",
-                        "specific contributing area",
-                        "catchment area"
-                    ]
-                },
-                "default_value": "specific contributing area",
-                "optional": true
-            },
-            "exponent": {
-                "name": "Upper-bound Exponent Parameter",
-                "flags": [
-                    "--exponent"
-                ],
-                "description": "Optional upper-bound exponent parameter; default is 10.0.",
-                "parameter_type": "Float",
-                "default_value": "10.0",
-                "optional": true
-            },
-            "max_slope": {
-                "name": "Upper-bound Slope Parameter (in degrees)",
-                "flags": [
-                    "--max_slope"
-                ],
-                "description": "Optional upper-bound slope parameter, in degrees (0-90); default is 45.0.",
-                "parameter_type": "Float",
-                "default_value": "45.0",
-                "optional": true
-            },
-            "threshold": {
-                "name": "Convergence Threshold (grid cells; blank for none)",
-                "flags": [
-                    "--threshold"
-                ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Log-transform the output values?",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "clip": {
-                "name": "Clip the upper tail by 1%?",
-                "flags": [
-                    "--clip"
-                ],
-                "description": "Optional flag to request clipping the display max by 1%.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
                 "optional": true
             }
         }
@@ -22189,98 +21775,6 @@
                 "parameter_type": "Integer",
                 "default_value": "5",
                 "optional": false
-            }
-        }
-    },
-    "QuinnFlowAccumulation": {
-        "name": "QuinnFlowAccumulation",
-        "tool_name": "quinn_flow_accumulation",
-        "category": "Hydrological Analysis",
-        "label": "Quinn Flow Accumulation",
-        "description": "This tool calculates Quinn et al. (1995) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#QuinnFlowAccumulation",
-        "parameters": {
-            "dem": {
-                "name": "Input DEM Raster",
-                "flags": [
-                    "-d",
-                    "--dem"
-                ],
-                "description": "Name of the input DEM raster file; must be depressionless.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "out_type": {
-                "name": "Output Type",
-                "flags": [
-                    "--out_type"
-                ],
-                "description": "Output type; one of 'cells', 'specific contributing area' (default), and 'catchment area'.",
-                "parameter_type": {
-                    "OptionList": [
-                        "cells",
-                        "specific contributing area",
-                        "catchment area"
-                    ]
-                },
-                "default_value": "specific contributing area",
-                "optional": true
-            },
-            "exponent": {
-                "name": "Exponent Parameter",
-                "flags": [
-                    "--exponent"
-                ],
-                "description": "Optional exponent parameter; default is 1.0.",
-                "parameter_type": "Float",
-                "default_value": "1.0",
-                "optional": true
-            },
-            "threshold": {
-                "name": "Convergence Threshold (grid cells; blank for none)",
-                "flags": [
-                    "--threshold"
-                ],
-                "description": "Optional convergence threshold parameter, in grid cells; default is infinity.",
-                "parameter_type": "Float",
-                "default_value": null,
-                "optional": true
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Log-transform the output values?",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "clip": {
-                "name": "Clip the upper tail by 1%?",
-                "flags": [
-                    "--clip"
-                ],
-                "description": "Optional flag to request clipping the display max by 1%.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
             }
         }
     },
@@ -22987,39 +22481,6 @@
                 ],
                 "description": "Flag indicating whether zero values should be treated as a background.",
                 "parameter_type": "Boolean",
-                "default_value": null,
-                "optional": false
-            }
-        }
-    },
-    "RasterCalculator": {
-        "name": "RasterCalculator",
-        "tool_name": "raster_calculator",
-        "category": "Math and Stats Tools",
-        "label": "Raster Calculator",
-        "description": "This tool performs a complex mathematical operations on one or more input raster images on a cell-to-cell basis.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#RasterCalculator",
-        "parameters": {
-            "statement": {
-                "name": "Statement:",
-                "flags": [
-                    "--statement"
-                ],
-                "description": "Statement e.g. cos(\"raster1\") * 35.0 + \"raster2\". This statement must be a valid Rust statement.",
-                "parameter_type": "String",
-                "default_value": "",
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
                 "default_value": null,
                 "optional": false
             }
@@ -23772,6 +23233,83 @@
             }
         }
     },
+    "RecoverFlightlineInfo": {
+        "name": "RecoverFlightlineInfo",
+        "tool_name": "recover_flightline_info",
+        "category": "LiDAR Tools",
+        "label": "Recover Flightline Info",
+        "description": "Associates LiDAR points by their flightlines.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#RecoverFlightlineInfo",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "max_time_diff": {
+                "name": "Maximum In-Flightline Time Difference (seconds)",
+                "flags": [
+                    "--max_time_diff"
+                ],
+                "description": "Maximum in-flightline time difference (seconds)",
+                "parameter_type": "Float",
+                "default_value": "5.0",
+                "optional": true
+            },
+            "pt_src_id": {
+                "name": "Add flightline info to the Point Source ID?",
+                "flags": [
+                    "--pt_src_id"
+                ],
+                "description": "Add flightline information to the point source ID",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "user_data": {
+                "name": "Add flightline info to the User Data?",
+                "flags": [
+                    "--user_data"
+                ],
+                "description": "Add flightline information to the user data",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "rgb": {
+                "name": "Add flightline info to the RGB colour data?",
+                "flags": [
+                    "--rgb"
+                ],
+                "description": "Add flightline information to the RGB colour data",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            }
+        }
+    },
     "RecreatePassLines": {
         "name": "RecreatePassLines",
         "tool_name": "recreate_pass_lines",
@@ -24247,7 +23785,7 @@
                 "flags": [
                     "--min_length"
                 ],
-                "description": "Minimum tributary length (in map units) used for network pruning.",
+                "description": "Minimum tributary length (in map units) used for network prunning.",
                 "parameter_type": "Float",
                 "default_value": null,
                 "optional": false
@@ -24607,98 +24145,6 @@
                 },
                 "default_value": null,
                 "optional": false
-            }
-        }
-    },
-    "Rho8FlowAccumulation": {
-        "name": "Rho8FlowAccumulation",
-        "tool_name": "rho8_flow_accumulation",
-        "category": "Hydrological Analysis",
-        "label": "Rho8 Flow Accumulation",
-        "description": "This tool calculates Fairfield and Leymarie (1991) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
-        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#Rho8FlowAccumulation",
-        "parameters": {
-            "i": {
-                "name": "Input DEM or Rho8 Pointer File",
-                "flags": [
-                    "-i",
-                    "--input"
-                ],
-                "description": "Input DEM or Rho8 pointer file; if a DEM is used, it must be depressionless.",
-                "parameter_type": {
-                    "ExistingFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "output": {
-                "name": "Output Raster File",
-                "flags": [
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
-            "out_type": {
-                "name": "Output Type",
-                "flags": [
-                    "--out_type"
-                ],
-                "description": "Output type; one of 'cells', 'specific contributing area' (default), and 'catchment area'.",
-                "parameter_type": {
-                    "OptionList": [
-                        "cells",
-                        "specific contributing area",
-                        "catchment area"
-                    ]
-                },
-                "default_value": "specific contributing area",
-                "optional": true
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Log-transform the output values?",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "clip": {
-                "name": "Clip the upper tail by 1%?",
-                "flags": [
-                    "--clip"
-                ],
-                "description": "Optional flag to request clipping the display max by 1%.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "pntr": {
-                "name": "Is the input raster a Rho8 flow pointer?",
-                "flags": [
-                    "--pntr"
-                ],
-                "description": "Is the input raster a Rho8 flow pointer rather than a DEM?",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
-            "esri_pntr": {
-                "name": "If a pointer is input, does it use the ESRI pointer scheme?",
-                "flags": [
-                    "--esri_pntr"
-                ],
-                "description": "Does the input Rho8 pointer use the ESRI style scheme?",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
             }
         }
     },
@@ -26324,6 +25770,54 @@
             }
         }
     },
+    "SortLidar": {
+        "name": "SortLidar",
+        "tool_name": "sort_lidar",
+        "category": "LiDAR Tools",
+        "label": "Sort Lidar",
+        "description": "Sorts LiDAR points based on their properties.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#SortLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output LiDAR Points",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR points.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "criteria": {
+                "name": "Sort Criteria:",
+                "flags": [
+                    "-c",
+                    "--criteria"
+                ],
+                "description": "Sort criteria e.g. 'x 50.0, y 50.0, z'; criteria may include x, y, z, intensity, class, user_data, point_source_id, and scan_angle",
+                "parameter_type": "String",
+                "default_value": "",
+                "optional": false
+            }
+        }
+    },
     "SphericalStdDevOfNormals": {
         "name": "SphericalStdDevOfNormals",
         "tool_name": "spherical_std_dev_of_normals",
@@ -26375,7 +25869,7 @@
         "tool_name": "split_colour_composite",
         "category": "Image Processing Tools",
         "label": "Split Colour Composite",
-        "description": "This tool splits an RGB colour composite image into separate multispectral images.",
+        "description": "This tool splits an RGB colour composite image into seperate multispectral images.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/split_colour_composite.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#SplitColourComposite",
         "parameters": {
@@ -26430,12 +25924,79 @@
             }
         }
     },
+    "SplitLidar": {
+        "name": "SplitLidar",
+        "tool_name": "split_lidar",
+        "category": "LiDAR Tools",
+        "label": "Split Lidar",
+        "description": "Splits LiDAR points up into a series of new files based on their properties.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#SplitLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR Points",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR points.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "criterion": {
+                "name": "Split Criterion",
+                "flags": [
+                    "--criterion"
+                ],
+                "description": "Criterion on which to base the split of the input file. Options include 'num_pts, 'x', 'y', 'z', intensity, 'class', 'user_data', 'point_source_id', 'scan_angle', 'time'",
+                "parameter_type": {
+                    "OptionList": [
+                        "num_pts",
+                        "x",
+                        "y",
+                        "z",
+                        "intensity",
+                        "class",
+                        "user_data",
+                        "point_source_id",
+                        "scan_angle",
+                        "time"
+                    ]
+                },
+                "default_value": "num_pts",
+                "optional": false
+            },
+            "interval": {
+                "name": "Interval",
+                "flags": [
+                    "--interval"
+                ],
+                "description": "Interval",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            },
+            "min_pts": {
+                "name": "Minimum Number of Points",
+                "flags": [
+                    "--min_pts"
+                ],
+                "description": "Minimum number of points in an output file",
+                "parameter_type": "Integer",
+                "default_value": "5",
+                "optional": true
+            }
+        }
+    },
     "SplitVectorLines": {
         "name": "SplitVectorLines",
         "tool_name": "split_vector_lines",
         "category": "GIS Analysis",
         "label": "Split Vector Lines",
-        "description": "This tool can be used to split a vector line coverage into even-lengthed segments.",
+        "description": "This tool can be used to approximate the harvester pass lines from yield points.",
         "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#SplitVectorLines",
         "parameters": {
@@ -26448,7 +26009,7 @@
                 "description": "Name of the input lines shapefile.",
                 "parameter_type": {
                     "ExistingFile": {
-                        "Vector": "Line"
+                        "Vector": "Lines"
                     }
                 },
                 "default_value": null,
@@ -26463,7 +26024,7 @@
                 "description": "Name of the output lines shapefile.",
                 "parameter_type": {
                     "NewFile": {
-                        "Vector": "Line"
+                        "Vector": "Lines"
                     }
                 },
                 "default_value": null,
@@ -26797,7 +26358,7 @@
         "tool_name": "stochastic_depression_analysis",
         "category": "Hydrological Analysis",
         "label": "Stochastic Depression Analysis",
-        "description": "Performs a stochastic analysis of depressions within a DEM.",
+        "description": "Preforms a stochastic analysis of depressions within a DEM.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/hydro_analysis/stochastic_depression_analysis.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#StochasticDepressionAnalysis",
         "parameters": {
@@ -28060,16 +27621,6 @@
                 "default_value": null,
                 "optional": false
             },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
-            },
             "zfactor": {
                 "name": "Z Conversion Factor",
                 "flags": [
@@ -28659,16 +28210,6 @@
                 },
                 "default_value": null,
                 "optional": false
-            },
-            "log": {
-                "name": "Log-transform the output?",
-                "flags": [
-                    "--log"
-                ],
-                "description": "Display output values using a log-scale.",
-                "parameter_type": "Boolean",
-                "default_value": "false",
-                "optional": true
             },
             "zfactor": {
                 "name": "Z Conversion Factor",
