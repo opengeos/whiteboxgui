@@ -42,7 +42,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Accumulation Curvature",
         "description": "This tool calculates accumulation curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#AccumulationCurvature",
         "parameters": {
             "dem": {
@@ -715,7 +715,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Assess Route",
         "description": "This tool assesses a route for slope, elevation, and visibility variation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#AssessRoute",
         "parameters": {
             "routes": {
@@ -975,7 +975,7 @@
                     "-i",
                     "--input"
                 ],
-                "description": "Input raster file.",
+                "description": "Input vector file.",
                 "parameter_type": {
                     "ExistingFile": {
                         "Vector": "Any"
@@ -1816,17 +1816,17 @@
         "category": "Geomorphometric Analysis",
         "label": "Breakline Mapping",
         "description": "This tool maps breaklines from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#BreaklineMapping",
         "parameters": {
             "dem": {
-                "name": "Input Raster Image",
+                "name": "Input Raster DEM",
                 "flags": [
                     "-i",
                     "--input",
                     "--dem"
                 ],
-                "description": "Name of the input raster image file.",
+                "description": "Name of the input raster DEM file.",
                 "parameter_type": {
                     "ExistingFile": "Raster"
                 },
@@ -2007,7 +2007,7 @@
         "category": "Image Processing Tools",
         "label": "Canny Edge Detection",
         "description": "This tool performs a Canny edge-detection filter on an input image.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/filters.html#CannyEdgeDetection",
         "parameters": {
             "i": {
@@ -2369,7 +2369,7 @@
         "category": "LiDAR Tools",
         "label": "Classify Lidar",
         "description": "Classify points within a LiDAR point cloud based on point properties.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ClassifyLidar",
         "parameters": {
             "i": {
@@ -2748,7 +2748,7 @@
                 ],
                 "description": "Maintain input raster dimensions?",
                 "parameter_type": "Boolean",
-                "default_value": "true",
+                "default_value": "false",
                 "optional": true
             }
         }
@@ -2873,7 +2873,7 @@
         "category": "LiDAR Tools",
         "label": "Colourize Based On Class",
         "description": "Sets the RGB values of a LiDAR point cloud based on the point classification values.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ColourizeBasedOnClass",
         "parameters": {
             "i": {
@@ -2950,7 +2950,7 @@
         "category": "LiDAR Tools",
         "label": "Colourize Based On Point Returns",
         "description": "Sets the RGB values of a LiDAR point cloud based on the point returns.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ColourizeBasedOnPointReturns",
         "parameters": {
             "i": {
@@ -3062,8 +3062,8 @@
         "tool_name": "conditional_evaluation",
         "category": "Math and Stats Tools",
         "label": "Conditional Evaluation",
-        "description": "This tool performs a conditional evaluation (if-then-else) operation on a raster.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Performs a conditional evaluation (if-then-else) operation on a raster.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/ConditionalEvaluation/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#ConditionalEvaluation",
         "parameters": {
             "i": {
@@ -3133,7 +3133,7 @@
         "category": "Math and Stats Tools",
         "label": "Conditioned Latin Hypercube",
         "description": "Implements conditioned Latin Hypercube sampling.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/ConditionedLatinHypercube/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#ConditionedLatinHypercube",
         "parameters": {
             "inputs": {
@@ -4560,7 +4560,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Curvedness",
         "description": "This tool calculates curvedness from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Curvedness",
         "parameters": {
             "dem": {
@@ -5031,7 +5031,7 @@
         "category": "Machine Learning",
         "label": "Dbscan",
         "description": "Performs a DBSCAN-based unsupervised clustering operation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#Dbscan",
         "parameters": {
             "inputs": {
@@ -5135,6 +5135,90 @@
             }
         }
     },
+    "DemVoidFilling": {
+        "name": "DemVoidFilling",
+        "tool_name": "dem_void_filling",
+        "category": "Geomorphometric Analysis",
+        "label": "Dem Void Filling",
+        "description": "This tool can be used to fill the void areas of a DEM using another fill DEM data set.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#DemVoidFilling",
+        "parameters": {
+            "dem": {
+                "name": "Input DEM",
+                "flags": [
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file, containing the void areas.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "fill": {
+                "name": "Input Fill DEM",
+                "flags": [
+                    "--fill"
+                ],
+                "description": "Name of the input fill DEM file, containing the values used to fill the void areas in the other DEM.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output DEM",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output void-filled DEM file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "mean_plane_dist": {
+                "name": "Mean-Plane Distance (in grid cells)",
+                "flags": [
+                    "--mean_plane_dist"
+                ],
+                "description": "Distance to void edge at which the mean-plane value is used as an offset, measured in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "20",
+                "optional": true
+            },
+            "edge_treatment": {
+                "name": "Void-Edge Treatment",
+                "flags": [
+                    "--edge_treatment"
+                ],
+                "description": "How should void-edge cells be treated? Options include 'use DEM' (default), 'use Fill', 'average'.",
+                "parameter_type": {
+                    "OptionList": [
+                        "use DEM",
+                        "use fill",
+                        "average"
+                    ]
+                },
+                "default_value": "use DEM",
+                "optional": true
+            },
+            "weight_value": {
+                "name": "Interpolation Weight",
+                "flags": [
+                    "--weight_value"
+                ],
+                "description": "Weight value used for IDW interpolation (default is 2.0).",
+                "parameter_type": "Float",
+                "default_value": "2.0",
+                "optional": true
+            }
+        }
+    },
     "DepthInSink": {
         "name": "DepthInSink",
         "tool_name": "depth_in_sink",
@@ -5188,7 +5272,7 @@
         "category": "Hydrological Analysis",
         "label": "Depth To Water",
         "description": "This tool calculates cartographic depth-to-water (DTW) index.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#DepthToWater",
         "parameters": {
             "dem": {
@@ -5480,7 +5564,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Difference Curvature",
         "description": "This tool calculates difference curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#DifferenceCurvature",
         "parameters": {
             "dem": {
@@ -6082,8 +6166,8 @@
         "tool_name": "edge_contamination",
         "category": "Hydrological Analysis",
         "label": "Edge Contamination",
-        "description": "This tool identifies grid cells within an input DEM that may be impacted by edge contamination for hydrological applications.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Identifies grid cells within an input DEM that may be impacted by edge contamination for hydrological applications.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/EdgeContamination/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#EdgeContamination",
         "parameters": {
             "dem": {
@@ -7161,7 +7245,7 @@
         "category": "Image Processing Tools",
         "label": "Evaluate Training Sites",
         "description": "This tool can be used to inspect the overlap in spectral signatures of training sites for various classes.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#EvaluateTrainingSites",
         "parameters": {
             "inputs": {
@@ -7199,7 +7283,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--polys"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -7346,8 +7435,8 @@
         "tool_name": "exposure_towards_wind_flux",
         "category": "Geomorphometric Analysis",
         "label": "Exposure Towards Wind Flux",
-        "description": "This tool evaluates hydrologic connectivity within a DEM",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Evaluates hydrologic connectivity within a DEM",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/ExposureTowardsWindFlux/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ExposureTowardsWindFlux",
         "parameters": {
             "dem": {
@@ -7632,7 +7721,6 @@
             "dem": {
                 "name": "Input DEM File",
                 "flags": [
-                    "-i",
                     "--dem"
                 ],
                 "description": "Input raster DEM file.",
@@ -8423,7 +8511,7 @@
         "category": "LiDAR Tools",
         "label": "Filter Lidar",
         "description": "Filters points within a LiDAR point cloud based on point properties.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#FilterLidar",
         "parameters": {
             "i": {
@@ -8956,7 +9044,7 @@
         "category": "Data Tools",
         "label": "Fix Dangling Arcs",
         "description": "This tool fixes undershot and overshot arcs, two common topological errors, in an input vector lines file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/data_tools.html#FixDanglingArcs",
         "parameters": {
             "i": {
@@ -9582,8 +9670,8 @@
         "tool_name": "gaussian_scale_space",
         "category": "Geomorphometric Analysis",
         "label": "Gaussian Scale Space",
-        "description": "This tool uses the fast Gaussian approximation algorithm to produce scaled land-surface parameter measurements from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Uses the fast Gaussian approximation algorithm to produce scaled land-surface parameter measurements from an input DEM.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/GaussianScaleSpace/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GaussianScaleSpace",
         "parameters": {
             "dem": {
@@ -9726,7 +9814,7 @@
         "category": "Image Processing Tools",
         "label": "Generalize Classified Raster",
         "description": "Generalizes a raster containing class or object features by removing small features.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#GeneralizeClassifiedRaster",
         "parameters": {
             "i": {
@@ -9789,7 +9877,7 @@
         "category": "Image Processing Tools",
         "label": "Generalize With Similarity",
         "description": "Generalizes a raster containing class or object features by removing small features using similarity criteria of neighbouring features.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#GeneralizeWithSimilarity",
         "parameters": {
             "i": {
@@ -9848,7 +9936,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Generating Function",
         "description": "This tool calculates generating function from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#GeneratingFunction",
         "parameters": {
             "dem": {
@@ -10128,8 +10216,8 @@
         "tool_name": "heat_map",
         "category": "GIS Analysis",
         "label": "Heat Map",
-        "description": "This tool calculates a heat map, or kernel density estimation (KDE), for an input point set.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Calculates a heat map, or kernel density estimation (KDE), for an input point set.",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#HeatMap",
         "parameters": {
             "i": {
@@ -10257,9 +10345,9 @@
                     "-o",
                     "--output"
                 ],
-                "description": "Output raster file (including extension).",
+                "description": "Output lidar file (including extension).",
                 "parameter_type": {
-                    "NewFile": "Raster"
+                    "NewFile": "Lidar"
                 },
                 "default_value": null,
                 "optional": true
@@ -10710,7 +10798,7 @@
         "tool_name": "histogram_matching_two_images",
         "category": "Image Processing Tools",
         "label": "Histogram Matching Two Images",
-        "description": "This tool alters the cumulative distribution function of a raster image to that of another image.",
+        "description": "Alters the cumulative distribution function of a raster image to that of another image.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/histogram_matching_two_images.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#HistogramMatchingTwoImages",
         "parameters": {
@@ -10844,7 +10932,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Horizontal Excess Curvature",
         "description": "This tool calculates horizontal excess curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#HorizontalExcessCurvature",
         "parameters": {
             "dem": {
@@ -10969,7 +11057,7 @@
         "category": "Hydrological Analysis",
         "label": "Hydrologic Connectivity",
         "description": "This tool evaluates hydrologic connectivity within a DEM",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#HydrologicConnectivity",
         "parameters": {
             "dem": {
@@ -11700,7 +11788,7 @@
         "category": "Image Processing Tools",
         "label": "Image Segmentation",
         "description": "Performs a region-growing based segmentation on a set of multi-spectral images.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#ImageSegmentation",
         "parameters": {
             "inputs": {
@@ -11767,7 +11855,7 @@
         "category": "Image Processing Tools",
         "label": "Image Slider",
         "description": "This tool creates an image slider from two input images.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#ImageSlider",
         "parameters": {
             "input1": {
@@ -12242,6 +12330,95 @@
             }
         }
     },
+    "IndividualTreeDetection": {
+        "name": "IndividualTreeDetection",
+        "tool_name": "individual_tree_detection",
+        "category": "LiDAR Tools",
+        "label": "Individual Tree Detection",
+        "description": "Identifies points in a LiDAR point cloud that are associated with the tops of individual trees.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#IndividualTreeDetection",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR File",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR file.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "output": {
+                "name": "Output Vector",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output vector points file.",
+                "parameter_type": {
+                    "NewFile": {
+                        "Vector": "Point"
+                    }
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "min_search_radius": {
+                "name": "Min. Search Radius",
+                "flags": [
+                    "--min_search_radius"
+                ],
+                "description": "Minimum search radius (m).",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": false
+            },
+            "min_height": {
+                "name": "Min. Height",
+                "flags": [
+                    "--min_height"
+                ],
+                "description": "Minimum height (m).",
+                "parameter_type": "Float",
+                "default_value": "0.0",
+                "optional": false
+            },
+            "max_search_radius": {
+                "name": "Max. Search Radius",
+                "flags": [
+                    "--max_search_radius"
+                ],
+                "description": "Maximum search radius (m).",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            },
+            "max_height": {
+                "name": "Max. Height",
+                "flags": [
+                    "--max_height"
+                ],
+                "description": "Maximum height (m).",
+                "parameter_type": "Float",
+                "default_value": "",
+                "optional": true
+            },
+            "only_use_veg": {
+                "name": "Only use veg. class points?",
+                "flags": [
+                    "--only_use_veg"
+                ],
+                "description": "Only use veg. class points?",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            }
+        }
+    },
     "InsertDams": {
         "name": "InsertDams",
         "tool_name": "insert_dams",
@@ -12299,6 +12476,34 @@
                 "description": "Maximum length of the dam.",
                 "parameter_type": "Float",
                 "default_value": null,
+                "optional": false
+            }
+        }
+    },
+    "InstallWbExtension": {
+        "name": "InstallWbExtension",
+        "tool_name": "install_wb_extension",
+        "category": "Whitebox Utilities",
+        "label": "Install Wb Extension",
+        "description": "Use to install a Whitebox extension product.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/whitebox_utilities.html#InstallWbExtension",
+        "parameters": {
+            "install_extension": {
+                "name": "Whitebox Extension Product Name",
+                "flags": [
+                    "--install_extension"
+                ],
+                "description": "Name of the extension product to install. Options include: 'General Toolset Extension', 'DEM & Spatial Hydrology Extension', 'Lidar & Remote Sensing Extension', and 'Agriculture Extension'",
+                "parameter_type": {
+                    "OptionList": [
+                        "General Toolset Extension",
+                        "DEM & Spatial Hydrology Extension",
+                        "Lidar & Remote Sensing Extension",
+                        "Agriculture Extension"
+                    ]
+                },
+                "default_value": "General Toolset Extension",
                 "optional": false
             }
         }
@@ -12959,7 +13164,7 @@
         "category": "Machine Learning",
         "label": "Knn Classification",
         "description": "Performs a supervised k-nearest neighbour classification using training site polygons/points and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KnnClassification",
         "parameters": {
             "inputs": {
@@ -12974,22 +13179,6 @@
                 },
                 "default_value": null,
                 "optional": false
-            },
-            "scaling": {
-                "name": "Scaling Method",
-                "flags": [
-                    "--scaling"
-                ],
-                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
-                "parameter_type": {
-                    "OptionList": [
-                        "None",
-                        "Normalize",
-                        "Standardize"
-                    ]
-                },
-                "default_value": "Normalize",
-                "optional": true
             },
             "training": {
                 "name": "Input Training Polygons/Points",
@@ -13013,8 +13202,23 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
+                "optional": false
+            },
+            "test_proportion": {
+                "name": "Test Proportion",
+                "flags": [
+                    "--test_proportion"
+                ],
+                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
                 "optional": false
             },
             "output": {
@@ -13028,6 +13232,22 @@
                     "NewFile": "Raster"
                 },
                 "default_value": null,
+                "optional": true
+            },
+            "scaling": {
+                "name": "Scaling Method",
+                "flags": [
+                    "--scaling"
+                ],
+                "description": "Scaling method for predictors. Options include 'None', 'Normalize', and 'Standardize'",
+                "parameter_type": {
+                    "OptionList": [
+                        "None",
+                        "Normalize",
+                        "Standardize"
+                    ]
+                },
+                "default_value": "Normalize",
                 "optional": true
             },
             "k": {
@@ -13049,16 +13269,6 @@
                 "parameter_type": "Boolean",
                 "default_value": "true",
                 "optional": true
-            },
-            "test_proportion": {
-                "name": "Test Proportion",
-                "flags": [
-                    "--test_proportion"
-                ],
-                "description": "The proportion of the dataset to include in the test split; default is 0.2.",
-                "parameter_type": "Float",
-                "default_value": "0.2",
-                "optional": false
             }
         }
     },
@@ -13068,7 +13278,7 @@
         "category": "Machine Learning",
         "label": "Knn Regression",
         "description": "Performs a supervised k-nearest neighbour regression using training site points and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#KnnRegression",
         "parameters": {
             "inputs": {
@@ -13122,7 +13332,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing response variable name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -13361,7 +13576,7 @@
         "category": "LiDAR Tools",
         "label": "Las To Laz",
         "description": "This tool converts one or more LAS files into the LAZ format",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LasToLaz",
         "parameters": {
             "i": {
@@ -13499,6 +13714,27 @@
             }
         }
     },
+    "LaunchWbRunner": {
+        "name": "LaunchWbRunner",
+        "tool_name": "launch_wb_runner",
+        "category": "Whitebox Utilities",
+        "label": "Launch Wb Runner",
+        "description": "Opens the Whitebox Runner application.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/whitebox_utilities.html#LaunchWbRunner",
+        "parameters": {
+            "clear_app_state": {
+                "name": "Clear the application state memory?",
+                "flags": [
+                    "--clear_app_state"
+                ],
+                "description": "Clear the application state memory?",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            }
+        }
+    },
     "LayerFootprint": {
         "name": "LayerFootprint",
         "tool_name": "layer_footprint",
@@ -13546,7 +13782,7 @@
         "category": "LiDAR Tools",
         "label": "Laz To Las",
         "description": "This tool converts one or more LAZ files into the LAS format",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LazToLas",
         "parameters": {
             "i": {
@@ -13996,7 +14232,7 @@
         "category": "LiDAR Tools",
         "label": "Lidar Contour",
         "description": "This tool creates a vector contour coverage from an input LiDAR point file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarContour",
         "parameters": {
             "i": {
@@ -14035,6 +14271,16 @@
                 "description": "Contour interval.",
                 "parameter_type": "Float",
                 "default_value": "10.0",
+                "optional": false
+            },
+            "base": {
+                "name": "Base Contour",
+                "flags": [
+                    "--base"
+                ],
+                "description": "Base contour.",
+                "parameter_type": "Float",
+                "default_value": "0.0",
                 "optional": false
             },
             "smooth": {
@@ -14215,7 +14461,7 @@
         "category": "LiDAR Tools",
         "label": "Lidar Eigenvalue Features",
         "description": "Calculate eigenvalue-based metrics from a LiDAR point cloud.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarEigenvalueFeatures",
         "parameters": {
             "i": {
@@ -14993,7 +15239,7 @@
                 "flags": [
                     "--parameter"
                 ],
-                "description": "Interpolation parameter; options are 'elevation' (default), 'intensity', 'class', 'return_number', 'number_of_returns', 'scan angle', 'rgb', 'user data'.",
+                "description": "Interpolation parameter; options are 'elevation' (default), 'intensity', 'class', 'return_number', 'number_of_returns', 'scan angle', 'rgb', 'user data', 'time'.",
                 "parameter_type": {
                     "OptionList": [
                         "elevation",
@@ -15003,7 +15249,8 @@
                         "number_of_returns",
                         "scan angle",
                         "rgb",
-                        "user data"
+                        "user data",
+                        "time"
                     ]
                 },
                 "default_value": "elevation",
@@ -15186,7 +15433,7 @@
         "category": "LiDAR Tools",
         "label": "Lidar Point Return Analysis",
         "description": "This tool performs a quality control check on the return values of points in a LiDAR file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarPointReturnAnalysis",
         "parameters": {
             "i": {
@@ -16084,7 +16331,7 @@
         "category": "LiDAR Tools",
         "label": "Lidar Shift",
         "description": "Shifts the x,y,z coordinates of a LiDAR file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarShift",
         "parameters": {
             "i": {
@@ -16154,7 +16401,7 @@
         "category": "LiDAR Tools",
         "label": "Lidar Sibson Interpolation",
         "description": "This tool interpolates one or more LiDAR tiles using Sibson's natural neighbour method.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#LidarSibsonInterpolation",
         "parameters": {
             "i": {
@@ -16947,7 +17194,7 @@
                     "-i",
                     "--input"
                 ],
-                "description": "Input raster file.",
+                "description": "Input vector file.",
                 "parameter_type": {
                     "ExistingFile": {
                         "Vector": "Any"
@@ -16980,6 +17227,32 @@
                 "description": "Output HTML file (default name will be based on input file if unspecified).",
                 "parameter_type": {
                     "NewFile": "Html"
+                },
+                "default_value": null,
+                "optional": false
+            }
+        }
+    },
+    "ListUniqueValuesRaster": {
+        "name": "ListUniqueValuesRaster",
+        "tool_name": "list_unique_values_raster",
+        "category": "Math and Stats Tools",
+        "label": "List Unique Values Raster",
+        "description": "Lists the unique values contained in a field within a vector's attribute table.",
+        "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/math_stat_analysis/list_unique_values_raster.rs",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#ListUniqueValuesRaster",
+        "parameters": {
+            "i": {
+                "name": "Input File",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Input vector file.",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Any"
+                    }
                 },
                 "default_value": null,
                 "optional": false
@@ -17029,7 +17302,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Local Hypsometric Analysis",
         "description": "This tool calculates a local, neighbourhood-based hypsometric integral raster.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#LocalHypsometricAnalysis",
         "parameters": {
             "i": {
@@ -17116,8 +17389,8 @@
         "tool_name": "local_quadratic_regression",
         "category": "Geomorphometric Analysis",
         "label": "Local Quadratic Regression",
-        "description": "This tool is an implementation of the constrained quadratic regression algorithm using a flexible window size described in Wood (1996).",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "An implementation of the constrained quadratic regression algorithm using a flexible window size described in Wood (1996).",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/LocalQuadraticRegression/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#LocalQuadraticRegression",
         "parameters": {
             "dem": {
@@ -17238,7 +17511,7 @@
         "category": "Machine Learning",
         "label": "Logistic Regression",
         "description": "Performs a logistic regression analysis using training site polygons/points and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#LogisticRegression",
         "parameters": {
             "inputs": {
@@ -17292,7 +17565,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -17520,7 +17798,7 @@
         "category": "Hydrological Analysis",
         "label": "Low Points On Headwater Divides",
         "description": "This tool locates saddle points along ridges within a digital elevation model (DEM)",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#LowPointsOnHeadwaterDivides",
         "parameters": {
             "dem": {
@@ -18490,8 +18768,8 @@
         "tool_name": "max_upslope_value",
         "category": "Hydrological Analysis",
         "label": "Max Upslope Value",
-        "description": "This tool calculates the maximum upslope value from an input values raster along flowpaths.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Calculates the maximum upslope value from an input values raster along flowpaths.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/MaxUpslopeValue/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#MaxUpslopeValue",
         "parameters": {
             "dem": {
@@ -19135,7 +19413,7 @@
         "category": "Image Processing Tools",
         "label": "Min Dist Classification",
         "description": "Performs a supervised minimum-distance classification using training site polygons and multi-spectral images.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#MinDistClassification",
         "parameters": {
             "inputs": {
@@ -19173,7 +19451,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--polys"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -19773,7 +20056,7 @@
         "category": "LiDAR Tools",
         "label": "Modify Lidar",
         "description": "Modify points within a LiDAR point cloud based on point properties.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#ModifyLidar",
         "parameters": {
             "i": {
@@ -19820,7 +20103,7 @@
         "tool_name": "modify_no_data_value",
         "category": "Data Tools",
         "label": "Modify No Data Value",
-        "description": "Converts nodata values in a raster to zero.",
+        "description": "Modifies nodata values in a raster.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/data_tools/modify_nodata_value.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/data_tools.html#ModifyNoDataValue",
         "parameters": {
@@ -20226,6 +20509,146 @@
                 },
                 "default_value": null,
                 "optional": false
+            }
+        }
+    },
+    "MultiscaleCurvatures": {
+        "name": "MultiscaleCurvatures",
+        "tool_name": "multiscale_curvatures",
+        "category": "Geomorphometric Analysis",
+        "label": "Multiscale Curvatures",
+        "description": "This tool calculates several multiscale curvatures and curvature-based indices from an input DEM.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#MultiscaleCurvatures",
+        "parameters": {
+            "dem": {
+                "name": "Input Raster DEM",
+                "flags": [
+                    "-i",
+                    "--input",
+                    "--dem"
+                ],
+                "description": "Name of the input raster DEM file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "curv_type": {
+                "name": "Curvature Type",
+                "flags": [
+                    "--curv_type"
+                ],
+                "description": "Curvature type",
+                "parameter_type": {
+                    "OptionList": [
+                        "AccumulationCurv",
+                        "Curvedness",
+                        "DifferenceCurv",
+                        "GaussianCurv",
+                        "GeneratingFunction",
+                        "HorizontalExcessCurv",
+                        "MaximalCurv",
+                        "MeanCurv",
+                        "MinimalCurv",
+                        "PlanCurv",
+                        "ProfileCurv",
+                        "RingCurv",
+                        "Rotor",
+                        "ShapeIndex",
+                        "TangentialCurv",
+                        "TotalCurv",
+                        "Unsphericity",
+                        "VerticalExcessCurv"
+                    ]
+                },
+                "default_value": "ProfileCurv",
+                "optional": true
+            },
+            "out_mag": {
+                "name": "Output Magnitude File",
+                "flags": [
+                    "--out_mag"
+                ],
+                "description": "Output raster magnitude file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "out_scale": {
+                "name": "Output Scale File",
+                "flags": [
+                    "--out_scale"
+                ],
+                "description": "Output raster scale file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "min_scale": {
+                "name": "Minimum Search Neighbourhood Radius (grid cells)",
+                "flags": [
+                    "--min_scale"
+                ],
+                "description": "Minimum search neighbourhood radius in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "0",
+                "optional": true
+            },
+            "step": {
+                "name": "Base Step Size",
+                "flags": [
+                    "--step"
+                ],
+                "description": "Step size as any positive non-zero integer.",
+                "parameter_type": "Integer",
+                "default_value": "1",
+                "optional": true
+            },
+            "num_steps": {
+                "name": "Number of Steps",
+                "flags": [
+                    "--num_steps"
+                ],
+                "description": "Number of steps.",
+                "parameter_type": "Integer",
+                "default_value": "1",
+                "optional": false
+            },
+            "step_nonlinearity": {
+                "name": "Step Nonlinearity",
+                "flags": [
+                    "--step_nonlinearity"
+                ],
+                "description": "Step nonlinearity factor (1.0-2.0 is typical).",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": false
+            },
+            "log": {
+                "name": "Log-transform the output?",
+                "flags": [
+                    "--log"
+                ],
+                "description": "Display output values using a log-scale.",
+                "parameter_type": "Boolean",
+                "default_value": "true",
+                "optional": true
+            },
+            "standardize": {
+                "name": "Standardize Each Scale?",
+                "flags": [
+                    "--standardize"
+                ],
+                "description": "Should each scale be standardized to z-scores?",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
             }
         }
     },
@@ -20710,6 +21133,18 @@
                 "default_value": null,
                 "optional": false
             },
+            "hillshade": {
+                "name": "Optional Hillshade File",
+                "flags": [
+                    "--hillshade"
+                ],
+                "description": "Input optional hillshade raster file. Note: a multi-directional (360-degree option) hillshade tends to work best in this application.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": true
+            },
             "output": {
                 "name": "Output File",
                 "flags": [
@@ -21123,6 +21558,55 @@
             }
         }
     },
+    "NormalizeLidar": {
+        "name": "NormalizeLidar",
+        "tool_name": "normalize_lidar",
+        "category": "LiDAR Tools",
+        "label": "Normalize Lidar",
+        "description": "Normalizes a LiDAR point cloud.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#NormalizeLidar",
+        "parameters": {
+            "i": {
+                "name": "Input LiDAR File",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input LiDAR file.",
+                "parameter_type": {
+                    "ExistingFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output Lidar File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output LiDAR file.",
+                "parameter_type": {
+                    "NewFile": "Lidar"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "dtm": {
+                "name": "Input DTM Raster File",
+                "flags": [
+                    "--dtm"
+                ],
+                "description": "Name of the input digital terrain model (DTM) raster file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            }
+        }
+    },
     "NormalizedDifferenceIndex": {
         "name": "NormalizedDifferenceIndex",
         "tool_name": "normalized_difference_index",
@@ -21518,7 +22002,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Openness",
         "description": "This tool calculates the topographic openness index from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Openness",
         "parameters": {
             "i": {
@@ -21781,7 +22265,7 @@
         "category": "Image Processing Tools",
         "label": "Parallelepiped Classification",
         "description": "Performs a supervised parallelepiped classification using training site polygons and multi-spectral images.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/classification.html#ParallelepipedClassification",
         "parameters": {
             "inputs": {
@@ -21819,7 +22303,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--polys"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -22318,7 +22807,7 @@
         "category": "Math and Stats Tools",
         "label": "Phi Coefficient",
         "description": "This tool performs a binary classification accuracy assessment.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#PhiCoefficient",
         "parameters": {
             "input1": {
@@ -22415,7 +22904,7 @@
         "category": "Image Processing Tools",
         "label": "Piecewise Contrast Stretch",
         "description": "Performs a piecewise contrast stretch on an input image.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools/image_enhancement.html#PiecewiseContrastStretch",
         "parameters": {
             "i": {
@@ -22556,7 +23045,7 @@
         "tool_name": "polygon_long_axis",
         "category": "GIS Analysis",
         "label": "Polygon Long Axis",
-        "description": "This tool can be used to map the long axis of polygon features.",
+        "description": "Used to map the long axis of polygon features.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/gis_analysis/polygon_long_axis.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#PolygonLongAxis",
         "parameters": {
@@ -22623,7 +23112,7 @@
         "tool_name": "polygon_short_axis",
         "category": "GIS Analysis",
         "label": "Polygon Short Axis",
-        "description": "This tool can be used to map the short axis of polygon features.",
+        "description": "Used to map the short axis of polygon features.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/gis_analysis/polygon_short_axis.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#PolygonShortAxis",
         "parameters": {
@@ -23029,8 +23518,8 @@
         "tool_name": "qin_flow_accumulation",
         "category": "Hydrological Analysis",
         "label": "Qin Flow Accumulation",
-        "description": "This tool calculates Qin et al. (2007) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Calculates Qin et al. (2007) flow accumulation.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/QinFlowAccumulation/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#QinFlowAccumulation",
         "parameters": {
             "dem": {
@@ -23178,8 +23667,8 @@
         "tool_name": "quinn_flow_accumulation",
         "category": "Hydrological Analysis",
         "label": "Quinn Flow Accumulation",
-        "description": "This tool calculates Quinn et al. (1995) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Calculates Quinn et al. (1995) flow accumulation.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/QuinnFlowAccumulation/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#QuinnFlowAccumulation",
         "parameters": {
             "dem": {
@@ -23581,7 +24070,7 @@
         "category": "Machine Learning",
         "label": "Random Forest Classification",
         "description": "Performs a supervised random forest classification using training site polygons/points and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#RandomForestClassification",
         "parameters": {
             "inputs": {
@@ -23619,7 +24108,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -23700,7 +24194,7 @@
         "category": "Machine Learning",
         "label": "Random Forest Regression",
         "description": "Performs a random forest regression analysis using training site data and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#RandomForestRegression",
         "parameters": {
             "inputs": {
@@ -23738,7 +24232,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing response variable name data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -23978,8 +24477,8 @@
         "tool_name": "raster_calculator",
         "category": "Math and Stats Tools",
         "label": "Raster Calculator",
-        "description": "This tool performs a complex mathematical operations on one or more input raster images on a cell-to-cell basis.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Performs a complex mathematical operations on one or more input raster images on a cell-to-cell basis.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/RasterCalculator/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/mathand_stats_tools.html#RasterCalculator",
         "parameters": {
             "statement": {
@@ -24657,7 +25156,7 @@
         "category": "Precision Agriculture",
         "label": "Reconcile Multiple Headers",
         "description": "This tool adjusts the crop yield values for data sets collected with multiple headers or combines.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#ReconcileMultipleHeaders",
         "parameters": {
             "i": {
@@ -24681,7 +25180,12 @@
                     "--region_field"
                 ],
                 "description": "Name of the attribute containing region data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -24692,7 +25196,12 @@
                     "--yield_field"
                 ],
                 "description": "Name of the attribute containing yield data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -24759,7 +25268,7 @@
         "category": "LiDAR Tools",
         "label": "Recover Flightline Info",
         "description": "Associates LiDAR points by their flightlines.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#RecoverFlightlineInfo",
         "parameters": {
             "i": {
@@ -24836,7 +25345,7 @@
         "category": "Precision Agriculture",
         "label": "Recreate Pass Lines",
         "description": "This tool can be used to approximate the harvester pass lines from yield points.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#RecreatePassLines",
         "parameters": {
             "i": {
@@ -24861,7 +25370,12 @@
                     "--yield_field_name"
                 ],
                 "description": "Name of the attribute containing yield data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -25088,7 +25602,7 @@
         "category": "Precision Agriculture",
         "label": "Remove Field Edge Points",
         "description": "This tool can be used to remove, or flag, most of the points along the edges from a crop yield data set.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#RemoveFieldEdgePoints",
         "parameters": {
             "i": {
@@ -25254,6 +25768,63 @@
             }
         }
     },
+    "RemoveRasterPolygonHoles": {
+        "name": "RemoveRasterPolygonHoles",
+        "tool_name": "remove_raster_polygon_holes",
+        "category": "Data Tools",
+        "label": "Remove Raster Polygon Holes",
+        "description": "Removes polygon holes, or 'donut-holes', from raster polygons.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/data_tools.html#RemoveRasterPolygonHoles",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output Raster File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "threshold": {
+                "name": "Threshold Size (Grid Cells):",
+                "flags": [
+                    "--threshold"
+                ],
+                "description": "Maximum size of removed holes, in grid cells. Blank for no threshold, i.e. remove all holes.",
+                "parameter_type": "Integer",
+                "default_value": "3",
+                "optional": true
+            },
+            "use_diagonals": {
+                "name": "Use diagonal neighbours during clumping?",
+                "flags": [
+                    "--use_diagonals"
+                ],
+                "description": "Use diagonal neighbours during clumping operation.",
+                "parameter_type": "Boolean",
+                "default_value": "true",
+                "optional": true
+            }
+        }
+    },
     "RemoveShortStreams": {
         "name": "RemoveShortStreams",
         "tool_name": "remove_short_streams",
@@ -25375,7 +25946,7 @@
         "category": "Stream Network Analysis",
         "label": "Repair Stream Vector Topology",
         "description": "This tool resolves topological errors and inconsistencies associated with digitized vector streams.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/stream_network_analysis.html#RepairStreamVectorTopology",
         "parameters": {
             "i": {
@@ -25673,8 +26244,8 @@
         "tool_name": "rho8_flow_accumulation",
         "category": "Hydrological Analysis",
         "label": "Rho8 Flow Accumulation",
-        "description": "This tool calculates Fairfield and Leymarie (1991) flow accumulation.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Calculates Fairfield and Leymarie (1991) flow accumulation.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/Rho8FlowAccumulation/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#Rho8FlowAccumulation",
         "parameters": {
             "i": {
@@ -25813,7 +26384,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Ring Curvature",
         "description": "This tool calculates ring curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#RingCurvature",
         "parameters": {
             "dem": {
@@ -25860,6 +26431,65 @@
                 "description": "Z conversion factor.",
                 "parameter_type": "Float",
                 "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
+    "RiverCenterlines": {
+        "name": "RiverCenterlines",
+        "tool_name": "river_centerlines",
+        "category": "Hydrological Analysis",
+        "label": "River Centerlines",
+        "description": "Maps river centerlines from an input water raster.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/hydrological_analysis.html#RiverCenterlines",
+        "parameters": {
+            "i": {
+                "name": "Input Raster Image",
+                "flags": [
+                    "-i",
+                    "--input"
+                ],
+                "description": "Name of the input raster image file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output Vector Lines File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output vector lines file.",
+                "parameter_type": {
+                    "NewFile": {
+                        "Vector": "Line"
+                    }
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "min_length": {
+                "name": "Min. Line Length (In Grid Cells)",
+                "flags": [
+                    "--min_length"
+                ],
+                "description": "Minimum line length, in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "3",
+                "optional": true
+            },
+            "radius": {
+                "name": "Search Radius (In Grid Cells)",
+                "flags": [
+                    "--radius"
+                ],
+                "description": "Search radius for joining distant endnodes, in grid cells.",
+                "parameter_type": "Integer",
+                "default_value": "4",
                 "optional": true
             }
         }
@@ -25953,7 +26583,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Rotor",
         "description": "This tool calculates rotor from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Rotor",
         "parameters": {
             "dem": {
@@ -26243,7 +26873,7 @@
         "tool_name": "set_nodata_value",
         "category": "Data Tools",
         "label": "Set Nodata Value",
-        "description": "Assign a specified value in an input image to the NoData value.",
+        "description": "Assign the NoData value for an input image.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/data_tools/set_nodata_value.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/data_tools.html#SetNodataValue",
         "parameters": {
@@ -26291,7 +26921,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Shadow Animation",
         "description": "This tool creates an animated GIF of shadows based on an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ShadowAnimation",
         "parameters": {
             "i": {
@@ -26353,7 +26983,7 @@
                     "--max_dist"
                 ],
                 "description": "Optional maximum search distance, in xy units. Minimum value is 5 x cell size.",
-                "parameter_type": "Integer",
+                "parameter_type": "Float",
                 "default_value": "",
                 "optional": true
             },
@@ -26428,7 +27058,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Shadow Image",
         "description": "This tool creates a raster of shadow areas based on an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ShadowImage",
         "parameters": {
             "i": {
@@ -26440,6 +27070,19 @@
                 "description": "Name of the input digital surface model (DSM) raster file.",
                 "parameter_type": {
                     "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
                 },
                 "default_value": null,
                 "optional": false
@@ -26471,26 +27114,13 @@
                 "default_value": "soft",
                 "optional": true
             },
-            "output": {
-                "name": "Output File",
-                "flags": [
-                    "-o",
-                    "--output"
-                ],
-                "description": "Name of the output raster file.",
-                "parameter_type": {
-                    "NewFile": "Raster"
-                },
-                "default_value": null,
-                "optional": false
-            },
             "max_dist": {
                 "name": "Maximum Search Distance (xy units)",
                 "flags": [
                     "--max_dist"
                 ],
                 "description": "Optional maximum search distance, in xy unites. Minimum value is 5 x cell size.",
-                "parameter_type": "Integer",
+                "parameter_type": "Float",
                 "default_value": "",
                 "optional": true
             },
@@ -26506,7 +27136,7 @@
                 "optional": true
             },
             "time": {
-                "name": "Time (HH::MM, e.g. 03:15AM or 14:30)",
+                "name": "Time (HH:MM, e.g. 03:15AM or 14:30)",
                 "flags": [
                     "-t",
                     "--time"
@@ -26597,7 +27227,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Shape Index",
         "description": "This tool calculates the shape index from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#ShapeIndex",
         "parameters": {
             "dem": {
@@ -27020,7 +27650,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Slope Vs Aspect Plot",
         "description": "This tool creates a slope-aspect relation plot from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#SlopeVsAspectPlot",
         "parameters": {
             "i": {
@@ -27187,7 +27817,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Smooth Vegetation Residual",
         "description": "This tool can smooth the residual roughness due to vegetation cover in LiDAR DEMs.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#SmoothVegetationResidual",
         "parameters": {
             "i": {
@@ -27378,7 +28008,7 @@
         "category": "LiDAR Tools",
         "label": "Sort Lidar",
         "description": "Sorts LiDAR points based on their properties.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#SortLidar",
         "parameters": {
             "i": {
@@ -27471,7 +28101,7 @@
         "tool_name": "split_colour_composite",
         "category": "Image Processing Tools",
         "label": "Split Colour Composite",
-        "description": "This tool splits an RGB colour composite image into separate multispectral images.",
+        "description": "Splits an RGB colour composite image into separate multispectral images.",
         "github": "https://github.com/jblindsay/whitebox-tools/blob/master/whitebox-tools-app/src/tools/image_analysis/split_colour_composite.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/image_processing_tools.html#SplitColourComposite",
         "parameters": {
@@ -27532,7 +28162,7 @@
         "category": "LiDAR Tools",
         "label": "Split Lidar",
         "description": "Splits LiDAR points up into a series of new files based on their properties.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/lidar_tools.html#SplitLidar",
         "parameters": {
             "i": {
@@ -27598,8 +28228,8 @@
         "tool_name": "split_vector_lines",
         "category": "GIS Analysis",
         "label": "Split Vector Lines",
-        "description": "This tool can be used to split a vector line coverage into even-lengthed segments.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Used to split a vector line coverage into even-lengthed segments.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/SplitVectorLines/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#SplitVectorLines",
         "parameters": {
             "i": {
@@ -28758,7 +29388,7 @@
         "category": "Machine Learning",
         "label": "Svm Classification",
         "description": "Performs an SVM binary classification using training site polygons/points and multiple input images.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#SvmClassification",
         "parameters": {
             "inputs": {
@@ -28812,7 +29442,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -28877,7 +29512,7 @@
         "category": "Machine Learning",
         "label": "Svm Regression",
         "description": "Performs a supervised SVM regression analysis using training site points and predictor rasters.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/machine_learning.html#SvmRegression",
         "parameters": {
             "inputs": {
@@ -28931,7 +29566,12 @@
                     "--field"
                 ],
                 "description": "Name of the attribute containing class data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--training"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -29592,13 +30232,174 @@
             }
         }
     },
+    "TopoRender": {
+        "name": "TopoRender",
+        "tool_name": "topo_render",
+        "category": "Geomorphometric Analysis",
+        "label": "Topo Render",
+        "description": "This tool creates a pseudo-3D rendering from an input DEM, for the purpose of effective topographic visualization.",
+        "github": "Source code is unavailable due to proprietary license.",
+        "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#TopoRender",
+        "parameters": {
+            "dem": {
+                "name": "Input Digital Elevation Model (DEM) Raster",
+                "flags": [
+                    "-i",
+                    "--input",
+                    "--dem"
+                ],
+                "description": "Name of the input digital elevation model (DEM) raster file.",
+                "parameter_type": {
+                    "ExistingFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "output": {
+                "name": "Output File",
+                "flags": [
+                    "-o",
+                    "--output"
+                ],
+                "description": "Name of the output raster file.",
+                "parameter_type": {
+                    "NewFile": "Raster"
+                },
+                "default_value": null,
+                "optional": false
+            },
+            "palette": {
+                "name": "Palette",
+                "flags": [
+                    "-p",
+                    "--palette"
+                ],
+                "description": "Palette name; options are 'atlas', 'high_relief', 'arid', 'soft', 'earthtones', 'muted', 'light_quant', 'purple', 'viridi', 'gn_yl', 'pi_y_g', 'bl_yl_rd', 'deep', 'imhof', and 'white'.",
+                "parameter_type": {
+                    "OptionList": [
+                        "atlas",
+                        "high_relief",
+                        "arid",
+                        "soft",
+                        "earthtones",
+                        "muted",
+                        "light_quant",
+                        "purple",
+                        "viridis",
+                        "gn_yl",
+                        "pi_y_g",
+                        "bl_yl_rd",
+                        "deep",
+                        "imhof",
+                        "white"
+                    ]
+                },
+                "default_value": "soft",
+                "optional": true
+            },
+            "rev_palette": {
+                "name": "Reverse the palette?",
+                "flags": [
+                    "--rev_palette"
+                ],
+                "description": "Reverse the palette?",
+                "parameter_type": "Boolean",
+                "default_value": "false",
+                "optional": true
+            },
+            "az": {
+                "name": "Light Source Direction (degrees)",
+                "flags": [
+                    "--az"
+                ],
+                "description": "Light source azimuth direction (degrees, 0-360).",
+                "parameter_type": "Float",
+                "default_value": "315.0",
+                "optional": true
+            },
+            "alt": {
+                "name": "Light Source Altitude (degrees)",
+                "flags": [
+                    "--alt"
+                ],
+                "description": "Light source altitude (degrees, 0-90).",
+                "parameter_type": "Float",
+                "default_value": "30.0",
+                "optional": true
+            },
+            "background_hgt_offset": {
+                "name": "Offset Height of Background (z-units)",
+                "flags": [
+                    "--background_hgt_offset"
+                ],
+                "description": "Offset height of background, in z-units.",
+                "parameter_type": "Float",
+                "default_value": "10.0",
+                "optional": true
+            },
+            "polygon": {
+                "name": "Clipping Polygon",
+                "flags": [
+                    "--polygon"
+                ],
+                "description": "Clipping polygon vector file (optional).",
+                "parameter_type": {
+                    "ExistingFile": {
+                        "Vector": "Polygon"
+                    }
+                },
+                "default_value": null,
+                "optional": true
+            },
+            "background_clr": {
+                "name": "Background RGB colour",
+                "flags": [
+                    "--background_clr"
+                ],
+                "description": "Background red-green-blue (RGB) or red-green-blue-alpha (RGBA) colour, e.g. '[255, 255, 245]', '[255, 255, 245, 200]'",
+                "parameter_type": "String",
+                "default_value": "[255, 255, 255]",
+                "optional": true
+            },
+            "attenuation": {
+                "name": "Attenuation Parameter",
+                "flags": [
+                    "--attenuation"
+                ],
+                "description": "Attenuation parameter. Range is 0-4. Zero means no attenuation.",
+                "parameter_type": "Float",
+                "default_value": "0.6",
+                "optional": true
+            },
+            "ambient_light": {
+                "name": "Ambient Light",
+                "flags": [
+                    "--ambient_light"
+                ],
+                "description": "Ambient light parameter. Range is 0.0-0.7. Zero means no ambient light.",
+                "parameter_type": "Float",
+                "default_value": "0.2",
+                "optional": true
+            },
+            "z_factor": {
+                "name": "Elevation Multiplier",
+                "flags": [
+                    "--z_factor"
+                ],
+                "description": "Elevation multiplier, or a vertical exageration.",
+                "parameter_type": "Float",
+                "default_value": "1.0",
+                "optional": true
+            }
+        }
+    },
     "TopographicPositionAnimation": {
         "name": "TopographicPositionAnimation",
         "tool_name": "topographic_position_animation",
         "category": "Geomorphometric Analysis",
         "label": "Topographic Position Animation",
         "description": "This tool creates an animated GIF of multi-scale local topographic position (elevation deviation).",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#TopographicPositionAnimation",
         "parameters": {
             "i": {
@@ -29977,8 +30778,8 @@
         "tool_name": "travelling_salesman_problem",
         "category": "GIS Analysis",
         "label": "Travelling Salesman Problem",
-        "description": "This tool finds approximate solutions to travelling salesman problems, the goal of which is to identify the shortest route connecting a set of locations.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "description": "Finds approximate solutions to travelling salesman problems, the goal of which is to identify the shortest route connecting a set of locations.",
+        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-plugins/src/TravellingSalesmanProblem/main.rs",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/gis_analysis.html#TravellingSalesmanProblem",
         "parameters": {
             "i": {
@@ -30572,7 +31373,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Unsphericity",
         "description": "This tool calculates the unsphericity curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#Unsphericity",
         "parameters": {
             "dem": {
@@ -31134,7 +31935,7 @@
         "category": "Stream Network Analysis",
         "label": "Vector Stream Network Analysis",
         "description": "This tool performs common stream network analysis operations on an input vector stream file.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/stream_network_analysis.html#VectorStreamNetworkAnalysis",
         "parameters": {
             "streams": {
@@ -31206,7 +32007,7 @@
         "category": "Geomorphometric Analysis",
         "label": "Vertical Excess Curvature",
         "description": "This tool calculates vertical excess curvature from an input DEM.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/geomorphometric_analysis.html#VerticalExcessCurvature",
         "parameters": {
             "dem": {
@@ -31824,7 +32625,7 @@
         "category": "Precision Agriculture",
         "label": "Yield Filter",
         "description": "Filters crop yield values of point data derived from combine harvester yield monitors.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#YieldFilter",
         "parameters": {
             "i": {
@@ -31849,7 +32650,12 @@
                     "--yield_field"
                 ],
                 "description": "Name of the attribute containing yield data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -31860,7 +32666,12 @@
                     "--pass_field"
                 ],
                 "description": "Name of the attribute containing pass line ID.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -31929,7 +32740,7 @@
         "category": "Precision Agriculture",
         "label": "Yield Map",
         "description": "This tool can be used to create a segmented-vector polygon yield map from a set of harvester points.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#YieldMap",
         "parameters": {
             "i": {
@@ -31954,7 +32765,12 @@
                     "--pass_field_name"
                 ],
                 "description": "Name of the attribute containing pass line ID.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },
@@ -32003,7 +32819,7 @@
         "category": "Precision Agriculture",
         "label": "Yield Normalization",
         "description": "This tool can be used to normalize the yield points for a field.",
-        "github": "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools",
+        "github": "Source code is unavailable due to proprietary license.",
         "book": "https://www.whiteboxgeo.com/manual/wbt_book/available_tools/precision_agriculture.html#YieldNormalization",
         "parameters": {
             "i": {
@@ -32028,7 +32844,12 @@
                     "--yield_field"
                 ],
                 "description": "Name of the attribute containing yield data.",
-                "parameter_type": "String",
+                "parameter_type": {
+                    "VectorAttributeField": [
+                        "Any",
+                        "--input"
+                    ]
+                },
                 "default_value": null,
                 "optional": false
             },

@@ -208,7 +208,7 @@ def get_github_url(tool_name):
     Returns:
         str: The URL to source code.
     """
-
+    print(tool_name)
     url = wbt.view_code(tool_name).strip()
     if "RUST_BACKTRACE" in url:
         url = "https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools"
