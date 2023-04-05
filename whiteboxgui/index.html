@@ -1,0 +1,2835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://whiteboxgui.gishub.org/whiteboxgui/">
+      
+      
+        <link rel="prev" href="../faq/">
+      
+      
+        <link rel="next" href="../examples/examples/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+    
+    
+      
+        <title>whiteboxgui module - whiteboxgui</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#whiteboxgui-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="whiteboxgui" class="md-header__button md-logo" aria-label="whiteboxgui" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            whiteboxgui
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              whiteboxgui module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/opengeos/whiteboxgui" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="whiteboxgui" class="md-nav__button md-logo" aria-label="whiteboxgui" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    whiteboxgui
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeos/whiteboxgui" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/opengeos/whiteboxgui/issues" class="md-nav__link">
+        Report Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          whiteboxgui module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        whiteboxgui module
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui" class="md-nav__link">
+    whiteboxgui.whiteboxgui
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.build_toolbox" class="md-nav__link">
+    build_toolbox()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.build_toolbox_tree" class="md-nav__link">
+    build_toolbox_tree()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.clone_repo" class="md-nav__link">
+    clone_repo()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.create_code_cell" class="md-nav__link">
+    create_code_cell()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.download_from_url" class="md-nav__link">
+    download_from_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_book_url" class="md-nav__link">
+    get_book_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_ext_dict" class="md-nav__link">
+    get_ext_dict()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_github_url" class="md-nav__link">
+    get_github_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_tool_params" class="md-nav__link">
+    get_tool_params()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_wbt_dict" class="md-nav__link">
+    get_wbt_dict()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.in_colab_shell" class="md-nav__link">
+    in_colab_shell()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.search_api_tree" class="md-nav__link">
+    search_api_tree()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_camelcase" class="md-nav__link">
+    to_camelcase()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_label" class="md-nav__link">
+    to_label()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_snakecase" class="md-nav__link">
+    to_snakecase()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.tool_categories" class="md-nav__link">
+    tool_categories()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.tool_gui" class="md-nav__link">
+    tool_gui()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.update_package" class="md-nav__link">
+    update_package()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Notebooks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Notebooks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui" class="md-nav__link">
+    whiteboxgui.whiteboxgui
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.build_toolbox" class="md-nav__link">
+    build_toolbox()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.build_toolbox_tree" class="md-nav__link">
+    build_toolbox_tree()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.clone_repo" class="md-nav__link">
+    clone_repo()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.create_code_cell" class="md-nav__link">
+    create_code_cell()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.download_from_url" class="md-nav__link">
+    download_from_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_book_url" class="md-nav__link">
+    get_book_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_ext_dict" class="md-nav__link">
+    get_ext_dict()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_github_url" class="md-nav__link">
+    get_github_url()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_tool_params" class="md-nav__link">
+    get_tool_params()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.get_wbt_dict" class="md-nav__link">
+    get_wbt_dict()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.in_colab_shell" class="md-nav__link">
+    in_colab_shell()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.search_api_tree" class="md-nav__link">
+    search_api_tree()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_camelcase" class="md-nav__link">
+    to_camelcase()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_label" class="md-nav__link">
+    to_label()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.to_snakecase" class="md-nav__link">
+    to_snakecase()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.tool_categories" class="md-nav__link">
+    tool_categories()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.tool_gui" class="md-nav__link">
+    tool_gui()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whiteboxgui.whiteboxgui.update_package" class="md-nav__link">
+    update_package()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="whiteboxgui-module">whiteboxgui module<a class="headerlink" href="#whiteboxgui-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="whiteboxgui.whiteboxgui"></a>
+    <div class="doc doc-contents first">
+
+      <p>Main module.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.build_toolbox" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">build_toolbox</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="s1">&#39;1080px&#39;</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.build_toolbox" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Build the toolbox for WhiteboxTools.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tools_dict</code></td>
+        <td><code>dict</code></td>
+        <td><p>A dictionary containing information for all tools.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>max_width</code></td>
+        <td><code>str</code></td>
+        <td><p>The maximum width of the widget.</p></td>
+        <td><code>&#39;1080px&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>max_height</code></td>
+        <td><code>str</code></td>
+        <td><p>The maximum height of the widget.</p></td>
+        <td><code>&#39;600px&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>sandbox_path</code></td>
+        <td><code>str</code></td>
+        <td><p>The path to the sandbox folder. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>An ipywidget representing the toolbox.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build_toolbox</span><span class="p">(</span>
+    <span class="n">tools_dict</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;1080px&quot;</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build the toolbox for WhiteboxTools.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tools_dict (dict): A dictionary containing information for all tools.</span>
+<span class="sd">        max_width (str, optional): The maximum width of the widget.</span>
+<span class="sd">        max_height (str, optional): The maximum height of the widget.</span>
+<span class="sd">        sandbox_path (str, optional): The path to the sandbox folder. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        object: An ipywidget representing the toolbox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">left_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_width</span><span class="o">=</span><span class="s2">&quot;175px&quot;</span><span class="p">))</span>
+    <span class="n">center_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_width</span><span class="o">=</span><span class="s2">&quot;200px&quot;</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;200px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">right_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;630px&quot;</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="n">max_height</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">full_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">left_widget</span><span class="p">,</span> <span class="n">center_widget</span><span class="p">,</span> <span class="n">right_widget</span><span class="p">],</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="n">max_width</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="n">max_height</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">search_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Search tools ...&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;170px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">label_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;170px&quot;</span><span class="p">))</span>
+    <span class="n">label_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">)</span><span class="si">}</span><span class="s2"> Available Tools&quot;</span>
+    <span class="n">close_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Close Toolbox&quot;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;170px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">categories</span><span class="p">[</span><span class="s2">&quot;All Tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tools_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">tools_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categories</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">categories</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">categories</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">categories</span><span class="p">[</span><span class="s2">&quot;All Tools&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">all_tools</span> <span class="o">=</span> <span class="n">categories</span><span class="p">[</span><span class="s2">&quot;All Tools&quot;</span><span class="p">]</span>
+    <span class="n">all_tools</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">category_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span>
+        <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;170px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;175px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">tools_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">[],</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;195px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">category_selected</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">selected</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">categories</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">tools_widget</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+            <span class="n">label_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span><span class="si">}</span><span class="s2"> Available Tools&quot;</span>
+
+    <span class="n">category_widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">category_selected</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tool_selected</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">selected</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">tool_dict</span> <span class="o">=</span> <span class="n">tools_dict</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+            <span class="k">with</span> <span class="n">right_widget</span><span class="p">:</span>
+                <span class="n">right_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+                <span class="n">display</span><span class="p">(</span>
+                    <span class="n">tool_gui</span><span class="p">(</span>
+                        <span class="n">tool_dict</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="n">max_height</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="n">tools_widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">tool_selected</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">search_changed</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">keyword</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">selected_tools</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">all_tools</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">keyword</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">tool</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                        <span class="ow">or</span> <span class="n">keyword</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">tools_dict</span><span class="p">[</span><span class="n">tool</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span>
+                    <span class="p">):</span>
+                        <span class="n">selected_tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">tools_widget</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">selected_tools</span>
+                <span class="n">label_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> Available Tools&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tools_widget</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">all_tools</span>
+            <span class="n">label_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">)</span><span class="si">}</span><span class="s2"> Available Tools&quot;</span>
+
+    <span class="n">search_widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">search_changed</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close_btn_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">full_widget</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">close_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">close_btn_clicked</span><span class="p">)</span>
+
+    <span class="n">category_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">tools_widget</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">all_tools</span>
+    <span class="n">left_widget</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">category_widget</span><span class="p">,</span>
+                            <span class="n">search_widget</span><span class="p">,</span> <span class="n">label_widget</span><span class="p">,</span> <span class="n">close_btn</span><span class="p">]</span>
+    <span class="n">center_widget</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">tools_widget</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">full_widget</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.build_toolbox_tree" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">build_toolbox_tree</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">,</span> <span class="n">folder_icon</span><span class="o">=</span><span class="s1">&#39;folder&#39;</span><span class="p">,</span> <span class="n">tool_icon</span><span class="o">=</span><span class="s1">&#39;wrench&#39;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.build_toolbox_tree" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Build the toolbox for WhiteboxTools.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tools_dict</code></td>
+        <td><code>dict</code></td>
+        <td><p>A dictionary containing information for all tools.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>folder_icon</code></td>
+        <td><code>str</code></td>
+        <td><p>The font-awesome icon for tool categories. Defaults to "folder".</p></td>
+        <td><code>&#39;folder&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>tool_icon</code></td>
+        <td><code>str</code></td>
+        <td><p>The font-awesome icon for tools. Defaults to "wrench".</p></td>
+        <td><code>&#39;wrench&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>sandbox_path</code></td>
+        <td><code>str</code></td>
+        <td><p>The path to the sandbox folder. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>An ipywidget representing the toolbox.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build_toolbox_tree</span><span class="p">(</span>
+    <span class="n">tools_dict</span><span class="p">,</span> <span class="n">folder_icon</span><span class="o">=</span><span class="s2">&quot;folder&quot;</span><span class="p">,</span> <span class="n">tool_icon</span><span class="o">=</span><span class="s2">&quot;wrench&quot;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build the toolbox for WhiteboxTools.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tools_dict (dict): A dictionary containing information for all tools.</span>
+<span class="sd">        folder_icon (str, optional): The font-awesome icon for tool categories. Defaults to &quot;folder&quot;.</span>
+<span class="sd">        tool_icon (str, optional): The font-awesome icon for tools. Defaults to &quot;wrench&quot;.</span>
+<span class="sd">        sandbox_path (str, optional): The path to the sandbox folder. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        object: An ipywidget representing the toolbox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">left_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
+    <span class="n">right_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
+    <span class="n">full_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">left_widget</span><span class="p">,</span> <span class="n">right_widget</span><span class="p">])</span>
+
+    <span class="n">search_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">)</span><span class="si">}</span><span class="s2"> tools available. Search tools ...&quot;</span>
+    <span class="n">search_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">placeholder</span><span class="o">=</span><span class="n">search_description</span><span class="p">)</span>
+    <span class="n">search_box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s2">&quot;270px&quot;</span>
+
+    <span class="n">close_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;32px&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">close_btn_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">full_widget</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">close_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">close_btn_clicked</span><span class="p">)</span>
+
+    <span class="n">tree_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+    <span class="n">tree_widget</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">max_width</span> <span class="o">=</span> <span class="s2">&quot;310px&quot;</span>
+    <span class="n">tree_widget</span><span class="o">.</span><span class="n">overflow</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+
+    <span class="n">left_widget</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">search_box</span><span class="p">,</span> <span class="n">close_btn</span><span class="p">]),</span> <span class="n">tree_widget</span><span class="p">]</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;760px&quot;</span><span class="p">))</span>
+    <span class="n">right_widget</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span>
+
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">multiple_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tree_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">search_box_callback</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+        <span class="k">with</span> <span class="n">tree_widget</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading...&quot;</span><span class="p">)</span>
+                <span class="n">tree_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tree_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Searching...&quot;</span><span class="p">)</span>
+                <span class="n">tree_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">sub_tree</span> <span class="o">=</span> <span class="n">search_api_tree</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">tree_dict</span><span class="p">,</span> <span class="n">tools_dict</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">sub_tree</span><span class="p">)</span>
+
+    <span class="n">search_box</span><span class="o">.</span><span class="n">on_submit</span><span class="p">(</span><span class="n">search_box_callback</span><span class="p">)</span>
+
+    <span class="n">root_name</span> <span class="o">=</span> <span class="s2">&quot;WhiteboxTools&quot;</span>
+    <span class="n">root_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">root_name</span><span class="p">)</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">root_node</span><span class="p">)</span>
+
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">handle_tool_clicked</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">cur_node</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">]</span>
+            <span class="n">tool_name</span> <span class="o">=</span> <span class="n">cur_node</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+                <span class="n">tool_ui</span> <span class="o">=</span> <span class="n">tool_gui</span><span class="p">(</span>
+                    <span class="n">tools_dict</span><span class="p">[</span><span class="n">tool_name</span><span class="p">],</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">tool_ui</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">tools_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">tools_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categories</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">category_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">folder_icon</span><span class="p">,</span> <span class="n">opened</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">root_node</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">category_node</span><span class="p">)</span>
+            <span class="n">categories</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="n">category_node</span>
+            <span class="n">tool_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">tool_icon</span><span class="p">)</span>
+            <span class="n">category_node</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">tool_node</span><span class="p">)</span>
+            <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_node</span>
+            <span class="n">tool_node</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">handle_tool_clicked</span><span class="p">,</span> <span class="s2">&quot;selected&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">category_node</span> <span class="o">=</span> <span class="n">categories</span><span class="p">[</span><span class="n">category</span><span class="p">]</span>
+            <span class="n">tool_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">tool_icon</span><span class="p">)</span>
+            <span class="n">category_node</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">tool_node</span><span class="p">)</span>
+            <span class="n">tree_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_node</span>
+            <span class="n">tool_node</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">handle_tool_clicked</span><span class="p">,</span> <span class="s2">&quot;selected&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tree_widget</span><span class="p">:</span>
+        <span class="n">tree_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">full_widget</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.clone_repo" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">clone_repo</span><span class="p">(</span><span class="n">out_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.clone_repo" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Clones the whiteboxgui GitHub repository.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>out_dir</code></td>
+        <td><code>str</code></td>
+        <td><p>Output folder for the repo. Defaults to '.'.</p></td>
+        <td><code>&#39;.&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>unzip</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to unzip the repository. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">clone_repo</span><span class="p">(</span><span class="n">out_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clones the whiteboxgui GitHub repository.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        out_dir (str, optional): Output folder for the repo. Defaults to &#39;.&#39;.</span>
+<span class="sd">        unzip (bool, optional): Whether to unzip the repository. Defaults to True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/whiteboxgui/archive/master.zip&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;whiteboxgui-master.zip&quot;</span>
+    <span class="n">download_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out_file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="n">unzip</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.create_code_cell" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_code_cell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;below&#39;</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.create_code_cell" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Creates a code cell in the IPython Notebook.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>code</code></td>
+        <td><code>str</code></td>
+        <td><p>Code to fill the new code cell with. Defaults to ''.</p></td>
+        <td><code>&#39;&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>where</code></td>
+        <td><code>str</code></td>
+        <td><p>Where to add the new code cell. It can be one of the following: above, below, at_bottom. Defaults to 'below'.</p></td>
+        <td><code>&#39;below&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_code_cell</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;below&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a code cell in the IPython Notebook.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        code (str, optional): Code to fill the new code cell with. Defaults to &#39;&#39;.</span>
+<span class="sd">        where (str, optional): Where to add the new code cell. It can be one of the following: above, below, at_bottom. Defaults to &#39;below&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span> <span class="nn">base64</span>
+    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Javascript</span><span class="p">,</span> <span class="n">display</span>
+
+    <span class="n">encoded_code</span> <span class="o">=</span> <span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">code</span><span class="p">)))</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="n">display</span><span class="p">(</span>
+        <span class="n">Javascript</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        var code = IPython.notebook.insert_cell_{0}(&#39;code&#39;);</span>
+<span class="sd">        code.set_text(atob(&quot;{1}&quot;));</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">where</span><span class="p">,</span> <span class="n">encoded_code</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.download_from_url" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">download_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.download_from_url" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Download a file from a URL (e.g., https://github.com/opengeos/whitebox/raw/master/examples/testdata.zip)</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>The HTTP URL to download.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>out_file_name</code></td>
+        <td><code>str</code></td>
+        <td><p>The output file name to use. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>out_dir</code></td>
+        <td><code>str</code></td>
+        <td><p>The output directory to use. Defaults to '.'.</p></td>
+        <td><code>&#39;.&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>unzip</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to unzip the downloaded file if it is a zip file. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to display or not the output of the function. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">download_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download a file from a URL (e.g., https://github.com/opengeos/whitebox/raw/master/examples/testdata.zip)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): The HTTP URL to download.</span>
+<span class="sd">        out_file_name (str, optional): The output file name to use. Defaults to None.</span>
+<span class="sd">        out_dir (str, optional): The output directory to use. Defaults to &#39;.&#39;.</span>
+<span class="sd">        unzip (bool, optional): Whether to unzip the downloaded file if it is a zip file. Defaults to True.</span>
+<span class="sd">        verbose (bool, optional): Whether to display or not the output of the function. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">tarfile</span>
+    <span class="kn">import</span> <span class="nn">urllib.request</span>
+    <span class="kn">import</span> <span class="nn">zipfile</span>
+
+    <span class="n">in_file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">out_file_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out_file_name</span> <span class="o">=</span> <span class="n">in_file_name</span>
+    <span class="n">out_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">out_dir</span><span class="p">),</span> <span class="n">out_file_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading </span><span class="si">{}</span><span class="s2"> ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out_file_path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;The URL is invalid. Please double check the URL.&quot;</span><span class="p">)</span>
+
+    <span class="n">final_path</span> <span class="o">=</span> <span class="n">out_file_path</span>
+
+    <span class="k">if</span> <span class="n">unzip</span><span class="p">:</span>
+        <span class="c1"># if it is a zip file</span>
+        <span class="k">if</span> <span class="s2">&quot;.zip&quot;</span> <span class="ow">in</span> <span class="n">out_file_name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unzipping </span><span class="si">{}</span><span class="s2"> ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_file_name</span><span class="p">))</span>
+            <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">out_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+                <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
+            <span class="n">final_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">out_dir</span><span class="p">),</span> <span class="n">out_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># if it is a tar file</span>
+        <span class="k">if</span> <span class="s2">&quot;.tar&quot;</span> <span class="ow">in</span> <span class="n">out_file_name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unzipping </span><span class="si">{}</span><span class="s2"> ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_file_name</span><span class="p">))</span>
+            <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">out_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar_ref</span><span class="p">:</span>
+                <span class="k">def</span> <span class="nf">is_within_directory</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+
+                    <span class="n">abs_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+                    <span class="n">abs_target</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+                    <span class="n">prefix</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">commonprefix</span><span class="p">([</span><span class="n">abs_directory</span><span class="p">,</span> <span class="n">abs_target</span><span class="p">])</span>
+
+                    <span class="k">return</span> <span class="n">prefix</span> <span class="o">==</span> <span class="n">abs_directory</span>
+
+                <span class="k">def</span> <span class="nf">safe_extract</span><span class="p">(</span><span class="n">tar</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">numeric_owner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+                    <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">tar</span><span class="o">.</span><span class="n">getmembers</span><span class="p">():</span>
+                        <span class="n">member_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_within_directory</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">member_path</span><span class="p">):</span>
+                            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Attempted Path Traversal in Tar File&quot;</span><span class="p">)</span>
+
+                    <span class="n">tar</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">members</span><span class="p">,</span> <span class="n">numeric_owner</span><span class="o">=</span><span class="n">numeric_owner</span><span class="p">)</span> 
+
+
+                <span class="n">safe_extract</span><span class="p">(</span><span class="n">tar_ref</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
+            <span class="n">final_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">out_dir</span><span class="p">),</span> <span class="n">out_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.tart&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data downloaded to: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">final_path</span><span class="p">))</span>
+
+    <span class="k">return</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.get_book_url" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_book_url</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.get_book_url" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get the link to the help documentation of the tool.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tool_name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>category</code></td>
+        <td><code>str</code></td>
+        <td><p>The category of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The URL to help documentation.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_book_url</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the link to the help documentation of the tool.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tool_name (str): The name of the tool.</span>
+<span class="sd">        category (str): The category of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The URL to help documentation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;https://www.whiteboxgeo.com/manual/wbt_book/available_tools&quot;</span>
+    <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="s2">&quot;Math and Stats Tools&quot;</span><span class="p">:</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;Mathand Stats Tools&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">.html#</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">prefix</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span> <span class="n">to_camelcase</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">url</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.get_ext_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_ext_dict</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.get_ext_dict" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate a dictionary containing information for the general extension tools.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to print out description info. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>reset</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to recreate the json file containing the dictionary. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>The dictionary containing information for general extension tools.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_ext_dict</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a dictionary containing information for the general extension tools.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        verbose (bool, optional): Whether to print out description info. Defaults to True.</span>
+<span class="sd">        reset (bool, optional): Whether to recreate the json file containing the dictionary. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: The dictionary containing information for general extension tools.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">glob</span>
+    <span class="kn">import</span> <span class="nn">shutil</span>
+    <span class="kn">import</span> <span class="nn">urllib</span>
+    <span class="kn">import</span> <span class="nn">zipfile</span>
+
+    <span class="n">os_links</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Windows&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.whiteboxgeo.com/GTE_Windows/GeneralToolsetExtension_win.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.whiteboxgeo.com/GTE_Darwin/GeneralToolsetExtension_MacOS_Intel.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Linux&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.whiteboxgeo.com/GTE_Linux/GeneralToolsetExtension_linux.zip&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
+        <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s2">&quot;whitebox&quot;</span><span class="p">,</span> <span class="s2">&quot;whitebox.py&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">plugin_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">,</span> <span class="s2">&quot;plugins&quot;</span><span class="p">)</span>
+    <span class="n">ext_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">,</span> <span class="s2">&quot;GeneralToolsetExtension&quot;</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">os_links</span><span class="p">[</span><span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()]</span>
+    <span class="n">zip_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">zip_name</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">zip_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">zip_name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading General Toolset Extension, please wait ...&quot;</span><span class="p">)</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">zip_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decompressing </span><span class="si">{}</span><span class="s2"> ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)))</span>
+        <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+            <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">)</span>
+
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">ext_dir</span><span class="p">,</span> <span class="n">plugin_dir</span><span class="p">,</span> <span class="n">dirs_exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">ext_dir</span><span class="p">)</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">plugin_dir</span><span class="p">,</span> <span class="s2">&quot;*.json&quot;</span><span class="p">))</span>
+    <span class="n">files</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="n">ext_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">tool_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">tool</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;exe&quot;</span><span class="p">]</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;toolbox&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_label</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;short_description&quot;</span><span class="p">]</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_github_url</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_book_url</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;toolbox&quot;</span><span class="p">])</span>
+
+        <span class="n">params_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">flags</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;flags&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">flags</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">flags</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--input&quot;</span><span class="p">]:</span>
+                    <span class="n">flag</span> <span class="o">=</span> <span class="s2">&quot;i&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">flag</span> <span class="o">=</span> <span class="n">flags</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="n">flags</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">params_dict</span><span class="p">[</span><span class="n">flag</span><span class="p">]</span> <span class="o">=</span> <span class="n">param</span>
+        <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_dict</span>
+
+        <span class="n">ext_dict</span><span class="p">[</span><span class="n">tool</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tool_dict</span>
+
+    <span class="k">return</span> <span class="n">ext_dict</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.get_github_url" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_github_url</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.get_github_url" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get the link to the source code of the tool on GitHub.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tool_name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The URL to source code.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_github_url</span><span class="p">(</span><span class="n">tool_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the link to the source code of the tool on GitHub.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tool_name (str): The name of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The URL to source code.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">wbt</span><span class="o">.</span><span class="n">view_code</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">&quot;RUST_BACKTRACE&quot;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools&quot;</span>
+    <span class="k">return</span> <span class="n">url</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.get_tool_params" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_tool_params</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.get_tool_params" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get parameters for a tool.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tool_name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>The tool parameters as a dictionary.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_tool_params</span><span class="p">(</span><span class="n">tool_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get parameters for a tool.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tool_name (str): The name of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: The tool parameters as a dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">wbt</span><span class="o">.</span><span class="n">tool_parameters</span><span class="p">(</span>
+        <span class="n">tool_name</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="n">flags</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;flags&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">flags</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">flags</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--input&quot;</span><span class="p">]:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="s2">&quot;i&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="n">flags</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="n">flags</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">params_dict</span><span class="p">[</span><span class="n">flag</span><span class="p">]</span> <span class="o">=</span> <span class="n">param</span>
+    <span class="k">return</span> <span class="n">params_dict</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.get_wbt_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_wbt_dict</span><span class="p">(</span><span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.get_wbt_dict" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate a dictionary containing information for all tools.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>reset</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to recreate the json file containing the dictionary. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>The dictionary containing information for all tools.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_wbt_dict</span><span class="p">(</span><span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a dictionary containing information for all tools.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        reset (bool, optional): Whether to recreate the json file containing the dictionary. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: The dictionary containing information for all tools.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span>
+        <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s2">&quot;whiteboxgui&quot;</span><span class="p">,</span> <span class="s2">&quot;whiteboxgui.py&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">wbt_dict_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">,</span> <span class="s2">&quot;data/whitebox_tools.json&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">wbt_dict_json</span><span class="p">))</span> <span class="ow">or</span> <span class="n">reset</span><span class="p">:</span>
+
+        <span class="n">wbt_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">tools</span> <span class="o">=</span> <span class="n">wbt</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+
+        <span class="n">category_dict</span> <span class="o">=</span> <span class="n">tool_categories</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">tool_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">to_snakecase</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_camelcase</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">category_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_label</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tools</span><span class="p">[</span><span class="n">tool</span><span class="p">]</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_github_url</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_book_url</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">category_dict</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+            <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_tool_params</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="n">wbt_dict</span><span class="p">[</span><span class="n">to_camelcase</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tool_dict</span>
+
+        <span class="n">wbt_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">get_ext_dict</span><span class="p">())</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">wbt_dict_json</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">wbt_dict</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">wbt_dict_json</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">wbt_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wbt_dict</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.in_colab_shell" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">in_colab_shell</span><span class="p">()</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.in_colab_shell" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Tests if the code is being executed within Google Colab.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">in_colab_shell</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests if the code is being executed within Google Colab.&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+
+    <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.search_api_tree" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">search_api_tree</span><span class="p">(</span><span class="n">keywords</span><span class="p">,</span> <span class="n">api_tree</span><span class="p">,</span> <span class="n">tools_dict</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.search_api_tree" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Search the WhiteboxTools API and return functions containing the specified keywords</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>keywords</code></td>
+        <td><code>str</code></td>
+        <td><p>The keywords to search for.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>api_tree</code></td>
+        <td><code>dict</code></td>
+        <td><p>The dictionary containing the WhiteboxTools API tree.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tools_dict</code></td>
+        <td><code>dict</code></td>
+        <td><p>The dictionary containing the dict of all tools.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>An ipytree object/widget.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">search_api_tree</span><span class="p">(</span><span class="n">keywords</span><span class="p">,</span> <span class="n">api_tree</span><span class="p">,</span> <span class="n">tools_dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Search the WhiteboxTools API and return functions containing the specified keywords</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keywords (str): The keywords to search for.</span>
+<span class="sd">        api_tree (dict): The dictionary containing the WhiteboxTools API tree.</span>
+<span class="sd">        tools_dict (dict): The dictionary containing the dict of all tools.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        object: An ipytree object/widget.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">warnings</span>
+
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+    <span class="n">sub_tree</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">api_tree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">keywords</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="n">keywords</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">tools_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="p">):</span>
+            <span class="n">sub_tree</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">api_tree</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">sub_tree</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.show" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.show" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Show the toolbox GUI.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to show progress info when the tool is running. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>tree</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to use the tree mode toolbox built using ipytree rather than ipywidgets. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>reset</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>sandbox_path</code></td>
+        <td><code>str</code></td>
+        <td><p>The path to the sandbox directory. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>A toolbox GUI.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Show the toolbox GUI.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        verbose (bool, optional): Whether to show progress info when the tool is running. Defaults to True.</span>
+<span class="sd">        tree (bool, optional): Whether to use the tree mode toolbox built using ipytree rather than ipywidgets. Defaults to False.</span>
+<span class="sd">        reset (bool, optional): Whether to regenerate the json file with the dictionary containing the information for all tools. Defaults to False.</span>
+<span class="sd">        sandbox_path (str, optional): The path to the sandbox directory. Defaults to None.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        object: A toolbox GUI.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tools_dict</span> <span class="o">=</span> <span class="n">get_wbt_dict</span><span class="p">(</span><span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># if in_colab_shell():</span>
+    <span class="c1">#     tree = False</span>
+
+    <span class="k">if</span> <span class="n">tree</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">build_toolbox_tree</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">build_toolbox</span><span class="p">(</span><span class="n">tools_dict</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.to_camelcase" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">to_camelcase</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.to_camelcase" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Convert snake_case name to CamelCase name.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The CamelCase name of the tool.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_camelcase</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert snake_case name to CamelCase name.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The CamelCase name of the tool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.to_label" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">to_label</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.to_label" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Convert snake_case name to Title case label.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The Title case name of the tool.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_label</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert snake_case name to Title case label.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The Title case name of the tool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.to_snakecase" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">to_snakecase</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.to_snakecase" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Convert CamelCase name to snake_case name.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tool.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The snakecase name of the tool.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_snakecase</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert CamelCase name to snake_case name.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The snakecase name of the tool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;(.)([A-Z][a-z]+)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1_\2&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([a-z0-9])([A-Z])&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1_\2&quot;</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.tool_categories" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tool_categories</span><span class="p">()</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.tool_categories" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate a dictionary containing the toolbox corresponds to each tool.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>a dictionary containing the toolbox corresponds to each tool.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tool_categories</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a dictionary containing the toolbox corresponds to each tool.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: a dictionary containing the toolbox corresponds to each tool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">category_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">tools</span> <span class="o">=</span> <span class="n">wbt</span><span class="o">.</span><span class="n">toolbox</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">category_dict</span><span class="p">[</span><span class="n">to_snakecase</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span> <span class="o">=</span> <span class="n">category</span>
+
+    <span class="k">return</span> <span class="n">category_dict</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.tool_gui" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tool_gui</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="s1">&#39;420px&#39;</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.tool_gui" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a GUI for a tool based on the tool dictionary.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>tool_dict</code></td>
+        <td><code>dict</code></td>
+        <td><p>The dictionary containing the tool info.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>max_width</code></td>
+        <td><code>str</code></td>
+        <td><p>The max width of the tool dialog.</p></td>
+        <td><code>&#39;420px&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>max_height</code></td>
+        <td><code>str</code></td>
+        <td><p>The max height of the tool dialog.</p></td>
+        <td><code>&#39;600px&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>sandbox_path</code></td>
+        <td><code>str</code></td>
+        <td><p>The path to the sandbox directory. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>An ipywidget object representing the tool interface.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tool_gui</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;420px&quot;</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a GUI for a tool based on the tool dictionary.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tool_dict (dict): The dictionary containing the tool info.</span>
+<span class="sd">        max_width (str, optional): The max width of the tool dialog.</span>
+<span class="sd">        max_height (str, optional): The max height of the tool dialog.</span>
+<span class="sd">        sandbox_path (str, optional): The path to the sandbox directory. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        object: An ipywidget object representing the tool interface.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tool_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="n">max_width</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="n">max_height</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">required_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;description_width&quot;</span><span class="p">:</span> <span class="s2">&quot;initial&quot;</span><span class="p">}</span>
+    <span class="n">max_width</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span>
+
+    <span class="n">header_width</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">104</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Current Tool: </span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">header_width</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">code_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;View Code&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">header</span><span class="p">,</span> <span class="n">code_btn</span><span class="p">]))</span>
+
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Textarea</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Description: </span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;410px&quot;</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="n">max_width</span><span class="p">),</span>
+        <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+        <span class="n">required</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">]):</span>
+            <span class="n">required</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+            <span class="n">required_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">required</span>
+        <span class="n">param_type</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;parameter_type&quot;</span><span class="p">]</span>
+        <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;null&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s2">&quot;false&quot;</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">]:</span>
+                    <span class="n">default_value</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">elif</span> <span class="s2">&quot;true&quot;</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">]:</span>
+                    <span class="n">default_value</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">default_value</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;default_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;500px&quot;</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="n">max_width</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># display(data_types[param_type])</span>
+
+            <span class="k">if</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;Boolean&quot;</span><span class="p">:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span>
+                    <span class="n">description</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">default_value</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">param_type</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Directory&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ExistingFile&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ExistingFileOrFloat&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FileList&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;NewFile&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">FileChooser</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+                    <span class="n">description</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">default_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">var_widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">default_value</span><span class="p">)</span>
+
+            <span class="n">args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_widget</span>
+
+            <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var_widget</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param_type</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="s2">&quot;OptionList&quot;</span> <span class="ow">in</span> <span class="n">param_type</span><span class="p">:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+                    <span class="n">options</span><span class="o">=</span><span class="n">param_type</span><span class="p">[</span><span class="s2">&quot;OptionList&quot;</span><span class="p">],</span>
+                    <span class="n">description</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+                    <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+                    <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">list</span><span class="p">(</span><span class="n">param_type</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;Directory&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ExistingFile&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ExistingFileOrFloat&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;FileList&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;NewFile&quot;</span><span class="p">,</span>
+            <span class="p">]:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">FileChooser</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">var_widget</span> <span class="o">=</span> <span class="n">FileChooser</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">sandbox_path</span><span class="o">=</span><span class="n">sandbox_path</span><span class="p">)</span>
+            <span class="n">args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_widget</span>
+
+            <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var_widget</span><span class="p">)</span>
+
+    <span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">))</span>
+    <span class="n">cancel_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">help_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Help&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">))</span>
+    <span class="n">import_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Import&quot;</span><span class="p">,</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="s2">&quot;Import the script to a new cell&quot;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;98px&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">tool_output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">max_height</span><span class="o">=</span><span class="s2">&quot;200px&quot;</span><span class="p">,</span> <span class="n">overflow</span><span class="o">=</span><span class="s2">&quot;scroll&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">run_btn</span><span class="p">,</span> <span class="n">cancel_btn</span><span class="p">,</span> <span class="n">help_btn</span><span class="p">,</span> <span class="n">import_btn</span><span class="p">]))</span>
+    <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool_output</span><span class="p">)</span>
+    <span class="n">tool_widget</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span>
+
+    <span class="k">def</span> <span class="nf">run_button_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">tool_output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+
+        <span class="n">required_params</span> <span class="o">=</span> <span class="n">required_inputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">args2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+
+            <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">FileChooser</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span> <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Please provide inputs for required parameters.&quot;</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">elif</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+                    <span class="n">required_params</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">arg</span> <span class="o">==</span> <span class="s2">&quot;i&quot;</span><span class="p">:</span>
+                        <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Please provide inputs for required parameters.&quot;</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">elif</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+                    <span class="n">required_params</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">args2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">required_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                <span class="n">wbt</span><span class="o">.</span><span class="n">run_tool</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">args2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">help_button_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">webbrowser</span>
+
+        <span class="n">tool_output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span>
+                <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;&lt;a href=</span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> target=&quot;_blank&quot;&gt;</span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&lt;/a&gt;&#39;</span>
+            <span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open_new_tab</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">code_button_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">webbrowser</span>
+
+        <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;RUST_BACKTRACE&quot;</span> <span class="ow">in</span> <span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">]:</span>
+                <span class="n">tool_dict</span><span class="p">[</span>
+                    <span class="s2">&quot;github&quot;</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/jblindsay/whitebox-tools/tree/master/whitebox-tools-app/src/tools&quot;</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span>
+                <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;&lt;a href=</span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> target=&quot;_blank&quot;&gt;</span><span class="si">{</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&lt;/a&gt;&#39;</span>
+            <span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open_new_tab</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">[</span><span class="s2">&quot;github&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">cancel_btn_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">tool_output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">import_button_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">tool_output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+
+        <span class="n">required_params</span> <span class="o">=</span> <span class="n">required_inputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">args2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">args3</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+
+            <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">FileChooser</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span> <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Please provide inputs for required parameters.&quot;</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">elif</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+                    <span class="n">required_params</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">arg</span> <span class="o">==</span> <span class="s2">&quot;i&quot;</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">args3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=&#39;</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Please provide inputs for required parameters.&quot;</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">elif</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+                    <span class="n">required_params</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">args3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=&#39;</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">],</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;--</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">args3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">args2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">required_params</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;import whitebox&quot;</span><span class="p">)</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wbt = whitebox.WhiteboxTools()&quot;</span><span class="p">)</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;wbt.</span><span class="si">{</span><span class="n">to_snakecase</span><span class="p">(</span><span class="n">tool_dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args3</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">tool_output</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">create_code_cell</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+
+    <span class="n">import_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">import_button_clicked</span><span class="p">)</span>
+    <span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">run_button_clicked</span><span class="p">)</span>
+    <span class="n">help_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">help_button_clicked</span><span class="p">)</span>
+    <span class="n">code_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">code_button_clicked</span><span class="p">)</span>
+    <span class="n">cancel_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">cancel_btn_clicked</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tool_widget</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="whiteboxgui.whiteboxgui.update_package" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_package</span><span class="p">()</span></code>
+
+
+<a href="#whiteboxgui.whiteboxgui.update_package" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Updates the whiteboxgui package from the GitHub repository without the need to use pip or conda.
+In this way, I don't have to keep updating pypi and conda-forge with every minor update of the package.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>whiteboxgui/whiteboxgui.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_package</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the whiteboxgui package from the GitHub repository without the need to use pip or conda.</span>
+<span class="sd">    In this way, I don&#39;t have to keep updating pypi and conda-forge with every minor update of the package.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">shutil</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">download_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">clone_repo</span><span class="p">(</span><span class="n">out_dir</span><span class="o">=</span><span class="n">download_dir</span><span class="p">)</span>
+
+        <span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_dir</span><span class="p">,</span> <span class="s2">&quot;whiteboxgui-master&quot;</span><span class="p">)</span>
+        <span class="n">work_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pip&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;pip3 install .&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;pip install .&quot;</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">work_dir</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pkg_dir</span> <span class="o">+</span> <span class="s2">&quot;.zip&quot;</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Please comment out &#39;whiteboxgui.update_package()&#39; and restart the kernel to take effect:</span><span class="se">\n</span><span class="s2">Jupyter menu -&gt; Kernel -&gt; Restart &amp; Clear Output&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-04-04
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
+      
+    
+  </body>
+</html>
