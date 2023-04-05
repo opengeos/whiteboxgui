@@ -3,21 +3,20 @@
 [![image](https://img.shields.io/pypi/v/whiteboxgui.svg)](https://pypi.python.org/pypi/whiteboxgui)
 [![image](https://img.shields.io/conda/vn/conda-forge/whiteboxgui.svg)](https://anaconda.org/conda-forge/whiteboxgui)
 [![image](https://pepy.tech/badge/whiteboxgui)](https://pepy.tech/project/whiteboxgui)
-[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/giswqs/whiteboxgui/blob/master/examples/examples.ipynb)
-[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/whiteboxgui/master)
-[![image](https://img.shields.io/twitter/follow/giswqs?style=social)](https://twitter.com/giswqs)
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/opengeos/whiteboxgui/blob/master/examples/examples.ipynb)
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/opengeos/whiteboxgui/master)
 
 **An interactive GUI for WhiteboxTools in a Jupyter-based environment**
 
--   GitHub repo: <https://github.com/giswqs/whiteboxgui>
--   Documentation: <https://giswqs.github.io/whiteboxgui>
+-   GitHub repo: <https://github.com/opengeos/whiteboxgui>
+-   Documentation: <https://opengeos.github.io/whiteboxgui>
 -   PyPI: <https://pypi.org/project/whiteboxgui>
 -   conda-forge: <https://anaconda.org/conda-forge/whiteboxgui>
 -   WhiteboxTools: <https://github.com/jblindsay/whitebox-tools>
 -   User Manual: <https://www.whiteboxgeo.com/manual/wbt_book>
--   whitebox-python: <https://github.com/giswqs/whitebox-python>
--   whiteboxR: <https://github.com/giswqs/whiteboxR>
--   whitebox-ArcGIS: <https://github.com/giswqs/WhiteboxTools-ArcGIS>
+-   whitebox-python: <https://github.com/opengeos/whitebox-python>
+-   whiteboxR: <https://github.com/opengeos/whiteboxR>
+-   whitebox-ArcGIS: <https://github.com/opengeos/WhiteboxTools-ArcGIS>
 -   Free software: MIT license
 
 ## Description

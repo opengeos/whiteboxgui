@@ -19,5 +19,5 @@ The sources for whiteboxgui can be downloaded from the Github repo.
 You can clone the public repository:
 
 ```
-git clone git://github.com/giswqs/whiteboxgui
+git clone git://github.com/opengeos/whiteboxgui
 ```

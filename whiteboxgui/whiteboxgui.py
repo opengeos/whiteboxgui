@@ -78,7 +78,7 @@ def create_code_cell(code="", where="below"):
 
 
 def download_from_url(url, out_file_name=None, out_dir=".", unzip=True, verbose=False):
-    """Download a file from a URL (e.g., https://github.com/giswqs/whitebox/raw/master/examples/testdata.zip)
+    """Download a file from a URL (e.g., https://github.com/opengeos/whitebox/raw/master/examples/testdata.zip)
 
     Args:
         url (str): The HTTP URL to download.
@@ -160,7 +160,7 @@ def clone_repo(out_dir=".", unzip=True):
         out_dir (str, optional): Output folder for the repo. Defaults to '.'.
         unzip (bool, optional): Whether to unzip the repository. Defaults to True.
     """
-    url = "https://github.com/giswqs/whiteboxgui/archive/master.zip"
+    url = "https://github.com/opengeos/whiteboxgui/archive/master.zip"
     filename = "whiteboxgui-master.zip"
     download_from_url(url, out_file_name=filename,
                       out_dir=out_dir, unzip=unzip)
