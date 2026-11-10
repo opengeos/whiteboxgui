@@ -3,7 +3,6 @@
 import json
 import os
 import platform
-import pkg_resources
 import re
 import whitebox
 import ipywidgets as widgets
@@ -322,9 +321,7 @@ def get_ext_dict(verbose=True, reset=False):
         "Linux": "https://www.whiteboxgeo.com/GTE_Linux/GeneralToolsetExtension_linux.zip",
     }
 
-    pkg_dir = os.path.dirname(
-        pkg_resources.resource_filename("whitebox", "whitebox.py")
-    )
+    pkg_dir = os.path.dirname(os.path.abspath(whitebox.__file__))
 
     plugin_dir = os.path.join(pkg_dir, "plugins")
     ext_dir = os.path.join(pkg_dir, "GeneralToolsetExtension")
@@ -397,9 +394,7 @@ def get_wbt_dict(reset=False):
     Returns:
         dict: The dictionary containing information for all tools.
     """
-    pkg_dir = os.path.dirname(
-        pkg_resources.resource_filename("whiteboxgui", "whiteboxgui.py")
-    )
+    pkg_dir = os.path.dirname(os.path.abspath(__file__))
 
     wbt_dict_json = os.path.join(pkg_dir, "data/whitebox_tools.json")
 
