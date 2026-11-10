@@ -1,4 +1,4 @@
 ipyfilechooser
-ipywidgets
 ipytree
+ipywidgets
 whitebox
