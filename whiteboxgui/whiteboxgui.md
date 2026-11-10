@@ -1,4 +1,0 @@
- 
-# whiteboxgui module
-
-::: whiteboxgui.whiteboxgui
